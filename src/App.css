@@ -43,7 +43,6 @@
   font-display: swap;
   font-family: Noto Sans;
   font-size: calc(12 * var(--general-size-factor-px));
-  transition: .3s ease-out;
 }
 html * {
   z-index: 1;
@@ -54,11 +53,12 @@ html, #root {
   height: 100%;
   width: 100%;
   overflow: hidden;
+  
 }
 body {
-  animation: opacity0to1 1s;
   position: absolute;
   top: calc(var(--general-size-factor-px) * 27);
+  animation: opacity0to1 1s;
 }
 /* nav */
 nav {
@@ -105,7 +105,7 @@ nav {
 .page-enter-active {
   opacity: 1;
   transform: scale(1);
-  transition: opacity 300ms, transform 300ms;
+  transition: 300ms;
 }
 
 .page-exit {
@@ -116,7 +116,7 @@ nav {
 .page-exit-active {
   opacity: 0;
   transform: scale(0.9);
-  transition: opacity 300ms, transform 300ms;
+  transition: 300ms;
 }
 
 

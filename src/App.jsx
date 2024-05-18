@@ -59,6 +59,8 @@ function App() {
             nodeRef={nodeRef}
             timeout={300}
             classNames="page"
+            appear={false}
+            enter={true}
             unmountOnExit
           >
             {(state) => (

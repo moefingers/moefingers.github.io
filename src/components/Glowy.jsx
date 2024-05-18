@@ -49,14 +49,14 @@ export default function Glowy(){
     useInterval(() => {
         if(allowTrail || mouseDown){
             setGlowyTrails([...glowyTrails, 
-                <GlowyTrail key={glowyTrails.length} x={posX} y={posY} xOff={0} yOff={0} color="var(--complementary-color-primary)"/>,
-                <GlowyTrail key={glowyTrails.length + 1} x={posX} y={posY} xOff={15 - Math.random() * 30} yOff={15 - Math.random() * 30} color={mouseDown ? `var(--complementary-color-tertiary)` : `var(--complementary-color-primary-faded)`}/>,
-                <GlowyTrail key={glowyTrails.length + 2} x={posX} y={posY} xOff={15 - Math.random() * 30} yOff={15 - Math.random() * 30} color={mouseDown ? `var(--complementary-color-quaternary)` : `var(--complementary-color-primary)`}/>,
-                <GlowyTrail key={glowyTrails.length + 3} x={posX} y={posY} xOff={15 - Math.random() * 30} yOff={15 - Math.random() * 30} color={mouseDown ? `var(--complementary-color-secondary)` : `var(--complementary-color-secondary)`}/>
+                <GlowyTrail key={glowyTrails.length.toString() + 0 + posX.toString() + posY.toString()} x={posX} y={posY} xOff={15 - Math.random() * 30} yOff={15 - Math.random() * 30} color="var(--complementary-color-primary-faded)"/>,
+                <GlowyTrail key={glowyTrails.length.toString() + 1 + posX.toString() + posY.toString()} x={posX} y={posY} xOff={15 - Math.random() * 30} yOff={15 - Math.random() * 30} color={mouseDown ? `var(--complementary-color-tertiary)` : `var(--complementary-color-primary-faded)`}/>,
+                <GlowyTrail key={glowyTrails.length.toString() + 2 + posX.toString() + posY.toString()} x={posX} y={posY} xOff={15 - Math.random() * 30} yOff={15 - Math.random() * 30} color={mouseDown ? `var(--complementary-color-quaternary)` : `var(--complementary-color-primary-faded)`}/>,
+                <GlowyTrail key={glowyTrails.length.toString() + 3 + posX.toString() + posY.toString()} x={posX} y={posY} xOff={15 - Math.random() * 30} yOff={15 - Math.random() * 30} color={mouseDown ? `var(--complementary-color-secondary)` : `var(--complementary-color-secondary)`}/>
             ])
         } else {
             setGlowyTrails([...glowyTrails, 
-                <GlowyTrail key={glowyTrails.length + 1} x={posX} y={posY} xOff={15 - Math.random() * 30} yOff={15 - Math.random() * 30} color={mouseDown ? `var(--complementary-color-tertiary)` : `var(--complementary-color-primary-faded)`}/>,
+                <GlowyTrail key={glowyTrails.length + 4} x={posX} y={posY} xOff={15 - Math.random() * 30} yOff={15 - Math.random() * 30} color={mouseDown ? `var(--complementary-color-tertiary)` : `var(--complementary-color-primary-faded)`}/>,
             ])
         }
         
