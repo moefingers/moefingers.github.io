@@ -11,6 +11,8 @@
   font-display: swap;
 }
 
+
+
 :root {
   --general-size-factor-px: (0.00188323 * 100vw); /* Will be overridden by media query.. */
 
@@ -23,6 +25,33 @@
   --text-shadow-primary: 0px 0px calc(var(--general-size-factor-px) * 5) var(--complementary-color-primary);
   --text-shadow-primary-faded: 0px 0px calc(var(--general-size-factor-px) * 5) var(--complementary-color-primary-faded);
 
+
+}
+@property --glowy-radius1 {
+  syntax: '<percentage>';
+  initial-value: 0%;
+  inherits: false;
+}
+
+@property --glowy-radius2 {
+  syntax: '<percentage>';
+  initial-value: 25%;
+  inherits: false;
+}
+@property --glowy-radius3 {
+  syntax: '<percentage>';
+  initial-value: 50%;
+  inherits: false;
+}
+@property --glowy-radius4 {
+  syntax: '<percentage>';
+  initial-value: 75%;
+  inherits: false;
+}
+@property --glowy-radius5 {
+  syntax: '<percentage>';
+  initial-value: 100%;
+  inherits: false;
 }
 
 * {
@@ -116,6 +145,8 @@ nav {
 
 /* glowy!*/
 div.glowy {
+  opacity: 0;
+  transition: unset;
   z-index: -1;
   position: fixed;
   transform: translate(-50%, -50%);
@@ -126,15 +157,22 @@ div.glowy {
   pointer-events: none;
 
   mix-blend-mode: color;
-
+  
   background: repeating-radial-gradient(
       circle,
-      var(--complementary-color-primary),
-      var(--complementary-color-secondary) ,
-      var(--background-color-secondary)
+      var(--complementary-color-primary) var(--glowy-radius1),
+      var(--complementary-color-secondary) var(--glowy-radius2),
+      var(--background-color-primary) var(--glowy-radius3),
+      var(--complementary-color-primary) var(--glowy-radius4),
+      var(--complementary-color-primary) calc(var(--glowy-radius1) * 2),
+      var(--complementary-color-secondary) calc(var(--glowy-radius2) * 2),
+      var(--background-color-primary) calc(var(--glowy-radius3) * 2),
+      var(--complementary-color-primary) calc(var(--glowy-radius4) * 2)
     );
 
     mask-image: radial-gradient(50% 50% at 50% 50%, white, transparent);
+
+    animation: radialAnimation .4s infinite linear;
 }
 
 
@@ -145,6 +183,24 @@ div.glowy {
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes radialAnimation {
+  0% {
+    --glowy-radius1: 0%;
+    --glowy-radius2: 25%;
+    --glowy-radius3: 50%;
+    --glowy-radius4: 75%;
+    --glowy-radius5: 100%;
+
+  }
+  100% {
+    --glowy-radius1: 100%;
+    --glowy-radius2: 125%;
+    --glowy-radius3: 150%;
+    --glowy-radius4: 175%;
+    --glowy-radius5: 200%;
   }
 }
 /* media query */

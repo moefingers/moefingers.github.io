@@ -19,19 +19,21 @@ export default function Glowy(){
     }, [])
 
     useEffect(() => {
-        console.log(posX, posY)
-    }, [posX, posY])
-
-    useEffect(() => {
         if(!listening){return}
         document.querySelector("html").addEventListener("mousemove", (e) => {
             setPosX(e.clientX)
             setPosY(e.clientY)
-
+            glowyElement.current.animate([
+                {opacity: 1},
+                {opacity: 0},
+            ], 300)
         })
     }, [listening])
 
     return (
-        <div ref={glowyElement} className="glowy" style={{ transition: "unset", top: `${posY}px`, left: `${posX}px`}}></div>
+        <div ref={glowyElement} className="glowy" style={{
+            top: `${posY}px`, 
+            left: `${posX}px`
+        }}></div>
     )
 }
