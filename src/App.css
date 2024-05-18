@@ -82,13 +82,13 @@ nav {
   transition: .3s ease-out;
   font-size: calc(20 * var(--general-size-factor-px));
 }
-.nav-link:hover {
-  font-size: calc(22 * var(--general-size-factor-px));
-  text-shadow: var(--text-shadow-primary-faded);
-}
-.nav-link.current {
+a.nav-link:hover {
   font-size: calc(25 * var(--general-size-factor-px));
   text-shadow: var(--text-shadow-primary);
+}
+.nav-link.current {
+  font-size: calc(23 * var(--general-size-factor-px));
+  text-shadow: var(--text-shadow-primary-faded);
 }
 
 
