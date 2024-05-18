@@ -4,4 +4,4 @@ Todo:
 - website
 
 
-[deployed](https://moefingers.github.io/portfolio/)
+[deployed](https://moefingers.github.io)
