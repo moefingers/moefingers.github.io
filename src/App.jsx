@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import NavigationBar from "./components/NavigationBar";
+import NotFound from "./components/NotFound";
 import Home from "./components/Home";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
@@ -14,6 +15,7 @@ export default function App() {
       <BrowserRouter>
         <NavigationBar/>
         <Routes>
+          <Route path="*"element={<NotFound/>}/>
           <Route path="/portfolio" element={<Home/>}/>
           <Route path="/portfolio/projects" element={<Projects/>}/>
           <Route path="/portfolio/contact" element={<Contact/>}/>
