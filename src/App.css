@@ -132,6 +132,7 @@ div.glowy-container div.trail-element {
   height: calc(var(--general-size-factor-px) * 5);
 
   pointer-events: none;
+  z-index: -1;
 }
 
 
