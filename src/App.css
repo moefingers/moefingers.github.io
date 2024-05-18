@@ -51,9 +51,6 @@ html * {
   background: transparent;
   user-select: none;
 }
-a {
-  user-select: auto;
-}
 
 html, #root, body {
   position: absolute;

@@ -1,9 +1,22 @@
 .projects-page-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+}
+
+.project-card-container {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    --x: 0px;
+
+    position: absolute;
+    left: calc(var(--x) * calc(var(--general-size-factor-px) * 1) );
 }
 
 .project-card {
     background-color: var(--background-color-secondary);
-    margin: calc(var(--general-size-factor-px) * 30)
+    margin: calc(var(--general-size-factor-px) * 10);
+    width: calc(var(--general-size-factor-px) * 300);
+    height: calc(var(--general-size-factor-px) * 300)
 }

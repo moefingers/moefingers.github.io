@@ -35,13 +35,13 @@ export default function Glowy(){
 
         function handleMouseUpOrLeave(){
             setMouseDown(false)
-            document.removeEventListener("mouseup", handleMouseUpOrLeave, true)
-            document.removeEventListener("mouseleave", handleMouseUpOrLeave, true)
+            document.removeEventListener("mouseup", handleMouseUpOrLeave, false)
+            document.removeEventListener("mouseleave", handleMouseUpOrLeave, false)
         }
         document.addEventListener("mousedown", (event) => {
             setMouseDown(true)
-            document.addEventListener("mouseup", handleMouseUpOrLeave, true)
-            document.addEventListener("mouseleave", handleMouseUpOrLeave, true)
+            document.addEventListener("mouseup", handleMouseUpOrLeave, false)
+            document.addEventListener("mouseleave", handleMouseUpOrLeave, false)
         })
     }, [listening])
 
@@ -60,7 +60,7 @@ export default function Glowy(){
         }
         
         setAllowTrail(false)
-    }, allowTrail || mouseDown ? 20 : 200)
+    }, allowTrail || mouseDown ? 17 : 200)
 
     return (
         <div className="glowy-container">
