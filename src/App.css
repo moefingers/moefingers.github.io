@@ -1,19 +1,84 @@
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('./assets/fonts/Noto/NotoSans-Regular.eot');
+  src: url('./assets/fonts/Noto/NotoSans-Regular.eot?#iefix') format('embedded-opentype'),
+      url('./assets/fonts/Noto/NotoSans-Regular.woff2') format('woff2'),
+      url('./assets/fonts/Noto/NotoSans-Regular.woff') format('woff'),
+      url('./assets/fonts/Noto/NotoSans-Regular.ttf') format('truetype'),
+      url('./assets/fonts/Noto/NotoSans-Regular.svg#NotoSans-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background-color-primary: rgba(0, 0, 0, 1);
   --background-color-secondary: rgba(20, 20, 20, 1);
+  --complementary-color-primary: rgba(255, 255, 255, 1);
+  --complementary-color-secondary: rgba(100, 100, 255, 1);
 }
 
 * {
   background-color: var(--background-color-primary);
-  color: white;
+  color: var(--complementary-color-primary);
+  
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  font-family: Noto Sans;
+}
+
+html, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 body {
   animation: opacity0to1 1s;
 }
 
-.projects-page-container, .home-page-container, .contact-page-container {
-  background-color: rgba(255,255,255,.4);
-  animation: opacity0to1 1s;
+nav {
+  display: flex;
+  justify-content: center;
+  align-items:flex-start;
+  gap: 2rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.nav-link {
+  text-decoration: none;
+  transition: .3s ease-out;
+}
+.nav-link.current {
+  font-size: larger;
+}
+
+
+/* page animations  */
+.page {
+  position: absolute;
+}
+
+.page-enter {
+  opacity: 0;
+  transform: scale(1.1);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
 }
 
 
@@ -25,4 +90,19 @@ body {
   100% {
     opacity: 1;
   }
+}
+
+@media screen and (orientation: landscape) {
+  body {
+    width: 100vh;
+    height: 100vh;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  body {
+    width: 100vw;
+    height: 100vw;
+  }
+  
 }

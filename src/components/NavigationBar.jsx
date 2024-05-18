@@ -1,10 +1,16 @@
-import { Link } from "react-router-dom";
-export default function NavigationBar() {
+import { NavLink } from "react-router-dom";
+export default function NavigationBar({routes}) {
     return (
-        <ul className="navigation-bar">
-            <li><Link to="/portfolio">Home</Link></li>
-            <li><Link to="/portfolio/projects">Projects</Link></li>
-            <li><Link to="/portfolio/contact">Contact</Link></li>
-        </ul>
+        <nav>
+            {routes.map((route) => (
+                <NavLink
+                key={route.path}
+                to={route.path}
+                className={location.pathname === route.path ? "nav-link current" : "nav-link"}
+                >
+                {route.name}
+                </NavLink>
+            ))}
+        </nav>
     )
 }
