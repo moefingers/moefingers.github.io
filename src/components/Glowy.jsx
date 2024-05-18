@@ -34,13 +34,15 @@ export default function Glowy(){
             setAllowTrail(true)
         })
 
-        function handleMouseUp(){
+        function handleMouseUpOrLeave(){
             setMouseDown(false)
-            html.removeEventListener("mouseup", handleMouseUp, true)
+            html.removeEventListener("mouseup", handleMouseUpOrLeave, true)
+            html.removeEventListener("mouseleave", handleMouseUpOrLeave, true)
         }
         html.addEventListener("mousedown", (event) => {
             setMouseDown(true)
-            html.addEventListener("mouseup", handleMouseUp, true)
+            html.addEventListener("mouseup", handleMouseUpOrLeave, true)
+            html.addEventListener("mouseleave", handleMouseUpOrLeave, true)
         })
     }, [listening])
 
