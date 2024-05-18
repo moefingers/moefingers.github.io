@@ -12,13 +12,21 @@
 }
 
 :root {
+  --general-size-factor-px: (0.00188323 * 100vw); /* Will be overridden by media query.. */
+
   --background-color-primary: rgba(0, 0, 0, 1);
-  --background-color-secondary: rgba(20, 20, 20, 1);
+  --background-color-secondary: rgba(255,255,255, .2);
   --complementary-color-primary: rgba(255, 255, 255, 1);
   --complementary-color-secondary: rgba(100, 100, 255, 1);
+
+  --text-shadow-primary: 0px 0px calc(var(--general-size-factor-px) * 5) var(--complementary-color-primary);
+
 }
 
 * {
+  padding: 0;
+  margin: 0;
+  
   background-color: var(--background-color-primary);
   color: var(--complementary-color-primary);
   
@@ -35,22 +43,35 @@ html, #root {
 }
 body {
   animation: opacity0to1 1s;
+  position: absolute;
+  top: 5%;
 }
 
 nav {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: calc(var(--general-size-factor-px) * 400);
+  height: calc(var(--general-size-factor-px) * 27);
+  padding: 0 calc(var(--general-size-factor-px) * 10) calc(var(--general-size-factor-px) * 10);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items:flex-start;
-  gap: 2rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
+
+  border-radius: 0 0 calc(var(--general-size-factor-px) * 10) calc(var(--general-size-factor-px) * 10);
+
 }
 .nav-link {
   text-decoration: none;
+  background-color: transparent;
   transition: .3s ease-out;
+  font-size: calc(20 * var(--general-size-factor-px));
 }
 .nav-link.current {
-  font-size: larger;
+  font-size: calc(25 * var(--general-size-factor-px));
+  text-shadow: var(--text-shadow-primary);
 }
 
 
@@ -97,6 +118,9 @@ nav {
     width: 100vh;
     height: 100vh;
   }
+  :root{
+    --general-size-factor-px: (0.00188323 * 100vh)
+  }
 }
 
 @media screen and (orientation: portrait) {
@@ -104,5 +128,7 @@ nav {
     width: 100vw;
     height: 100vw;
   }
-  
+  :root{
+    --general-size-factor-px: (0.00188323 * 100vw)
+  }
 }
