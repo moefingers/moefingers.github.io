@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "license": "MIT",
-  "homepage": "https://moefingers.github.io/portfolio/",
+  "homepage": "https://moefingers.github.io/portfolio/#/",
+  "repository": "https://github.com/moefingers/portfolio.git",
   "scripts": {
     "start": "npm run dev",
     "dev": "vite --host",

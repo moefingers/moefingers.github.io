@@ -2,11 +2,13 @@ import React, { createRef, useRef, StrictMode, useEffect} from 'react'
 import { createRoot } from 'react-dom/client'
 import {
   createBrowserRouter,
+  createHashRouter,
   RouterProvider,
   NavLink,
   useLocation,
   useOutlet,
-  redirect
+  redirect,
+  useNavigate
 } from 'react-router-dom'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
 
@@ -20,9 +22,9 @@ import Glowy from "./components/Glowy";
 import "./App.css";
 
 const routes = [
-  { path: "/portfolio/", name: "Home", element: <Home />, nodeRef: createRef() },
-  { path: "/portfolio/projects", name: "Projects", element: <Projects />, nodeRef: createRef() },
-  { path: "/portfolio/contact", name: "Contact", element: <Contact />, nodeRef: createRef() },
+  { path: "", name: "Home", element: <Home />, nodeRef: createRef() },
+  { path: "Projects", name: "Projects", element: <Projects />, nodeRef: createRef() },
+  { path: "Contact", name: "Contact", element: <Contact />, nodeRef: createRef() },
 ]
 
 const routerChildren = routes.map(route => ({
@@ -35,9 +37,9 @@ routerChildren.push({
   path: "*",
   element: <NotFound/>
 })
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
-    path: "/",
+    path: "",
     element: <App />,
     children: routerChildren,
   },
@@ -46,8 +48,11 @@ function App() {
   const location = useLocation()
   const currentOutlet = useOutlet()
   const nodeRef = useRef(null)
+  const navigate = useNavigate()
 
-  
+  useEffect(() => {
+    navigate("/")
+  }, [])
   
   return (
     <StrictMode>
