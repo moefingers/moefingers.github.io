@@ -17,9 +17,11 @@
   --background-color-primary: rgba(0, 0, 0, 1);
   --background-color-secondary: rgba(255,255,255, .2);
   --complementary-color-primary: rgba(255, 255, 255, 1);
+  --complementary-color-primary-faded: rgba(255, 255, 255, .6);
   --complementary-color-secondary: rgba(100, 100, 255, 1);
 
   --text-shadow-primary: 0px 0px calc(var(--general-size-factor-px) * 5) var(--complementary-color-primary);
+  --text-shadow-primary-faded: 0px 0px calc(var(--general-size-factor-px) * 5) var(--complementary-color-primary-faded);
 
 }
 
@@ -68,6 +70,10 @@ nav {
   background-color: transparent;
   transition: .3s ease-out;
   font-size: calc(20 * var(--general-size-factor-px));
+}
+.nav-link:hover {
+  font-size: calc(22 * var(--general-size-factor-px));
+  text-shadow: var(--text-shadow-primary-faded);
 }
 .nav-link.current {
   font-size: calc(25 * var(--general-size-factor-px));
