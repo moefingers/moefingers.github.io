@@ -60,7 +60,7 @@ export default function Glowy(){
         }
         
         setAllowTrail(false)
-    }, allowTrail || mouseDown ? 20 : 400)
+    }, allowTrail || mouseDown ? 20 : 200)
 
     return (
         <div className="glowy-container">
