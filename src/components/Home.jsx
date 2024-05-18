@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import projects from "../assets/projects.json"
 export default function Home() {
     return (    
         <div className="home-page-container">

@@ -36,6 +36,12 @@
   font-style: normal;
   font-display: swap;
   font-family: Noto Sans;
+  font-size: calc(12 * var(--general-size-factor-px));
+  transition: .3s ease-out;
+}
+html * {
+  z-index: 1;
+  background: transparent;
 }
 
 html, #root {
@@ -46,9 +52,9 @@ html, #root {
 body {
   animation: opacity0to1 1s;
   position: absolute;
-  top: 5%;
+  top: calc(var(--general-size-factor-px) * 27);
 }
-
+/* nav */
 nav {
   z-index: 1;
   position: fixed;
@@ -57,7 +63,6 @@ nav {
   transform: translate(-50%, 0);
   width: calc(var(--general-size-factor-px) * 400);
   height: calc(var(--general-size-factor-px) * 27);
-  padding: 0 calc(var(--general-size-factor-px) * 10) calc(var(--general-size-factor-px) * 10);
   display: flex;
   justify-content: space-between;
   align-items:flex-start;
@@ -109,7 +114,28 @@ nav {
 }
 
 
+/* glowy!*/
+div.glowy {
+  z-index: -1;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  width: calc(var(--general-size-factor-px) * 40);
+  height: calc(var(--general-size-factor-px) * 40);
+  pointer-events: none;
 
+  mix-blend-mode: color;
+
+  background: repeating-radial-gradient(
+    circle,
+    var(--background-color-primary),
+    var(--background-color-primary) 10px,
+    var(--background-color-secondary) 10px,
+    var(--background-color-secondary) 20px)
+}
+
+/* animations */
 @keyframes opacity0to1 {
   0% {
     opacity: 0;
@@ -118,7 +144,7 @@ nav {
     opacity: 1;
   }
 }
-
+/* media query */
 @media screen and (orientation: landscape) {
   body {
     width: 100vh;
