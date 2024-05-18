@@ -1,4 +1,4 @@
-import React, { createRef, useRef, StrictMode, useEffect } from 'react'
+import React, { createRef, useRef, StrictMode, useEffect} from 'react'
 import { createRoot } from 'react-dom/client'
 import {
   createBrowserRouter,
@@ -6,6 +6,7 @@ import {
   NavLink,
   useLocation,
   useOutlet,
+  redirect
 } from 'react-router-dom'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
 
@@ -19,7 +20,7 @@ import Glowy from "./components/Glowy";
 import "./App.css";
 
 const routes = [
-  { path: "/portfolio", name: "Home", element: <Home />, nodeRef: createRef() },
+  { path: "/portfolio/", name: "Home", element: <Home />, nodeRef: createRef() },
   { path: "/portfolio/projects", name: "Projects", element: <Projects />, nodeRef: createRef() },
   { path: "/portfolio/contact", name: "Contact", element: <Contact />, nodeRef: createRef() },
 ]

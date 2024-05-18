@@ -21,6 +21,11 @@
   --complementary-color-primary: rgba(255, 255, 255, 1);
   --complementary-color-primary-faded: rgba(255, 255, 255, .6);
   --complementary-color-secondary: rgba(100, 100, 255, 1);
+  --complementary-color-secondary-faded: rgba(100, 100, 255, .6);
+  --complementary-color-tertiary: rgba(255, 100, 100, 1);
+  --complementary-color-tertiary-faded: rgba(255, 100, 100, .6);
+  --complementary-color-quaternary: rgba(100, 255, 100, 1);
+  --complementary-color-quaternary-faded: rgba(100, 255, 100, .6);
 
   --text-shadow-primary: 0px 0px calc(var(--general-size-factor-px) * 5) var(--complementary-color-primary);
   --text-shadow-primary-faded: 0px 0px calc(var(--general-size-factor-px) * 5) var(--complementary-color-primary-faded);
@@ -152,8 +157,8 @@ div.glowy {
   transform: translate(-50%, -50%);
   top: 0;
   left: 0;
-  width: calc(var(--general-size-factor-px) * 80);
-  height: calc(var(--general-size-factor-px) * 80);
+  width: calc(var(--general-size-factor-px) * 30);
+  height: calc(var(--general-size-factor-px) * 30);
   pointer-events: none;
 
   mix-blend-mode: color;
@@ -173,6 +178,17 @@ div.glowy {
     mask-image: radial-gradient(50% 50% at 50% 50%, white, transparent);
 
     animation: radialAnimation .4s infinite linear;
+}
+
+.trail-element {
+  opacity: 0;
+  border-radius: 50%;
+  background: white;
+  position: fixed;
+  width: calc(var(--general-size-factor-px) * 5);
+  height: calc(var(--general-size-factor-px) * 5);
+
+  pointer-events: none;
 }
 
 
