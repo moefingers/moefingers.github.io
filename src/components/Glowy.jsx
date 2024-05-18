@@ -12,18 +12,13 @@ export default function Glowy(){
         [mouseDown, setMouseDown],
         [glowyTrails, setGlowyTrails],
     ] = [
-        useState(false),
-        useState(0),
-        useState(0),
-        useState(true),
-        useState(false),
-        useState([]),
+        useState(false), // listening only once!
+        useState(0), // x
+        useState(0), // y
+        useState(true), // allow trail? (set by movement or mousedown)
+        useState(false), // mouse down?
+        useState([]), // glowy trails
     ]
-
-
-    
-    // const glowyElement = useRef(null)
-
 
     useEffect(() => {
         if(listening){return}
@@ -36,10 +31,6 @@ export default function Glowy(){
         html.addEventListener("mousemove", (event) => {
             setPosX(event.clientX)
             setPosY(event.clientY)
-            // glowyElement.current.animate([
-            //     {opacity: 1},
-            //     {opacity: 0},
-            // ], 200)
             setAllowTrail(true)
         })
 
@@ -68,11 +59,6 @@ export default function Glowy(){
             <div className="trail-container">
                 {...glowyTrails}
             </div>
-            
-            {/* <div ref={glowyElement} className="glowy" style={{
-                top: `${posY}px`, 
-                left: `${posX}px`
-            }}></div> */}
         </div>
     )
 }
