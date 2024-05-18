@@ -121,19 +121,22 @@ div.glowy {
   transform: translate(-50%, -50%);
   top: 0;
   left: 0;
-  width: calc(var(--general-size-factor-px) * 40);
-  height: calc(var(--general-size-factor-px) * 40);
+  width: calc(var(--general-size-factor-px) * 80);
+  height: calc(var(--general-size-factor-px) * 80);
   pointer-events: none;
 
   mix-blend-mode: color;
 
   background: repeating-radial-gradient(
-    circle,
-    var(--background-color-primary),
-    var(--background-color-primary) 10px,
-    var(--background-color-secondary) 10px,
-    var(--background-color-secondary) 20px)
+      circle,
+      var(--complementary-color-primary),
+      var(--complementary-color-secondary) ,
+      var(--background-color-secondary)
+    );
+
+    mask-image: radial-gradient(50% 50% at 50% 50%, white, transparent);
 }
+
 
 /* animations */
 @keyframes opacity0to1 {
