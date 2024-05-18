@@ -1,0 +1,28 @@
+:root {
+  --background-color-primary: rgba(0, 0, 0, 1);
+  --background-color-secondary: rgba(20, 20, 20, 1);
+}
+
+* {
+  background-color: var(--background-color-primary);
+  color: white;
+}
+body {
+  animation: opacity0to1 1s;
+}
+
+.projects-page-container, .home-page-container, .contact-page-container {
+  background-color: rgba(255,255,255,.4);
+  animation: opacity0to1 1s;
+}
+
+
+
+@keyframes opacity0to1 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

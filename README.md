@@ -1,2 +1,4 @@
-# portfolio
-Hopefully my portfolio website.
+<!-- portfolio readme.. -->
+Todo:
+- readme
+- website
