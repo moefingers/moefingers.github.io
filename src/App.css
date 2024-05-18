@@ -16,6 +16,8 @@
 :root {
   --general-size-factor-px: (0.00188323 * 100vw); /* Will be overridden by media query.. */
 
+  --nav-bar-height: calc(var(--general-size-factor-px) * 27);
+
   --background-color-primary: rgba(0, 0, 0, 1);
   --background-color-secondary: rgba(255,255,255, .2);
   --complementary-color-primary: rgba(255, 255, 255, 1);
@@ -47,28 +49,47 @@
 html * {
   z-index: 1;
   background: transparent;
+  user-select: none;
+}
+a {
+  user-select: auto;
 }
 
-html, #root {
+html, #root, body {
+  position: absolute;
   height: 100%;
   width: 100%;
   overflow: hidden;
-  
 }
+
 body {
-  position: absolute;
-  top: calc(var(--general-size-factor-px) * 27);
   animation: opacity0to1 1s;
+}
+
+main.page {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0%) scale(1);
+}
+main.page > * {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - var(--nav-bar-height));
+  top: var(--nav-bar-height);
+}
+main.page * {
+  transition: 300ms ease-out;
 }
 /* nav */
 nav {
-  z-index: 1;
+  z-index: 2;
   position: fixed;
   top: 0;
   left: 50%;
   transform: translate(-50%, 0);
   width: calc(var(--general-size-factor-px) * 400);
-  height: calc(var(--general-size-factor-px) * 27);
+  height: var(--nav-bar-height);
   display: flex;
   justify-content: space-between;
   align-items:flex-start;
@@ -93,29 +114,29 @@ a.nav-link:hover {
 
 
 /* page animations  */
-.page {
+main.page {
   position: absolute;
 }
 
-.page-enter {
+main.page-enter {
   opacity: 0;
-  transform: scale(1.1);
+  transform: translate(-50%, 20%) scale(.6);
 }
 
-.page-enter-active {
+main.page-enter-active {
   opacity: 1;
-  transform: scale(1);
+  transform: translate(-50%, 0%) scale(1);
   transition: 300ms;
 }
 
-.page-exit {
+main.page-exit {
   opacity: 1;
-  transform: scale(1);
+  transform: translate(-50%, 0%) scale(1);
 }
 
-.page-exit-active {
+main.page-exit-active {
   opacity: 0;
-  transform: scale(0.9);
+  transform: translate(-50%, -20%) scale(1.4);
   transition: 300ms;
 }
 
@@ -165,7 +186,7 @@ div.glowy-container div.trail-element {
 }
 /* media query */
 @media screen and (orientation: landscape) {
-  body {
+  main.page {
     width: 100vh;
     height: 100vh;
   }
@@ -175,7 +196,7 @@ div.glowy-container div.trail-element {
 }
 
 @media screen and (orientation: portrait) {
-  body {
+  main.page {
     width: 100vw;
     height: 100vw;
   }

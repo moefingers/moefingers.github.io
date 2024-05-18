@@ -28,8 +28,8 @@ export default function Glowy(){
     useEffect(() => {
         if(!listening){return}
         document.addEventListener("mousemove", (event) => {
-            setPosX(event.clientX)
-            setPosY(event.clientY)
+            setPosX(event.pageX)
+            setPosY(event.pageY)
             setAllowTrail(true)
         })
 
