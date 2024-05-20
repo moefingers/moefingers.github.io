@@ -138,11 +138,11 @@ h1 {
 
 [data-scroll="true"] .carousel::after,
 [data-animate="true"] .carousel::after {
-	animation: shine calc(var(--total) * 0.5s) infinite linear;
+	animation: shine calc(var(--total) * 0.1s) infinite linear;
 }
 [data-scroll="true"] .carousel,
 [data-animate="true"] .carousel {
-	animation: carousel calc(var(--total) * 0.5s) infinite linear;
+	animation: carousel calc(var(--total) * 2s) infinite linear;
 }
 .carousel {
 	transform-style: preserve-3d;

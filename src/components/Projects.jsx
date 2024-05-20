@@ -45,6 +45,8 @@ export default function Projects() {
             <div className="edge-right" onMouseEnter={(event) => handleMouseEnter(event, 1)} onMouseLeave={(event) => handleMouseLeave(event)}></div> */}
 
             <ScrollCarousel />
+            
+            <a href="https://twitter.com/intent/follow?screen_name=jh3yy" className="link">credit to jh3yy for carousel</a>
         </div>
     )
 }
