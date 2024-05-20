@@ -17,8 +17,9 @@ export default function Projects() {
         event.preventDefault()
         setSliderDirection(0)
     }
- console.log(-1 !== 0)
     useInterval(() => {
+        console.log(sliderElement.current)
+        console.log(sliderElement.current.style.left)
         console.log(parseInt(sliderElement.current.style.left))
         sliderElement.current.style.left = `${parseInt(sliderElement.current.style.left) + sliderDirection *3}%`;
     }, sliderDirection !== 0 ? 10: null)
@@ -27,7 +28,7 @@ export default function Projects() {
         <div className="projects-page-container">
             <div className="edge-left" onMouseEnter={(event) => handleMouseEnter(event, -1)} onMouseLeave={(event) => handleMouseLeave(event)}></div>
             <div className="project-card-container">
-                <div ref={sliderElement} className="project-card-slider">
+                <div ref={sliderElement} className="project-card-slider" style ={{left: "0%"}}>
                     {projects.projects.map((project, index) => (
                         <div key={index} className="project-card">
                             <h3>{project.name}</h3>
