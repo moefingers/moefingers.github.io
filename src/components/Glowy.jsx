@@ -27,7 +27,7 @@ export default function Glowy(){
 
     useEffect(() => {
         if(!listening){return}
-        document.addEventListener("mousemove", (event) => {
+        window.addEventListener("mousemove", (event) => {
             setPosX(event.pageX)
             setPosY(event.pageY)
             setAllowTrail(true)
@@ -35,13 +35,13 @@ export default function Glowy(){
 
         function handleMouseUpOrLeave(){
             setMouseDown(false)
-            document.removeEventListener("mouseup", handleMouseUpOrLeave, false)
-            document.removeEventListener("mouseleave", handleMouseUpOrLeave, false)
+            window.removeEventListener("mouseup", handleMouseUpOrLeave, false)
+            window.removeEventListener("mouseleave", handleMouseUpOrLeave, false)
         }
-        document.addEventListener("mousedown", (event) => {
+        window.addEventListener("mousedown", (event) => {
             setMouseDown(true)
-            document.addEventListener("mouseup", handleMouseUpOrLeave, false)
-            document.addEventListener("mouseleave", handleMouseUpOrLeave, false)
+            window.addEventListener("mouseup", handleMouseUpOrLeave, false)
+            window.addEventListener("mouseleave", handleMouseUpOrLeave, false)
         })
     }, [listening])
 
