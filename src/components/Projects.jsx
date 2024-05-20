@@ -4,6 +4,7 @@ import projects from "../assets/projects.json"
 
 import '../assets/styles/projects.css'
 import { useInterval } from "usehooks-ts"
+import ScrollCarousel from "./ScrollCarousel"
 
 export default function Projects() {
     const sliderElement = useRef(null)
@@ -18,15 +19,12 @@ export default function Projects() {
         setSliderDirection(0)
     }
     useInterval(() => {
-        console.log(sliderElement.current)
-        console.log(sliderElement.current.style.left)
-        console.log(parseInt(sliderElement.current.style.left))
         sliderElement.current.style.left = `${parseInt(sliderElement.current.style.left) + sliderDirection *3}%`;
     }, sliderDirection !== 0 ? 10: null)
     return (
         
         <div className="projects-page-container">
-            <div className="edge-left" onMouseEnter={(event) => handleMouseEnter(event, -1)} onMouseLeave={(event) => handleMouseLeave(event)}></div>
+            {/* <div className="edge-left" onMouseEnter={(event) => handleMouseEnter(event, -1)} onMouseLeave={(event) => handleMouseLeave(event)}></div>
             <div className="project-card-container">
                 <div ref={sliderElement} className="project-card-slider" style ={{left: "0%"}}>
                     {projects.projects.map((project, index) => (
@@ -44,7 +42,9 @@ export default function Projects() {
                     ))}
                 </div>
             </div>
-            <div className="edge-right" onMouseEnter={(event) => handleMouseEnter(event, 1)} onMouseLeave={(event) => handleMouseLeave(event)}></div>
+            <div className="edge-right" onMouseEnter={(event) => handleMouseEnter(event, 1)} onMouseLeave={(event) => handleMouseLeave(event)}></div> */}
+
+            <ScrollCarousel />
         </div>
     )
 }
