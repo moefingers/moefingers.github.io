@@ -24,7 +24,7 @@ body {
 
 body::before {
 	--size: 60px;
-	--line: color-mix(in lch, canvasText 35%, hsl(0 0% 100% / 0.25));
+	/* --line: color-mix(in lch, canvasText 35%, hsl(0 0% 100% / 0.25));  This is where the grid comes in */ 
 	content: '';
 	height: 100svh;
 	width: 100vw;
