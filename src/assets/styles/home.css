@@ -8,6 +8,9 @@ em {
     color: var(--complementary-color-secondary);
 }
 
+.under-construction{
+    color: var(--complementary-color-quinary);
+}
 .intro {
     margin-top: calc(8 * var(--general-size-factor-px));
 }

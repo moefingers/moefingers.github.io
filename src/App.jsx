@@ -13,10 +13,10 @@ import {
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
 
 import NavigationBar from "./components/NavigationBar";
-import NotFound from "./components/NotFound";
-import Home from "./components/Home";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
+import NotFound from "./pages/NotFound";
+import Home from "./pages/Home";
+import Projects from "./pages/Projects";
+import Contact from "./pages/Contact";
 import Glowy from "./components/Glowy";
 
 import "./App.css";

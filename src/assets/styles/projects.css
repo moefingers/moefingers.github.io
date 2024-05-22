@@ -1,48 +1,27 @@
 .projects-page-container {
-    overflow: hidden;
-}
-
-.project-card-container{
-    position: absolute;
-    width: 100%;
-    height: calc(var(--general-size-factor-px) * 300);
-    /* margin: calc(var(--general-size-factor-px) * 10) 0;  */
-    mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
-}
-
-.project-card-slider {
-    width: fit-content;
     height: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    --x: 0px;
-    margin: calc(var(--general-size-factor-px) * 10) 0;
-
-    position: absolute;
-    left: 0%;
+    overflow-x: auto;
+    scroll-snap-type: y mandatory;
+    scroll-timeline: --projects-scroll-timeline y;
 }
 
-.edge-left, .edge-right {
-    z-index: 2;
-    position: absolute;
-    left: 0;
-    top: 0;
-    margin: calc(var(--general-size-factor-px) * 10) 0 ;
-    width: calc(var(--general-size-factor-px) * 50);
-    height: calc(var(--general-size-factor-px) * 300);
-    background: radial-gradient(ellipse 100% 50% at 0% 50%, var(--complementary-color-primary) 0%, transparent 100%)
-}
-.edge-right {
-    left: unset;
-    right: 0;
-    background: radial-gradient(ellipse 100% 50% at 100% 50%, var(--complementary-color-primary) 0%, transparent 100%)
-}
-
-.project-card {
-    background-color: var(--background-color-secondary);
-    margin: calc(var(--general-size-factor-px) * 10);
-    width: calc(var(--general-size-factor-px) * 300);
+.project-sections {
     height: 100%;
+}
+.projects-page-container section {
+    height: 100%;
+    scroll-snap-align: start;
+    animation: roll-items;
+    animation-timeline: --projects-scroll-timeline;
+}
+
+@keyframes roll-items {
+    0% {
+        transform: rotateX(0deg);
+        background: rgba(255,0,0,.2);
+    }
+    100% {
+        transform: rotateX(0deg);
+        background: rgba(0,255,0,.2);
+    }
 }

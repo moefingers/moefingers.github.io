@@ -1,0 +1,30 @@
+.image-roller-container{
+    position: absolute;
+    transform-style: preserve-3d;
+    height: calc(var(--general-size-factor-px) * 300);
+    width: calc(var(--general-size-factor-px) * 300);
+    line-height: calc(var(--general-size-factor-px) * 16);
+    transform: translate3d(0, 0, 0) rotateX(10deg) rotateZ(10deg);
+
+    animation: image-roller-animation 7s infinite linear;
+    animation-composition: add;
+}
+.image-roller-item {
+    width: calc(var(--general-size-factor-px) * 300);
+    height: calc(var(--general-size-factor-px) * 300);
+	transform-style: preserve-3d;
+    position: absolute;
+    left: 0;
+    text-wrap: nowrap;
+    /* backface-visibility: hidden; */
+
+}
+
+@keyframes image-roller-animation {
+    from {
+        transform: translate3d(0, 0, 0) rotateX(0deg) rotateZ(0deg) rotateY(0deg);
+    }
+	to {
+	    transform: translate3d(0, 0, 0) rotateX(-360deg) rotateZ(0deg) rotateY(0deg);
+	}
+}
