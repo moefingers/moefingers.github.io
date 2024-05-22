@@ -1,3 +1,13 @@
+.home-page-container * {
+    font-size: calc(16 * var(--general-size-factor-px));
+    line-height: calc(16 * var(--general-size-factor-px));
+}
+
+
 em {
     color: var(--complementary-color-secondary);
+}
+
+.intro {
+    margin-top: calc(8 * var(--general-size-factor-px));
 }

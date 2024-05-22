@@ -1,14 +1,26 @@
 .text-roller-container{
-    position: relative;
+    position: absolute;
+    transform-style: preserve-3d;
+    height: calc(var(--general-size-factor-px) * 16);
+    width: calc(var(--general-size-factor-px) * 48);
+    line-height: calc(var(--general-size-factor-px) * 16);
+    transform: translate3d(0, 0, 0) rotateX(0deg);
+
+    animation: text-roller-animation 3s infinite linear;
 }
 .text-roller-item {
 	transform-style: preserve-3d;
     position: absolute;
+    left: 0;
+    text-wrap: nowrap;
 
 }
 
 @keyframes text-roller-animation {
+    from {
+        transform: translate3d(0, 0, 0) rotateX(0deg) rotateZ(0deg) rotateY(0deg);
+    }
 	to {
-	    transform: translate3d(0, 0, var(100px)) rotateX(100deg) rotateZ(10deg) rotateY(360deg);
+	    transform: translate3d(0, 0, 0) rotateX(360deg) rotateZ(0deg) rotateY(0deg);
 	}
 }

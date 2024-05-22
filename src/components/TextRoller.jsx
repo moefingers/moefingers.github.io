@@ -1,27 +1,35 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import '../assets/styles/text-roller.css'
 
 export default function TextRoller() {
 
-    const textRollerContainerElement = useRef(null)
+    const rollerTexts = [
+        "Software Engineer", 
+        "Frontend Developer", 
+        "Full Stack Developer",
+        "Backend Developer",
+        "Friend",
+        "Advisor"
+    ]
+    const [textRollerItems, setTextRollerItems] = useState([])
+
     useEffect(() => {
-        console.log(textRollerContainerElement.current)
-        Object.values(textRollerContainerElement.current.children).forEach((element, index) => {
-            element.style = `
-            transform: translate3d(0, 0, 0) rotateX(${- 60 + index * 60}deg) rotateZ(0deg) rotateY(0deg);
-            top: calc(var(--general-size-factor-px) * ${(index + 1) * 12});
-            `
+        const rollerElements = rollerTexts.map((text, index) => {
+            return <div key={index} className="text-roller-item" style={{
+                transform: `rotateX(${index * (360 / rollerTexts.length)}deg) rotateZ(0deg) rotateY(0deg) translate3d(0, 0, 25px)`,
+                // top: `calc(var(--general-size-factor-px) * ${(Math.sin((index-1) * ((2 * Math.PI) / rollerTexts.length))) * 20})`,
+            }}>{text}</div>
         })
+        console.log(rollerElements)
+        setTextRollerItems(rollerElements)
+        
 
     }, [])
 
 
     return (
-        <span ref = {textRollerContainerElement} className="text-roller-container">
-                <div className="text-roller-item">Software Engineer</div>
-                <div className="text-roller-item">Frontend Developer</div>
-                <div className="text-roller-item">Backend Developer</div>
-                <div className="text-roller-item">Full Stack Developer</div>
+        <span className="text-roller-container">
+           {...textRollerItems}
         </span>
     )
 }   
