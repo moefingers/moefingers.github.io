@@ -17,7 +17,7 @@ export default function TextRoller() {
     useEffect(() => {
         const rollerElements = rollerTexts.map((text, index) => {
            return <div key={index} className="text-roller-item" style={{
-                transform: `rotateX(${index * (360 / rollerTexts.length)}deg) rotateZ(0deg) rotateY(0deg) translate3d(0, 0, 25px)`,
+                transform: `rotateX(${index * (360 / rollerTexts.length)}deg) rotateZ(0deg) rotateY(0deg) translate3d(0, 0, calc(16 * var(--general-size-factor-px)))`,
                 animation: "colorCycle 3.5s linear infinite",
                 animationDelay: `${index * - (Math.random() * 3.5)}s`,
             }}>{text}</div>

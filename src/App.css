@@ -84,7 +84,7 @@ nav {
   top: 0;
   left: 50%;
   transform: translate(-50%, 0);
-  width: calc(var(--general-size-factor-px) * 400);
+  width: 80%;
   height: var(--nav-bar-height);
   display: flex;
   justify-content: space-between;
