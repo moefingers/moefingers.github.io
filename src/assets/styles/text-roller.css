@@ -1,0 +1,14 @@
+.text-roller-container{
+    position: relative;
+}
+.text-roller-item {
+	transform-style: preserve-3d;
+    position: absolute;
+
+}
+
+@keyframes text-roller-animation {
+	to {
+	    transform: translate3d(0, 0, var(100px)) rotateX(100deg) rotateZ(10deg) rotateY(360deg);
+	}
+}

@@ -1,9 +1,11 @@
-import { Link, useNavigate } from "react-router-dom"
-import { useEffect } from "react"
+import '../assets/styles/home.css'
+import TextRoller from './TextRoller'
 export default function Home() {
     return (    
         <div className="home-page-container">
-            <div>welcome home.. this entire site is under heavy development</div>
+            <div>🚧this site is under heavy construction🚧</div>
+            <div>Sometimes you need an <em>employee</em>... Other times? An <em>asset</em>.</div>
+            <div>I'm <em>Mohammad Zuiter</em>, your future <TextRoller/></div>
         </div>
     )
 }

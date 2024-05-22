@@ -22,7 +22,7 @@
   --background-color-secondary: rgba(255,255,255, .2);
   --complementary-color-primary: rgba(255, 255, 255, 1);
   --complementary-color-primary-faded: rgba(255, 255, 255, .6);
-  --complementary-color-secondary: rgba(100, 100, 255, 1);
+  --complementary-color-secondary: rgb(65, 185, 255);
   --complementary-color-secondary-faded: rgba(100, 100, 255, .6);
   --complementary-color-tertiary: rgba(255, 100, 100, 1);
   --complementary-color-tertiary-faded: rgba(255, 100, 100, .6);
@@ -163,23 +163,6 @@ div.glowy-container div.trail-element {
   }
 }
 
-@keyframes radialAnimation {
-  0% {
-    --glowy-radius1: 0%;
-    --glowy-radius2: 25%;
-    --glowy-radius3: 50%;
-    --glowy-radius4: 75%;
-    --glowy-radius5: 100%;
-
-  }
-  100% {
-    --glowy-radius1: 100%;
-    --glowy-radius2: 125%;
-    --glowy-radius3: 150%;
-    --glowy-radius4: 175%;
-    --glowy-radius5: 200%;
-  }
-}
 /* media query */
 @media screen and (orientation: landscape) {
   main.page {
