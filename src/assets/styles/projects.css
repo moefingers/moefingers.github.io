@@ -1,18 +1,25 @@
+
+
 .projects-page-container {
     height: 100%;
     overflow-x: auto;
     scroll-snap-type: y mandatory;
     scroll-timeline: --projects-scroll-timeline y;
+    scroll-behavior: smooth;
 }
 
-.project-sections {
-    height: 100%;
-}
 .projects-page-container section {
     height: 100%;
-    scroll-snap-align: start;
+    scroll-snap-align: center;
     animation: roll-items;
     animation-timeline: --projects-scroll-timeline;
+}
+
+.projects-page-container section img {
+    position: absolute;
+    z-index: -10;
+    width: 50%;
+    height: 50%;
 }
 
 @keyframes roll-items {
@@ -25,3 +32,6 @@
         background: rgba(0,255,0,.2);
     }
 }
+
+
+

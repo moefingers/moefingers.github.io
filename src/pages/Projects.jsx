@@ -8,7 +8,6 @@ import '../assets/styles/projects.css'
 
 const fullImageBlobImport = Object.values(import.meta.glob("@assets/images/*/*.{png,jpg,jpeg,PNG,JPEG,webp,WEBP}", { eager: true, query: '?url', import: 'default' }))
 const images = {}
-console.log(fullImageBlobImport)
 projects.forEach((project) => {
     images[project.imagesFolder] = fullImageBlobImport.map((image) => {
         if(image.includes(project.imagesFolder)){
@@ -48,9 +47,7 @@ export default function Projects() {
 
     return (
         <div className="projects-page-container">
-            <div className="project-sections">
                 {...projectSectionElements}
-            </div>
             <ImageRoller rollerImages={Object.values(images).map((imageSet) => imageSet[0])}/>
         </div>
     )
