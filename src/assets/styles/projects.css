@@ -18,8 +18,8 @@
 .projects-page-container section img {
     position: absolute;
     z-index: -10;
-    width: 50%;
-    height: 50%;
+    width: calc(var(--general-size-factor-px) * 400);
+    height: calc(var(--general-size-factor-px) * 400);
 }
 
 
