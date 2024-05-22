@@ -1,5 +1,5 @@
 .image-roller-container{
-    position: absolute;
+    position: fixed;
     transform-style: preserve-3d;
     height: calc(var(--general-size-factor-px) * 300);
     width: calc(var(--general-size-factor-px) * 300);

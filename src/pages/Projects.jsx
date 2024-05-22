@@ -6,7 +6,7 @@ import ImageRoller from "../components/ImageRoller"
 
 import '../assets/styles/projects.css'
 
-const fullImageBlobImport = Object.values(import.meta.glob("../assets/images/*/*.{png,jpg,jpeg,PNG,JPEG,webp,WEBP}", { eager: true, query: '?url', import: 'default' }))
+const fullImageBlobImport = Object.values(import.meta.glob("@assets/images/*/*.{png,jpg,jpeg,PNG,JPEG,webp,WEBP}", { eager: true, query: '?url', import: 'default' }))
 const images = {}
 projects.forEach((project) => {
     images[project.imagesFolder] = fullImageBlobImport.map((image) => {
