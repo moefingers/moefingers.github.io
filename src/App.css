@@ -162,6 +162,23 @@ div.glowy-container div.trail-element {
     opacity: 1;
   }
 }
+@keyframes colorCycle {
+  0% {
+    color: var(--complementary-color-primary);
+  }
+  25% {
+    color: var(--complementary-color-secondary);
+  }
+  50% {
+    color: var(--complementary-color-tertiary);
+  }
+  75% {
+    color: var(--complementary-color-quaternary);
+  }
+  100% {
+    color: var(--complementary-color-primary);
+  }
+}
 
 /* media query */
 @media screen and (orientation: landscape) {

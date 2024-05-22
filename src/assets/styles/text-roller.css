@@ -6,7 +6,7 @@
     line-height: calc(var(--general-size-factor-px) * 16);
     transform: translate3d(0, 0, 0) rotateX(0deg);
 
-    animation: text-roller-animation 3s infinite linear;
+    animation: text-roller-animation 7s infinite linear;
 }
 .text-roller-item {
 	transform-style: preserve-3d;
