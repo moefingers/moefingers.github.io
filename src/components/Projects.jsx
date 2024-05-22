@@ -45,7 +45,7 @@ export default function Projects() {
             <div className="edge-right" onMouseEnter={(event) => handleMouseEnter(event, 1)} onMouseLeave={(event) => handleMouseLeave(event)}></div> */}
 
             <ScrollCarousel />
-            
+            <div>EXCITING NEWS! I figured out how to do something like this with CSS translate3d and so I will be making my very own cylinder type carousel from scratch.</div>
             <a href="https://twitter.com/intent/follow?screen_name=jh3yy" className="link">credit to jh3yy for carousel</a>
         </div>
     )
