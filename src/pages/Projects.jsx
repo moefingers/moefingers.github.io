@@ -8,12 +8,13 @@ import '../assets/styles/projects.css'
 
 const fullImageBlobImport = Object.values(import.meta.glob("@assets/images/*/*.{png,jpg,jpeg,PNG,JPEG,webp,WEBP}", { eager: true, query: '?url', import: 'default' }))
 const images = {}
+console.log(fullImageBlobImport)
 projects.forEach((project) => {
     images[project.imagesFolder] = fullImageBlobImport.map((image) => {
         if(image.includes(project.imagesFolder)){
             return image
         }else{
-            return "http://placekitten.com/g/300/300"
+            return "https://placekitten.com/g/300/300"
         }
     })
 })
