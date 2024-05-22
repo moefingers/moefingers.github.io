@@ -36,7 +36,16 @@ export default function Projects() {
             }
             return (
                 <section className="project-section" key={index}>
-                    {project.name}
+                    <h2>{project.name}</h2>
+
+                    <p>{project.description}</p>
+
+                    <p>{project.coolest}</p>
+
+                    <p>{project.hottest}</p>
+
+                    <p>{project.tags}</p>
+
                     <img src={images[project.imagesFolder][0]} alt="" />
                 </section>
             )

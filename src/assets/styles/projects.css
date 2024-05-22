@@ -11,8 +11,8 @@
 .projects-page-container section {
     height: 100%;
     scroll-snap-align: center;
-    animation: roll-items;
-    animation-timeline: --projects-scroll-timeline;
+    /* animation: roll-items; any */
+    /* animation-timeline: --projects-scroll-timeline; */
 }
 
 .projects-page-container section img {
@@ -22,16 +22,7 @@
     height: 50%;
 }
 
-@keyframes roll-items {
-    0% {
-        transform: rotateX(0deg);
-        background: rgba(255,0,0,.2);
-    }
-    100% {
-        transform: rotateX(0deg);
-        background: rgba(0,255,0,.2);
-    }
-}
+
 
 
 
