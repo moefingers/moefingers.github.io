@@ -98,6 +98,7 @@ export default function Projects() {
  
 
     useEffect(() => {
+        console.log(projectData)
         const sections = projects.map((project, index) => {
             if(projectData[project.snakeName]){
                 return (

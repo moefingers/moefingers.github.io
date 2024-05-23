@@ -18,7 +18,7 @@
 .projects-page-container section {
     height: 100%;
     scroll-snap-align: center;
-    outline: solid 2px red
+    /* outline: solid 2px red */
 }
 
 .projects-page-container section img {
