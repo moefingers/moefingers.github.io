@@ -19,7 +19,8 @@ export default function ImageRoller({rollerImages, scrollPosition, projectsScrol
                     translate3d(
                         0, 
                         0, 
-                        calc(${((rollerImages.length / Math.PI) / 2) * 110} * var(--general-size-factor-px)))`,
+                        calc(${((rollerImages.length / Math.PI) / 2) * 110} * var(--general-size-factor-px)))
+                        `,
                 }}/>
                 <img onClick={(event) => {scrollToIndex(index)}} src={image} style={{
                     transform: `
@@ -30,7 +31,8 @@ export default function ImageRoller({rollerImages, scrollPosition, projectsScrol
                     translate3d(
                         0, 
                         0, 
-                        calc(${((rollerImages.length / Math.PI) / 2) * 120} * var(--general-size-factor-px)))`,
+                        calc(${((rollerImages.length / Math.PI) / 2) * 120} * var(--general-size-factor-px)))
+                        `,
                 }}/>
                 
             </div>

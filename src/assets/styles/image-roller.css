@@ -31,7 +31,6 @@
     left: 0;
     text-wrap: nowrap;
     /* backface-visibility: hidden; */
-    
 
 }
 
@@ -43,15 +42,15 @@
     animation: spin-roller-item linear;
     animation-composition: add;
     animation-timeline: --projects-scroll-timeline;
-
+    /* transform: rotateZ(var(--partial-rotation)); */
     
     pointer-events:all;
     cursor: pointer;
 }
 
 .image-roller-item img.backing {
-    filter: blur(2px);
-    opacity: .5;
+    filter: blur(calc(var(--general-size-factor-px) * 3));
+    opacity: .8;
 }
 
 @keyframes image-roller-animation {

@@ -27,22 +27,46 @@ export default function Glowy(){
 
     useEffect(() => {
         if(!listening){return}
-        window.addEventListener("mousemove", (event) => {
-            setPosX(event.pageX)
-            setPosY(event.pageY)
-            setAllowTrail(true)
-        })
+        const mouseDevice = matchMedia('(pointer:fine)').matches
+        const touchDevice = matchMedia('(pointer:coarse)').matches
 
-        function handleMouseUpOrLeave(){
-            setMouseDown(false)
-            window.removeEventListener("mouseup", handleMouseUpOrLeave, false)
-            window.removeEventListener("mouseleave", handleMouseUpOrLeave, false)
+        if(mouseDevice){
+            window.addEventListener("mousemove", (event) => {
+                setPosX(event.pageX)
+                setPosY(event.pageY)
+                setAllowTrail(true)
+            })
+            function handleMouseUpOrLeave(){
+                setMouseDown(false)
+                window.removeEventListener("mouseup", handleMouseUpOrLeave, false)
+                window.removeEventListener("mouseleave", handleMouseUpOrLeave, false)
+            }
+            window.addEventListener("mousedown", (event) => {
+                setMouseDown(true)
+                window.addEventListener("mouseup", handleMouseUpOrLeave, false)
+                window.addEventListener("mouseleave", handleMouseUpOrLeave, false)
+            })
+        } else if(touchDevice){
+            window.addEventListener("touchmove", (event) => {
+                setPosX(event.touches[0].pageX)
+                setPosY(event.touches[0].pageY)
+                setAllowTrail(true)
+            })
+            function handleTouchEndOrLeave(){
+                setMouseDown(false)
+                window.removeEventListener("touchend", handleTouchEndOrLeave, false)
+                window.removeEventListener("touchleave", handleTouchEndOrLeave, false)
+            }
+            window.addEventListener("touchstart", (event) => {
+                setMouseDown(true)
+                setPosX(event.touches[0].pageX)
+                setPosY(event.touches[0].pageY)
+                window.addEventListener("touchend", handleTouchEndOrLeave, false)
+                window.addEventListener("touchleave", handleTouchEndOrLeave, false)
+            })
         }
-        window.addEventListener("mousedown", (event) => {
-            setMouseDown(true)
-            window.addEventListener("mouseup", handleMouseUpOrLeave, false)
-            window.addEventListener("mouseleave", handleMouseUpOrLeave, false)
-        })
+        
+        
     }, [listening])
 
     useInterval(() => {
