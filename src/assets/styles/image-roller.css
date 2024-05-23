@@ -6,8 +6,8 @@
 }
 .image-roller-container{
     position: fixed;
-    top: 10%;
-    left: 80%;
+    top: calc(var(--general-size-factor-px) *20);
+    right: calc(var(--general-size-factor-px) *50);
     transform-style: preserve-3d;
     height: calc(var(--general-size-factor-px) * 100);
     width: calc(var(--general-size-factor-px) * 100);
