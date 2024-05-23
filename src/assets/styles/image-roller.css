@@ -39,9 +39,9 @@
     width: 100%;
     height: 100%;
     
-    animation: spin-roller-item linear;
+    /* animation: spin-roller-item linear;
     animation-composition: add;
-    animation-timeline: --projects-scroll-timeline;
+    animation-timeline: --projects-scroll-timeline; */
     /* transform: rotateZ(var(--partial-rotation)); */
     
     pointer-events:all;
