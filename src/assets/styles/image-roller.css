@@ -2,6 +2,7 @@
 :root{
     --full-rotation: 100deg;
     --partial-rotation: 10deg;
+    --current-rotation-factor: 0;
 }
 .image-roller-container{
     position: fixed;
@@ -11,14 +12,16 @@
     height: calc(var(--general-size-factor-px) * 100);
     width: calc(var(--general-size-factor-px) * 100);
     line-height: calc(var(--general-size-factor-px) * 16);
-    transform: translate3d(0, 0, 0) rotateX(-40deg) rotateZ(-50deg);
+    transform: translate3d(0, 0, 0) rotate3d(-30, 0, -30, 90deg) rotateX(calc(var(--partial-rotation) + (360deg * var(--current-rotation-factor))));
 
-    animation: image-roller-animation linear;
+    /* animation: image-roller-animation linear;
     animation-composition: add;
-
+    animation-timeline: --projects-scroll-timeline; */
     
-    animation-timeline: --projects-scroll-timeline;
+    pointer-events: none;
+
 }
+
 .image-roller-item {
     z-index: -10;
     width: calc(var(--general-size-factor-px) * 100);
@@ -28,14 +31,27 @@
     left: 0;
     text-wrap: nowrap;
     /* backface-visibility: hidden; */
-
-    animation: spin-roller-item linear;
-
-    animation-composition: add;
-
     
+
+}
+
+.image-roller-item img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    animation: spin-roller-item linear;
+    animation-composition: add;
     animation-timeline: --projects-scroll-timeline;
 
+    
+    pointer-events:all;
+    cursor: pointer;
+}
+
+.image-roller-item img.backing {
+    filter: blur(2px);
+    opacity: .5;
 }
 
 @keyframes image-roller-animation {

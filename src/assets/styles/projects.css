@@ -1,7 +1,14 @@
+.projects-page-container{
+    overflow:hidden;
+
+    position: relative;
+}
 
 
-.projects-page-container {
+.projects-page-container .scroll {
+    position: relative;
     height: 100%;
+    width: 100%;
     overflow-x: auto;
     scroll-snap-type: y mandatory;
     scroll-timeline: --projects-scroll-timeline y;
@@ -11,8 +18,7 @@
 .projects-page-container section {
     height: 100%;
     scroll-snap-align: center;
-    /* animation: roll-items; any */
-    /* animation-timeline: --projects-scroll-timeline; */
+    outline: solid 2px red
 }
 
 .projects-page-container section img {
@@ -20,6 +26,11 @@
     z-index: -10;
     width: calc(var(--general-size-factor-px) * 400);
     height: calc(var(--general-size-factor-px) * 400);
+}
+
+.projects-page-container section .scroll-note {
+    position: absolute;
+    bottom: 0;
 }
 
 

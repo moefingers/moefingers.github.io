@@ -71,6 +71,8 @@ main.page {
   top: 0;
   left: 50%;
   transform: translate(-50%, 0%) scale(1);
+
+  
 }
 main.page > * {
   position: absolute;
@@ -96,12 +98,15 @@ nav {
 
   border-radius: 0 0 calc(var(--general-size-factor-px) * 10) calc(var(--general-size-factor-px) * 10);
 
+  pointer-events: none;
 }
 .nav-link {
   text-decoration: none;
   background-color: transparent;
   transition: .3s ease-out;
   font-size: calc(20 * var(--general-size-factor-px));
+
+  pointer-events: all;
 }
 a.nav-link:hover {
   font-size: calc(25 * var(--general-size-factor-px));
