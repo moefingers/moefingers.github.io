@@ -1,48 +1,151 @@
-.projects-page-container {
-    overflow: hidden;
+.projects-page-container{
+    overflow:hidden;
+
+    position: relative;
+
 }
 
-.project-card-container{
-    position: absolute;
+
+.projects-page-container .scroll {
+    position: relative;
+    height: 100%;
     width: 100%;
-    height: calc(var(--general-size-factor-px) * 300);
-    /* margin: calc(var(--general-size-factor-px) * 10) 0;  */
-    mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+    overflow-x: auto;
+    scroll-snap-type: y mandatory;
+    scroll-timeline: --projects-scroll-timeline y;
+    scroll-behavior: smooth;
 }
 
-.project-card-slider {
+.projects-page-container section {
+    height: 100%;
+    scroll-snap-align: center;
+    /* outline: solid 2px red */
+}
+
+a {
+    position: relative;
+    pointer-events: all;
+    opacity: .8;
+    /* outline: solid 1px red; */
+}
+a:hover{
+    opacity: 1;
+    text-shadow: 0 0 calc(var(--general-size-factor-px) * 10) var(--complementary-color-primary);
+    /* font-size: larger;; */
+
+}
+/* .safe-zone-top, .safe-zone-bottom {outline: dashed 1px red;} */
+
+.safe-zone-top{
+    z-index: 1;
+    position: relative;
+    top: calc(var(--general-size-factor-px) * 20);
+    width: calc(var(--general-size-factor-px) * 280);
+    min-height: calc(var(--general-size-factor-px) * 200);
+}
+.safe-zone-bottom{
+    z-index: 0;
+    position: relative;
+    top: calc(var(--general-size-factor-px) * 40);
+    width: 100%;
+    min-height: 40%;
+}
+
+h1.project-title, h1.project-title a {
+    font-size: calc(var(--font-size-factor-px) * 17);
+    text-wrap: nowrap;
+    margin-bottom: calc(var(--general-size-factor-px) * 10);
+}
+
+h1 a.project-name{
+    font-weight: bold;
+    color: var(--complementary-color-secondary)
+}
+
+h2.project-fork{
+  font-size:  calc(var(--font-size-factor-px) * 10);  
+}
+h2.project-fork a{
+    font-weight: bold;
+    font-size:  calc(var(--font-size-factor-px) * 12);
+}
+
+
+
+ul.project-topics {
+    list-style-type: none;
+}
+
+.project-topics li {
+    font-size: calc(var(--font-size-factor-px) * 15);
+    background-color: var(--complementary-color-quaternary-faded);
     width: fit-content;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    --x: 0px;
-    margin: calc(var(--general-size-factor-px) * 10) 0;
+    display: inline-block;
+    border-radius: calc(var(--general-size-factor-px) * 6);
+    padding: 0 calc(var(--general-size-factor-px) * 4);
+    margin-right: calc(var(--general-size-factor-px) * 4);
+    margin-bottom: calc(var(--general-size-factor-px) * 4);
+}
 
+.deployment-link {
+    font-size: calc(var(--font-size-factor-px) * 20);
+    color: var(--complementary-color-quaternary)
+}
+
+.project-description {
+    font-size: calc(var(--font-size-factor-px) * 20);
+}
+
+.project-commits {
+    font-size: inherit;
+    color: var(--complementary-color-tertiary)
+}
+.project-commits > span {
+    color: var(--complementary-color-tertiary);
+    opacity: .8;
+    font-size: calc(var(--font-size-factor-px) * 14);
+}
+.project-license {
+    font-size: calc(var(--font-size-factor-px) * 18);
+    color: var(--complementary-color-quinary)
+}
+
+.project-wide-image {
+    z-index: -10;
+    display: block;
     position: absolute;
-    left: 0%;
+    user-select: none;
+    pointer-events: none;;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: -10;
+    width: 100%;
+    /* filter blur */
+    filter: blur(calc(var(--general-size-factor-px) * 4));
 }
 
-.edge-left, .edge-right {
-    z-index: 2;
+
+
+
+
+
+.projects-page-container section .scroll-note {
     position: absolute;
-    left: 0;
-    top: 0;
-    margin: calc(var(--general-size-factor-px) * 10) 0 ;
-    width: calc(var(--general-size-factor-px) * 50);
-    height: calc(var(--general-size-factor-px) * 300);
-    background: radial-gradient(ellipse 100% 50% at 0% 50%, var(--complementary-color-primary) 0%, transparent 100%)
-}
-.edge-right {
-    left: unset;
-    right: 0;
-    background: radial-gradient(ellipse 100% 50% at 100% 50%, var(--complementary-color-primary) 0%, transparent 100%)
+    left: 50%;
+    bottom:0;
+    transform: translate(-50%, 0%);
+    color: var(--complementary-color-primary-faded);
+    font-size: calc(var(--general-size-factor-px) * 40);
 }
 
-.project-card {
-    background-color: var(--background-color-secondary);
-    margin: calc(var(--general-size-factor-px) * 10);
-    width: calc(var(--general-size-factor-px) * 300);
-    height: 100%;
+
+
+@media screen and (orientation: portrait) {
+    main.page > div.projects-page-container {
+        height: calc(100vh - var(--nav-bar-height));
+    }
 }
+
+
+

@@ -1,0 +1,20 @@
+.home-page-container * {
+    font-size: calc(16 * var(--general-size-factor-px));
+    line-height: calc(16 * var(--general-size-factor-px));
+}
+
+
+em {
+    color: var(--complementary-color-secondary);
+}
+
+.under-construction{
+    color: var(--complementary-color-quinary);
+}
+.intro {
+    margin: calc(8 * var(--general-size-factor-px)) 0 ;
+}
+
+.home-page-container > div {
+    margin: calc(30 * var(--general-size-factor-px)) 0 ;
+}

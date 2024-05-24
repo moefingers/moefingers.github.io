@@ -1,0 +1,87 @@
+/* roller */
+:root{
+    --full-rotation: 100deg;
+    --partial-rotation: 10deg;
+    --current-rotation-factor: 0;
+}
+.image-roller-container{
+    position: fixed;
+    top: calc(var(--general-size-factor-px) *20);
+    right: calc(var(--general-size-factor-px) *50);
+    transform-style: preserve-3d;
+    height: calc(var(--general-size-factor-px) * 100);
+    width: calc(var(--general-size-factor-px) * 100);
+    line-height: calc(var(--general-size-factor-px) * 16);
+    transform: translate3d(0, 0, 0) rotate3d(-30, 0, -30, 90deg) rotateX(calc(var(--partial-rotation) + (360deg * var(--current-rotation-factor))));
+
+    /* animation: image-roller-animation linear;
+    animation-composition: add;
+    animation-timeline: --projects-scroll-timeline; */
+    
+    pointer-events: none;
+
+}
+
+.image-roller-item {
+    z-index: -10;
+    width: calc(var(--general-size-factor-px) * 100);
+    height: calc(var(--general-size-factor-px) * 100);
+	transform-style: preserve-3d;
+    position: absolute;
+    left: 0;
+    text-wrap: nowrap;
+    /* backface-visibility: hidden; */
+
+}
+
+.image-roller-item img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    /* animation: spin-roller-item linear;
+    animation-composition: add;
+    animation-timeline: --projects-scroll-timeline; */
+    /* transform: rotateZ(var(--partial-rotation)); */
+    
+    pointer-events:all;
+    cursor: pointer;
+}
+
+.image-roller-item img.backing {
+    filter: blur(calc(var(--general-size-factor-px) * 3));
+    opacity: .8;
+}
+
+.roller-reminder {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: calc(var(--general-size-factor-px) * 10);
+    transform: translate(-50%, -50%) rotate(90deg);
+    animation: color-cycle 10s linear infinite;
+    opacity: .7;
+}
+
+.roller-reminder.hidden {
+    opacity: 0;
+}
+
+@keyframes image-roller-animation {
+    from {
+        transform: translate3d(0, 0, 0) rotateX(calc(var(--partial-rotation) * .5)) rotateZ(0deg) rotateY(0deg);
+    }
+	to {
+	    transform: translate3d(0, 0, 0) rotateX(calc(var(--full-rotation) + (var(--partial-rotation) * .5))) rotateZ(0deg) rotateY(0deg);
+	}                     /* 360   -    7 / 360      to fix off by one */
+}
+
+@keyframes spin-roller-item {
+    from {
+        transform: rotateZ(var(--partial-rotation));
+    }
+    to {
+        transform: rotateZ(calc(var(--full-rotation) + var(--partial-rotation)));
+    }
+    
+}

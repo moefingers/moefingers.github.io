@@ -1,114 +1,94 @@
 {
     "projects": [
         {
-            "name": "Portfolio",
-            "image": "/#",
-            "deployment": "https://moefingers.github.io",
-            "repository": "https://github.com/moefingers/moefingers.github.io",
-            "description": "My portfolio site",
-            "coolest": "Uses infinite accessibility",
+            "api": "https://api.github.com/repos/MoeFingers/react-timer-stopwatch-v2",
+            "snakeName": "react-timer-stopwatch-v2",
+            "imagesFolder": "v2-stopwatch",
+
+            "name": "React Timer/Stopwatch Version 2",
+            "deployment": "https://moefingers.github.io/react-timer-stopwatch-v2/",
+            "repository": "https://github.com/moefingers/react-timer-stopwatch-v2",
+            "description": "A timer and stopwatch combo written in react.",
+            "coolest": "Uses infinite responsiveness.",
             "tags": ["react", "javascript"],
-            "hottest": false
+            "showcase": false
         },
         {
+            "api": "https://api.github.com/repos/MoeFingers/moefingers.github.io",
+            "snakeName": "moefingers.github.io",
+            "imagesFolder": "placeholder",
+
             "name": "Portfolio",
-            "image": "/#",
             "deployment": "https://moefingers.github.io",
             "repository": "https://github.com/moefingers/moefingers.github.io",
             "description": "My portfolio site",
-            "coolest": "Uses infinite accessibility",
+            "coolest": "Uses infinite responsiveness.",
             "tags": ["react", "javascript"],
-            "hottest": false
+            "showcase": false
         },
         {
-            "name": "Portfolio",
-            "image": "/#",
-            "deployment": "https://moefingers.github.io",
-            "repository": "https://github.com/moefingers/moefingers.github.io",
-            "description": "My portfolio site",
-            "coolest": "Uses infinite accessibility",
-            "tags": ["react", "javascript"],
-            "hottest": false
+            "api": "https://api.github.com/repos/MoeFingers/gwhac-a-mole",
+            "snakeName": "gwhac-a-mole",
+            "imagesFolder": "placeholder",
+
+            "name": "Gwhac a Mole",
+            "deployment": "https://moefingers.github.io/gwhac-a-mole",
+            "repository": "https://github.com/moefingers/gwhac-a-mole",
+            "description": "placeholder project 2",
+            "coolest": "an epic placeholder 2",
+            "tags": ["placeholder"],
+            "showcase": false
         },
         {
-            "name": "Portfolio",
-            "image": "/#",
-            "deployment": "https://moefingers.github.io",
-            "repository": "https://github.com/moefingers/moefingers.github.io",
-            "description": "My portfolio site",
-            "coolest": "Uses infinite accessibility",
-            "tags": ["react", "javascript"],
-            "hottest": false
+
+            "snakeName": "place-holder-a",
+            "imagesFolder": "placeholder",
+
+            "name": "Project3",
+            "deployment": "https://moefingers.github.io/project3/",
+            "repository": "https://github.com/moefingers/project3",
+            "description": "placeholder project 3",
+            "coolest": "an epic placeholder 3",
+            "tags": ["placeholder"],
+            "showcase": false
         },
         {
-            "name": "Portfolio",
-            "image": "/#",
-            "deployment": "https://moefingers.github.io",
-            "repository": "https://github.com/moefingers/moefingers.github.io",
-            "description": "My portfolio site",
-            "coolest": "Uses infinite accessibility",
-            "tags": ["react", "javascript"],
-            "hottest": false
+            "snakeName": "place-holder-b",
+            
+            "name": "Project4",
+            "imagesFolder": "placeholder",
+            "deployment": "https://moefingers.github.io/project4/",
+            "repository": "https://github.com/moefingers/project4",
+            "description": "placeholder project 4",
+            "coolest": "an epic placeholder 4",
+            "tags": ["placeholder"],
+            "showcase": false
         },
         {
-            "name": "Portfolio",
-            "image": "/#",
-            "deployment": "https://moefingers.github.io",
-            "repository": "https://github.com/moefingers/moefingers.github.io",
-            "description": "My portfolio site",
-            "coolest": "Uses infinite accessibility",
-            "tags": ["react", "javascript"],
-            "hottest": false
+            "snakeName": "place-holder-c",
+            
+            "name": "Project5",
+            "imagesFolder": "placeholder",
+            "deployment": "https://moefingers.github.io/project5/",
+            "repository": "https://github.com/moefingers/project5",
+            "description": "placeholder project 5",
+            "coolest": "an epic placeholder 5",
+            "tags": ["placeholder"],
+            "showcase": false
         },
         {
-            "name": "Portfolio",
-            "image": "/#",
-            "deployment": "https://moefingers.github.io",
-            "repository": "https://github.com/moefingers/moefingers.github.io",
-            "description": "My portfolio site",
-            "coolest": "Uses infinite accessibility",
-            "tags": ["react", "javascript"],
-            "hottest": false
-        },
-        {
-            "name": "Portfolio",
-            "image": "/#",
-            "deployment": "https://moefingers.github.io",
-            "repository": "https://github.com/moefingers/moefingers.github.io",
-            "description": "My portfolio site",
-            "coolest": "Uses infinite accessibility",
-            "tags": ["react", "javascript"],
-            "hottest": false
-        },
-        {
-            "name": "Portfolio",
-            "image": "/#",
-            "deployment": "https://moefingers.github.io",
-            "repository": "https://github.com/moefingers/moefingers.github.io",
-            "description": "My portfolio site",
-            "coolest": "Uses infinite accessibility",
-            "tags": ["react", "javascript"],
-            "hottest": false
-        },
-        {
-            "name": "Portfolio",
-            "image": "/#",
-            "deployment": "https://moefingers.github.io",
-            "repository": "https://github.com/moefingers/moefingers.github.io",
-            "description": "My portfolio site",
-            "coolest": "Uses infinite accessibility",
-            "tags": ["react", "javascript"],
-            "hottest": false
-        },
-        {
-            "name": "Portfolio",
-            "image": "/#",
-            "deployment": "https://moefingers.github.io",
-            "repository": "https://github.com/moefingers/moefingers.github.io",
-            "description": "My portfolio site",
-            "coolest": "Uses infinite accessibility",
-            "tags": ["react", "javascript"],
-            "hottest": false
+            "api": "https://api.github.com/repos/MoeFingers/JS-Building-an-Admin-Portal",
+            "snakeName": "js-building-an-admin-portal",
+            
+            "name": "Project",
+            "imagesFolder": "placeholder",
+            "deployment": "https://moefingers.github.io/project6/",
+            "repository": "https://github.com/moefingers/project6",
+            "description": "last placeholder project",
+            "coolest": "an epic placeholder 6",
+            "tags": ["placeholder"],
+            "showcase": false
         }
+        
     ]
 }
