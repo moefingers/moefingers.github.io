@@ -10,9 +10,10 @@ import ImageRoller from "../components/ImageRoller"
 
 import '../assets/styles/projects.css'
 
-const fullImageBlobImport = Object.values(import.meta.glob("@assets/images/*/*.{png,jpg,jpeg,PNG,JPEG,webp,WEBP}", { eager: true, query: '?url', import: 'default' }))
+const fullImageBlobImport = Object.values(import.meta.glob("@assets/images/*/*.{png,jpg,jpeg,PNG,JPEG,webp,WEBP,svg}", { eager: true, query: '?url', import: 'default' }))
 
 const placeholder = fullImageBlobImport.filter((blob) => blob.includes("placeholder"))[0]
+console.log(placeholder)
 /* expected:
 {
     "v2-stopwatch": [
@@ -168,7 +169,7 @@ export default function Projects() {
                     </section>
                 )
             } else { // if not github
-                preStateRollerImages.push(placeholder)
+                preStateRollerImages.push("")
                 sections.push (
                     <section key={index} className="project-section">
                         <h1 className="project-title">{project.name}</h1>
