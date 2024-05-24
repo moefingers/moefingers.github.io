@@ -28,7 +28,7 @@
     height: calc(var(--general-size-factor-px) * 100);
     width: calc(var(--general-size-factor-px) * 100);
     line-height: calc(var(--general-size-factor-px) * 16);
-    transform: translate3d(0, 0, 0) rotate3d(-30, 0, -30, 90deg) rotateX(calc(var(--partial-rotation) + (360deg * var(--current-rotation-factor))));
+    transform: translate3d(0, 0, 0) rotate3d(-30, 0, -30, 90deg) rotateX(calc(var(--partial-rotation)/2 + (360deg * var(--current-rotation-factor))));
 
     /* animation: image-roller-animation linear;
     animation-composition: add;
