@@ -65,6 +65,16 @@ export default function Projects() {
                         }
                     )
                     newData.commits = await commitResponse.json()
+                    //https://api.github.com/repos/moefingers/react-timer-stopwatch-v2/contents/social/square.png
+                    const meta = await fetch(`https://api.github.com/repos/${newData.owner.login}/${newData.name}/contents/social/meta.json`,
+                        {
+                            method: 'GET',
+                            headers: {'Content-Type': 'application/vnd.github+json'}
+                        }
+                    )
+                    newData.meta = await meta.json()
+
+
                     newData.squareImage = `https://raw.githubusercontent.com/${newData.owner.login}/${newData.name}/${newData.default_branch}/social/square.png`
                     newData.wideImage = `https://raw.githubusercontent.com/${newData.owner.login}/${newData.name}/${newData.default_branch}/social/wide.png`
 
