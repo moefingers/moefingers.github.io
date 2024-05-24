@@ -65,7 +65,7 @@ export default function Projects() {
                         }
                     )
                     newData.commits = await commitResponse.json()
-                    newData.squareImage = `https://raw.githubusercontent.com/${newData.owner.login}/${newData.name}/${newData.default_branch}/social/square`
+                    newData.squareImage = `https://raw.githubusercontent.com/${newData.owner.login}/${newData.name}/${newData.default_branch}/social/square.png`
                     newData.wideImage = `https://raw.githubusercontent.com/${newData.owner.login}/${newData.name}/${newData.default_branch}/social/wide.png`
 
                     
