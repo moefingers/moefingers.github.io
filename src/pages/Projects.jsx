@@ -40,6 +40,7 @@ export default function Projects() {
     const [projectData, setProjectData] = useState({})
     const [scrollPosition, setScrollPosition] = useState(0)
     const [rollerImages, setRollerImages] = useState([])
+    const [rateLimitExceeded, setRateLimitExceeded] = useState(false)
 
     
 
@@ -55,7 +56,15 @@ export default function Projects() {
                             method: 'GET',
                             headers: {'Content-Type': 'application/vnd.github+json'}
                         }
-                    )
+                    ).then((response) => {
+                        if (!response.ok) {
+                            if (response.status == 403) {
+                                setRateLimitExceeded(true)
+                            }
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response
+                    })
                     const newData = await initialResponse.json()
 
                     const commitResponse = await fetch(`https://api.github.com/repos/${newData.owner.login}/${newData.name}/commits`,
@@ -66,18 +75,18 @@ export default function Projects() {
                     )
                     newData.commits = await commitResponse.json()
                     //https://api.github.com/repos/moefingers/react-timer-stopwatch-v2/contents/social/square.png
-                    const meta = await fetch(`https://api.github.com/repos/${newData.owner.login}/${newData.name}/contents/social/meta.json`,
+                    const meta = await fetch(`https://api.github.com/repos/${newData.owner.login}/${newData.name}/contents/social`,
                         {
                             method: 'GET',
                             headers: {'Content-Type': 'application/vnd.github+json'}
                         }
                     )
                     newData.meta = await meta.json()
-
-
-                    newData.squareImage = `https://raw.githubusercontent.com/${newData.owner.login}/${newData.name}/${newData.default_branch}/social/square.png`
-                    newData.wideImage = `https://raw.githubusercontent.com/${newData.owner.login}/${newData.name}/${newData.default_branch}/social/wide.png`
-
+                    console.log(newData.meta)
+                    newData.meta.forEach((file) => {
+                        file.name.includes("square") && (newData.squareImage = `https://raw.githubusercontent.com/${newData.owner.login}/${newData.name}/${newData.default_branch}/${file.path}`)
+                        file.name.includes("wide") && (newData.wideImage = `https://raw.githubusercontent.com/${newData.owner.login}/${newData.name}/${newData.default_branch}/${file.path}`)
+                    })
                     
                     data = Object.assign({}, data, {[project.snakeName]: await newData})
                    
@@ -121,7 +130,7 @@ export default function Projects() {
         const sections = []
         const preStateRollerImages = []
         projects.forEach((project, index) => {
-            console.log(index,project)
+            // console.log(index,project)
             if(projectData[project.snakeName]){ // if github
                 project = projectData[project.snakeName]
                 preStateRollerImages.push(project.squareImage)
@@ -180,6 +189,7 @@ export default function Projects() {
 
     return (
         <div className="projects-page-container">
+            {rateLimitExceeded && <div className="rate-limit-exceeded">Rate limit exceeded</div>}
             <div ref={projectsScrollElement} className='scroll' >
                 {...projectSectionElements}
                 <ImageRoller scrollPosition={scrollPosition} projectsScrollElement={projectsScrollElement.current} rollerImages={rollerImages} backupImage={placeholder}/>

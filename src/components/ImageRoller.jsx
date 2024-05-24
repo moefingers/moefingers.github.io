@@ -6,7 +6,7 @@ export default function ImageRoller({rollerImages, scrollPosition, projectsScrol
     const [imageRollerItems, setImageRollerItems] = useState([])
 
     useEffect(() => {
-        console.log(rollerImages)
+        // console.log(rollerImages)
         const rollerElements = rollerImages.map((image, index) => {
             document.documentElement.style.setProperty(`--image-${index}`, "0deg")
             return (
