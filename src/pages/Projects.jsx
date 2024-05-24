@@ -1,4 +1,8 @@
 import { useEffect, useState, useRef } from 'react'
+import { format } from 'date-fns'
+import { fromZonedTime, toZonedTime } from 'date-fns-tz';
+
+
 
 import { projects } from "../assets/projects.json"
 
@@ -17,6 +21,19 @@ console.log(fullImageBlobImport)
 }
 */
 
+function toUserTime(utcTime) {
+    // Check if date-fns-tz is available (recommended for time zone handling)
+    if (typeof fromZonedTime === 'function') {
+      const timeZoneID = Intl.DateTimeFormat().resolvedOptions().timeZone; // Get user's time zone ID
+      const zonedTime = toZonedTime(new Date(utcTime), timeZoneID);
+      return format(zonedTime, 'PPp', { timeZone: timeZoneID }); // Format with time zone abbreviation
+    } else {
+      console.warn("date-fns-tz library not found. Timezone conversion might be inaccurate.");
+      const formattedTime = format(new Date(utcTime), 'PPp'); // Format without time zone info
+      return formattedTime;
+    }
+  }
+
 export default function Projects() {
     const [projectSectionElements, setProjectSectionElements] = useState([])
     const [projectData, setProjectData] = useState({})
@@ -30,15 +47,33 @@ export default function Projects() {
         let data = {}
         projects.forEach(async (project, index) => {
             // fetch api from project
+            // check if image in url exists `https://raw.githubusercontent.com/${project.owner.login}/${project.name}/${project.default_branch}/social/wide.png`
             if(project.api){
                 try {
-                    const response = await fetch(project.api,
+
+                    const initialResponse = await fetch(project.api,
                         {
                             method: 'GET',
                             headers: {'Content-Type': 'application/vnd.github+json'}
                         }
                     )
-                    const newData = await response.json()
+                    const newData = await initialResponse.json()
+
+                    const commitResponse = await fetch(`https://api.github.com/repos/moefingers/${newData.name}/commits`,
+                        {
+                            method: 'GET',
+                            headers: {'Content-Type': 'application/vnd.github+json'}
+                        }
+                    )
+                    newData.commits = await commitResponse.json()
+
+                    // const imageWideResponse = await fetch(`https://raw.githubusercontent.com/${newData.owner.login}/${newData.name}/${newData.default_branch}/social/wide.png`,
+                    //     {
+                    //         method: 'GET',
+                    //         headers: {'Content-Type': 'image'}
+                    //     }
+                    // )
+                    // newData.imageWide = await imageWideResponse.blob()
                     // console.log(data)
                     data = Object.assign({}, data, {[project.snakeName]: await newData})
                     // console.log(newData)
@@ -54,11 +89,17 @@ export default function Projects() {
         // console.log(data)
        
     }
+
+        
     
     const projectsScrollElement = useRef(null)
     useEffect(() => {
         const imagesPreState = {}
         projects.forEach((project, index) => {
+            
+        
+            
+
             fullImageBlobImport.forEach((image) => {
                 if(image.includes(project.imagesFolder)){
                     console.log(index, project.imagesFolder, image)
@@ -91,7 +132,7 @@ export default function Projects() {
     useEffect(() => {
         const scrollElement = projectsScrollElement.current
         const scrollBarWidth = (scrollElement.offsetWidth - scrollElement.clientWidth)
-        scrollElement.style.paddingRight = `${scrollBarWidth / scrollElement.offsetWidth * 103}%`
+        scrollElement.style.padding = `${scrollBarWidth / scrollElement.offsetWidth * 52}%`
     }, [projectSectionElements])
 
 
@@ -100,16 +141,42 @@ export default function Projects() {
     useEffect(() => {
         console.log(projectData)
         const sections = projects.map((project, index) => {
-            if(projectData[project.snakeName]){
+            if(projectData[project.snakeName]){ // if github
+                project = projectData[project.snakeName]
                 return (
                     <section key={index} className="project-section">
-                        <h1 className="project-title">{projectData[project.snakeName].name}</h1>
-                        <p className="project-description">{projectData[project.snakeName].description}</p>
-                        <p>from api</p>
-                        {index == 0 && <div className="scroll-note">scroll down...</div>}
+                        <div className='safe-zone-top'>
+                            <h1 className="project-title">
+                                GitHub - <a href={project.owner.html_url} target='_blank'>{project.owner.login}</a> /<br/>
+                                <a className='project-name' href={project.html_url} target='_blank'>{project.name}</a>
+                            </h1>
+
+                            {project.fork && <h2 className="project-fork">Forked from <a href={project.parent.html_url} target='_blank'>{project.parent.owner.login}</a></h2>}
+
+                            <ul className="project-topics">{project.topics.map((topic, index) => <li key={index}>{topic}</li>)}</ul>
+                            {project.homepage != null && <a className='deployment-link' href={project.homepage} target='_blank'>Visit Deployment</a>}
+
+                            <p>Created: {toUserTime(project.created_at)}</p>
+                        </div>
+                        <div className="safe-zone-bottom">
+                            <p className="project-description">{project.description} - {project.commits.length} commits - <a 
+                                className='project-license' href={"https://choosealicense.com/licenses/" + project.license.key} target='_blank'>{project.license.name}</a>
+                            </p>
+                            
+                            <img className="project-wide-image" src={`https://raw.githubusercontent.com/${project.owner.login}/${project.name}/${project.default_branch}/social/wide.png`} alt="wide-image" />
+                            
+
+
+                            {index == 0 && <div className="scroll-note">scroll down...</div>}
+                        </div>
+                        
+
+                        
+
+                        
                     </section>
                 )
-            } else {
+            } else { // if not github
                 return (
                     <section key={index} className="project-section">
                         <h1 className="project-title">{project.name}</h1>

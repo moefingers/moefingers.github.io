@@ -15,21 +15,22 @@
 
 :root {
   --general-size-factor-px: (0.00188323 * 100vw); /* Will be overridden by media query.. */
+  --font-size-factor-px: var(--general-size-factor-px);
 
   --nav-bar-height: calc(var(--general-size-factor-px) * 27);
 
   --background-color-primary: rgba(0, 0, 0, 1);
   --background-color-secondary: rgba(255,255,255, .2);
   --complementary-color-primary: rgba(255, 255, 255, 1);
-  --complementary-color-primary-faded: rgba(255, 255, 255, .6);
+  --complementary-color-primary-faded: rgba(255, 255, 255, .4);
   --complementary-color-secondary: rgb(65, 185, 255);
-  --complementary-color-secondary-faded: rgba(100, 100, 255, .6);
+  --complementary-color-secondary-faded: rgba(100, 100, 255, .4);
   --complementary-color-tertiary: rgba(255, 100, 100, 1);
-  --complementary-color-tertiary-faded: rgba(255, 100, 100, .6);
+  --complementary-color-tertiary-faded: rgba(255, 100, 100, .4);
   --complementary-color-quaternary: rgba(100, 255, 100, 1);
-  --complementary-color-quaternary-faded: rgba(100, 255, 100, .6);
+  --complementary-color-quaternary-faded: rgba(100, 255, 100, .4);
   --complementary-color-quinary: rgb(200, 200, 0);
-  --complementary-color-quinary-faded: rgba(200, 200, 0, .6);
+  --complementary-color-quinary-faded: rgba(200, 200, 0, .4);
   
 
   --text-shadow-primary: 0px 0px calc(var(--general-size-factor-px) * 5) var(--complementary-color-primary);
@@ -90,7 +91,7 @@ nav {
   top: 0;
   left: 50%;
   transform: translate(-50%, 0);
-  width: 80%;
+  width: calc(var(--general-size-factor-px) * 500);
   height: var(--nav-bar-height);
   display: flex;
   justify-content: space-between;
@@ -99,21 +100,22 @@ nav {
   border-radius: 0 0 calc(var(--general-size-factor-px) * 10) calc(var(--general-size-factor-px) * 10);
 
   pointer-events: none;
+  background: transparent;
 }
 .nav-link {
   text-decoration: none;
   background-color: transparent;
   transition: .3s ease-out;
-  font-size: calc(20 * var(--general-size-factor-px));
+  font-size: calc(20 * var(--font-size-factor-px));
 
   pointer-events: all;
 }
 a.nav-link:hover {
-  font-size: calc(25 * var(--general-size-factor-px));
+  font-size: calc(25 * var(--font-size-factor-px));
   text-shadow: var(--text-shadow-primary);
 }
 .nav-link.current {
-  font-size: calc(23 * var(--general-size-factor-px));
+  font-size: calc(23 * var(--font-size-factor-px));
   text-shadow: var(--text-shadow-primary-faded);
 }
 
@@ -207,5 +209,13 @@ div.glowy-container div.trail-element {
   }
   :root{
     --general-size-factor-px: (0.00188323 * 100vw)
+  }
+}
+
+
+@media screen and (width <= 600px ) {
+  /* * {outline:green 1px solid} */
+  :root {
+    --font-size-factor-px: calc(var(--general-size-factor-px) * 1.3);
   }
 }
