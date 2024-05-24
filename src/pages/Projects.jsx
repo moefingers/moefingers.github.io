@@ -70,7 +70,7 @@ export default function Projects() {
                     })
                     const newData = await initialResponse.json()
 
-                    const commitResponse = await fetch(`https://api.github.com/repos/${newData.owner.login}/${newData.name}/commits`,
+                    const commitResponse = await fetch(`https://api.github.com/repos/${newData.owner.login}/${newData.name}/commits?per_page=100`,
                         {
                             method: 'GET',
                             headers: {'Content-Type': 'application/vnd.github+json'}
@@ -138,6 +138,7 @@ export default function Projects() {
                 project = projectData[project.api]
                 preStateRollerImages.push(project.squareImage)
                 // console.log(project)
+                // console.log(index, project.homepage)
                 sections.push (
                     <section key={index} className="project-section">
                         <div className='safe-zone-top'>
@@ -149,13 +150,13 @@ export default function Projects() {
                             {project.fork && <h2 className="project-fork">Forked from <a href={project.parent.html_url} target='_blank'>{project.parent.owner.login}</a></h2>}
 
                             <ul className="project-topics">{project.topics.map((topic, index) => <li key={index}>{topic}</li>)}</ul>
-                            {project.homepage != null && <a className='deployment-link' href={project.homepage} target='_blank'>Visit Deployment</a>}
+                            {project.homepage != "" && <a className='deployment-link' href={project.homepage} target='_blank'>Visit Deployment</a>}
 
                             <p>Created: {toUserTime(project.created_at)}</p>
                             <p>Updated: {toUserTime(project.updated_at)}</p>
                         </div>
                         <div className="safe-zone-bottom">
-                            <p className="project-description">{project.description} - <span className="project-commits">{project.commits.length} <span>commits</span></span> - <a 
+                            <p className="project-description">{project.description} - <span className="project-commits">{project.commits.length > 100 ? "100+" : project.commits.length } <span>commits</span></span> - <a 
                                 className='project-license' href={"https://choosealicense.com/licenses/" + project.license.key} target='_blank'>{project.license.name}</a>
                             </p>
                             
