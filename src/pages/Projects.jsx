@@ -157,6 +157,7 @@ export default function Projects() {
                             {project.homepage != null && <a className='deployment-link' href={project.homepage} target='_blank'>Visit Deployment</a>}
 
                             <p>Created: {toUserTime(project.created_at)}</p>
+                            <p>Updated: {toUserTime(project.updated_at)}</p>
                         </div>
                         <div className="safe-zone-bottom">
                             <p className="project-description">{project.description} - {project.commits.length} commits - <a 

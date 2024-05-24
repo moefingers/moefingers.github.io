@@ -2,6 +2,7 @@
     overflow:hidden;
 
     position: relative;
+
 }
 
 
@@ -21,17 +22,20 @@
     /* outline: solid 2px red */
 }
 
+a {
+    pointer-events: all;
+}
 /* .safe-zone-top, .safe-zone-bottom {outline: dashed 1px red;} */
 
 .safe-zone-top{
-    z-index: -10;
+    z-index: 1;
     position: relative;
     top: calc(var(--general-size-factor-px) * 20);
     width: calc(var(--general-size-factor-px) * 280);
     height: calc(var(--general-size-factor-px) * 200);
 }
 .safe-zone-bottom{
-    z-index: -11;
+    z-index: 0;
     position: relative;
     top: calc(var(--general-size-factor-px) * 40);
     width: 100%;
