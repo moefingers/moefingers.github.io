@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import '../assets/styles/image-roller.css'
 
-export default function ImageRoller({rollerImages, scrollPosition, projectsScrollElement}) {
+export default function ImageRoller({rollerImages, scrollPosition, projectsScrollElement, backupImage}) {
 
     const [imageRollerItems, setImageRollerItems] = useState([])
 
@@ -11,7 +11,7 @@ export default function ImageRoller({rollerImages, scrollPosition, projectsScrol
             document.documentElement.style.setProperty(`--image-${index}`, "0deg")
             return (
                 <div key={index} className="image-roller-item">
-                    <img onClick={(event) => {scrollToIndex(index)}} src={image} className="backing" style={{
+                    <img onClick={(event) => {scrollToIndex(index)}} src={image} onError={noImage} className="backing" style={{
                         transform: `
                         rotateX(${index * (-360 / rollerImages.length)}deg) 
                         rotateZ(calc(${index * (-360 / rollerImages.length)}deg + var(--partial-rotation) + var(--image-${index}))) 
@@ -23,7 +23,7 @@ export default function ImageRoller({rollerImages, scrollPosition, projectsScrol
                             calc(${((rollerImages.length / Math.PI) / 2) * 110} * var(--general-size-factor-px)))
                             `,
                     }}/>
-                    <img onClick={(event) => {scrollToIndex(index)}} src={image} style={{
+                    <img onClick={(event) => {scrollToIndex(index)}} src={image} onError={noImage} style={{
                         transform: `
                         rotateX(${index * (-360 / rollerImages.length)}deg) 
                         rotateZ(calc(${index * (-360 / rollerImages.length)}deg + var(--partial-rotation) + var(--image-${index}))) 
@@ -46,6 +46,11 @@ export default function ImageRoller({rollerImages, scrollPosition, projectsScrol
             projectsScrollElement.scrollTop = eachHeight * index
         }
 
+        function noImage(event){
+            console.log(event.target.src)
+            event.target.src = backupImage
+        }
+
         setImageRollerItems(rollerElements)
         /* 360   -    7 / 360      to fix off by one */
         const partialRotation = (360 / rollerImages.length)
@@ -55,7 +60,7 @@ export default function ImageRoller({rollerImages, scrollPosition, projectsScrol
         // console.log(fullRotation)
         // console.log(partialRotation)
 
-    }, [])
+    }, [rollerImages])
 
     const ImageRollerElement = useRef(null)
     useEffect(() => {
@@ -73,7 +78,7 @@ export default function ImageRoller({rollerImages, scrollPosition, projectsScrol
     return (
         <div ref={ImageRollerElement} className="image-roller-container">
            {...imageRollerItems}
-
+            <div className={`roller-reminder ${scrollPosition != 0 ? "hidden" : ""}`}>click any of these</div>
         </div>
     )
 }   

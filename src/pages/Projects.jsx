@@ -11,7 +11,8 @@ import ImageRoller from "../components/ImageRoller"
 import '../assets/styles/projects.css'
 
 const fullImageBlobImport = Object.values(import.meta.glob("@assets/images/*/*.{png,jpg,jpeg,PNG,JPEG,webp,WEBP}", { eager: true, query: '?url', import: 'default' }))
-console.log(fullImageBlobImport)
+
+const placeholder = fullImageBlobImport.filter((blob) => blob.includes("placeholder"))[0]
 /* expected:
 {
     "v2-stopwatch": [
@@ -38,7 +39,7 @@ export default function Projects() {
     const [projectSectionElements, setProjectSectionElements] = useState([])
     const [projectData, setProjectData] = useState({})
     const [scrollPosition, setScrollPosition] = useState(0)
-    const [images, setImages] = useState({})
+    const [rollerImages, setRollerImages] = useState([])
 
     
 
@@ -47,10 +48,8 @@ export default function Projects() {
         let data = {}
         projects.forEach(async (project, index) => {
             // fetch api from project
-            // check if image in url exists `https://raw.githubusercontent.com/${project.owner.login}/${project.name}/${project.default_branch}/social/wide.png`
             if(project.api){
                 try {
-
                     const initialResponse = await fetch(project.api,
                         {
                             method: 'GET',
@@ -59,73 +58,42 @@ export default function Projects() {
                     )
                     const newData = await initialResponse.json()
 
-                    const commitResponse = await fetch(`https://api.github.com/repos/moefingers/${newData.name}/commits`,
+                    const commitResponse = await fetch(`https://api.github.com/repos/${newData.owner.login}/${newData.name}/commits`,
                         {
                             method: 'GET',
                             headers: {'Content-Type': 'application/vnd.github+json'}
                         }
                     )
                     newData.commits = await commitResponse.json()
+                    newData.squareImage = `https://raw.githubusercontent.com/${newData.owner.login}/${newData.name}/${newData.default_branch}/social/square.png`
+                    newData.wideImage = `https://raw.githubusercontent.com/${newData.owner.login}/${newData.name}/${newData.default_branch}/social/wide.png`
 
-                    // const imageWideResponse = await fetch(`https://raw.githubusercontent.com/${newData.owner.login}/${newData.name}/${newData.default_branch}/social/wide.png`,
-                    //     {
-                    //         method: 'GET',
-                    //         headers: {'Content-Type': 'image'}
-                    //     }
-                    // )
-                    // newData.imageWide = await imageWideResponse.blob()
-                    // console.log(data)
-                    data = Object.assign({}, data, {[project.snakeName]: await newData})
-                    // console.log(newData)
-                    // console.log(data)
-                    setProjectData(data)
                     
+                    data = Object.assign({}, data, {[project.snakeName]: await newData})
+                   
+                    setProjectData(data)
                     
                 } catch (error) {
                     console.log(error)
                 }
             }
         })
-        // console.log(data)
-       
     }
 
         
     
     const projectsScrollElement = useRef(null)
     useEffect(() => {
-        const imagesPreState = {}
-        projects.forEach((project, index) => {
-            
-        
-            
-
-            fullImageBlobImport.forEach((image) => {
-                if(image.includes(project.imagesFolder)){
-                    console.log(index, project.imagesFolder, image)
-                    if (!imagesPreState[project.snakeName]) {
-                        imagesPreState[project.snakeName] = []
-                    }
-                    imagesPreState[project.snakeName].push(image)
-                }
-            })
-        })
-        console.log(imagesPreState)
-        setImages(imagesPreState)
-
+ 
         fetchAll()
-
 
         projectsScrollElement.current.onscroll = () => {
             const currentPosition = (projectsScrollElement.current.scrollTop)
             const eachHeight = (document.querySelector("section").scrollHeight)
 
-            // console.log (currentPosition, eachHeight)
-            // console.log(currentPosition / eachHeight)
             setScrollPosition(currentPosition / eachHeight)
         }
 
-            // projectsScrollElement.current.scrollTop = 1000 // to scroll
     }, [])
 
 
@@ -140,10 +108,14 @@ export default function Projects() {
 
     useEffect(() => {
         console.log(projectData)
-        const sections = projects.map((project, index) => {
+        const sections = []
+        const preStateRollerImages = []
+        projects.forEach((project, index) => {
+            console.log(index,project)
             if(projectData[project.snakeName]){ // if github
                 project = projectData[project.snakeName]
-                return (
+                preStateRollerImages.push(project.squareImage)
+                sections.push (
                     <section key={index} className="project-section">
                         <div className='safe-zone-top'>
                             <h1 className="project-title">
@@ -160,11 +132,11 @@ export default function Projects() {
                             <p>Updated: {toUserTime(project.updated_at)}</p>
                         </div>
                         <div className="safe-zone-bottom">
-                            <p className="project-description">{project.description} - {project.commits.length} commits - <a 
+                            <p className="project-description">{project.description} - <span className="project-commits">{project.commits.length} <span>commits</span></span> - <a 
                                 className='project-license' href={"https://choosealicense.com/licenses/" + project.license.key} target='_blank'>{project.license.name}</a>
                             </p>
                             
-                            <img className="project-wide-image" src={`https://raw.githubusercontent.com/${project.owner.login}/${project.name}/${project.default_branch}/social/wide.png`} alt="wide-image" />
+                            <img className="project-wide-image" src={project.wideImage} alt="wide-image" onError={e => e.target.src = ""}/>
                             
 
 
@@ -173,27 +145,34 @@ export default function Projects() {
                         
 
                         
-
-                        
                     </section>
                 )
             } else { // if not github
-                return (
+                preStateRollerImages.push(placeholder)
+                sections.push (
                     <section key={index} className="project-section">
                         <h1 className="project-title">{project.name}</h1>
                         <p className="project-description">{project.description}</p>
                     </section>
                 )
             }
+
+            
         })
+
+
         setProjectSectionElements(sections)
+        setRollerImages(preStateRollerImages)
+
+        
+
     }, [projectData])
 
     return (
         <div className="projects-page-container">
             <div ref={projectsScrollElement} className='scroll' >
                 {...projectSectionElements}
-                <ImageRoller scrollPosition={scrollPosition} projectsScrollElement={projectsScrollElement.current} rollerImages={Object.values(images).map((imageSet) => imageSet[0])}/>
+                <ImageRoller scrollPosition={scrollPosition} projectsScrollElement={projectsScrollElement.current} rollerImages={rollerImages} backupImage={placeholder}/>
             </div>
         </div>
     )

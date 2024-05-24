@@ -173,7 +173,7 @@ div.glowy-container div.trail-element {
     opacity: 1;
   }
 }
-@keyframes colorCycle {
+@keyframes color-cycle {
   0% {
     color: var(--complementary-color-primary);
   }

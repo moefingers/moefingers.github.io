@@ -23,7 +23,16 @@
 }
 
 a {
+    position: relative;
     pointer-events: all;
+    opacity: .8;
+    /* outline: solid 1px red; */
+}
+a:hover{
+    opacity: 1;
+    text-shadow: 0 0 calc(var(--general-size-factor-px) * 10) var(--complementary-color-primary);
+    /* font-size: larger;; */
+
 }
 /* .safe-zone-top, .safe-zone-bottom {outline: dashed 1px red;} */
 
@@ -32,7 +41,7 @@ a {
     position: relative;
     top: calc(var(--general-size-factor-px) * 20);
     width: calc(var(--general-size-factor-px) * 280);
-    height: calc(var(--general-size-factor-px) * 200);
+    min-height: calc(var(--general-size-factor-px) * 200);
 }
 .safe-zone-bottom{
     z-index: 0;
@@ -50,6 +59,7 @@ h1.project-title, h1.project-title a {
 
 h1 a.project-name{
     font-weight: bold;
+    color: var(--complementary-color-secondary)
 }
 
 h2.project-fork{
@@ -79,14 +89,25 @@ ul.project-topics {
 
 .deployment-link {
     font-size: calc(var(--font-size-factor-px) * 20);
+    color: var(--complementary-color-quaternary)
 }
 
 .project-description {
     font-size: calc(var(--font-size-factor-px) * 20);
 }
 
+.project-commits {
+    font-size: inherit;
+    color: var(--complementary-color-tertiary)
+}
+.project-commits > span {
+    color: var(--complementary-color-tertiary);
+    opacity: .8;
+    font-size: calc(var(--font-size-factor-px) * 14);
+}
 .project-license {
     font-size: calc(var(--font-size-factor-px) * 18);
+    color: var(--complementary-color-quinary)
 }
 
 .project-wide-image {

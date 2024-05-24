@@ -53,6 +53,20 @@
     opacity: .8;
 }
 
+.roller-reminder {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: calc(var(--general-size-factor-px) * 10);
+    transform: translate(-50%, -50%) rotate(90deg);
+    animation: color-cycle 10s linear infinite;
+    opacity: .7;
+}
+
+.roller-reminder.hidden {
+    opacity: 0;
+}
+
 @keyframes image-roller-animation {
     from {
         transform: translate3d(0, 0, 0) rotateX(calc(var(--partial-rotation) * .5)) rotateZ(0deg) rotateY(0deg);
