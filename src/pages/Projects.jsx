@@ -196,7 +196,7 @@ export default function Projects() {
         <div className="projects-page-container">
             {rateLimitExceeded && <div className="rate-limit-exceeded">GitHub API rate limit exceeded.</div>}
             <div ref={projectsScrollElement} className='scroll' >
-                {...projectSectionElements}
+                {Object.values(projectData)[0] ? [...projectSectionElements] : "Loading!"}
                 <ImageRoller scrollPosition={scrollPosition} projectsScrollElement={projectsScrollElement.current} rollerImages={rollerImages} backupImage={placeholder}/>
             </div>
         </div>
