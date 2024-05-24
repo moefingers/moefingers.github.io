@@ -120,7 +120,7 @@ export default function Projects() {
                         <div className='safe-zone-top'>
                             <h1 className="project-title">
                                 GitHub - <a href={project.owner.html_url} target='_blank'>{project.owner.login}</a> /<br/>
-                                <a className='project-name' href={project.html_url} target='_blank'>{project.name}</a>
+                                <a className='project-name' href={project.html_url} target='_blank'>{project.name}({project.default_branch})</a>
                             </h1>
 
                             {project.fork && <h2 className="project-fork">Forked from <a href={project.parent.html_url} target='_blank'>{project.parent.owner.login}</a></h2>}
