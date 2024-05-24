@@ -41,7 +41,7 @@ a:hover{
     position: relative;
     top: calc(var(--general-size-factor-px) * 20);
     width: calc(var(--general-size-factor-px) * 280);
-    min-height: calc(var(--general-size-factor-px) * 200);
+    min-height: calc(var(--general-size-factor-px) * 100);
 }
 .safe-zone-bottom{
     z-index: 0;
