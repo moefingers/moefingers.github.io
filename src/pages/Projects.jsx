@@ -59,6 +59,7 @@ export default function Projects() {
                     ).then((response) => {
                         if (!response.ok) {
                             if (response.status == 403) {
+                                console.log("403, setting rate limit exceeded message")
                                 setRateLimitExceeded(true)
                             }
                             throw new Error(`HTTP error! status: ${response.status}`);
@@ -189,7 +190,7 @@ export default function Projects() {
 
     return (
         <div className="projects-page-container">
-            {rateLimitExceeded && <div className="rate-limit-exceeded">Rate limit exceeded</div>}
+            {rateLimitExceeded && <div className="rate-limit-exceeded">GitHub API rate limit exceeded.</div>}
             <div ref={projectsScrollElement} className='scroll' >
                 {...projectSectionElements}
                 <ImageRoller scrollPosition={scrollPosition} projectsScrollElement={projectsScrollElement.current} rollerImages={rollerImages} backupImage={placeholder}/>

@@ -139,6 +139,11 @@ ul.project-topics {
     font-size: calc(var(--general-size-factor-px) * 40);
 }
 
+.rate-limit-exceeded {
+    color: var(--complementary-color-tertiary);
+    font-size: calc(var(--font-size-factor-px) * 20);
+    font-weight: 900;
+}
 
 
 @media screen and (orientation: portrait) {
