@@ -22,14 +22,14 @@ import Glowy from "./components/Glowy";
 import "./App.css";
 
 const routes = [
-  { path: "", name: "Home", element: <Home />, nodeRef: createRef() },
+  { path: "/", name: "Home", element: <Home />, nodeRef: createRef() },
   { path: "Projects", name: "Projects", element: <Projects />, nodeRef: createRef() },
   { path: "Contact", name: "Contact", element: <Contact />, nodeRef: createRef() },
 ]
 
 const routerChildren = routes.map(route => ({
   index: false,
-  path: route.path === "/" ? undefined : route.path,
+  path: route.path ,
   element: route.element,  
 }))
 routerChildren.push({
@@ -51,7 +51,15 @@ function App() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    navigate("/")
+    // correct location prehash if invalid
+    if(window.location.pathname != "/" && window.location.pathname != "/Projects" && window.location.pathname != "/Contact"){
+      console.log("redirecting to /")
+      window.location = "/"
+    }
+    // correct hash to #/
+    if(window.location.hash == "" || window.location.hash == "#/"){
+      navigate("/")
+    }
   }, [])
   
   return (

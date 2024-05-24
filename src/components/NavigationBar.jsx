@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 export default function NavigationBar({routes}) {
+    console.log(window.location.pathname,window.location.hash)
     return (
         <nav> 
             {routes.map((route) => (
