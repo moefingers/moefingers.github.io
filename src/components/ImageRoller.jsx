@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react"
 import '../assets/styles/image-roller.css'
 
-CSS.registerProperty({
-    name: '--backing-offset',
-    syntax: '<length>',
-    initialValue: '0',
-    inherits: false
-})
+// CSS.registerProperty({
+//     name: '--backing-offset',
+//     syntax: '<length>',
+//     initialValue: '0',
+//     inherits: false
+// })
 
 export default function ImageRoller({rollerImages, scrollPosition, projectsScrollElement, backupImage}) {
 
@@ -16,11 +16,13 @@ export default function ImageRoller({rollerImages, scrollPosition, projectsScrol
         // console.log(rollerImages)
 
         const rollerElements = rollerImages.map((image, index) => {
+            // console.log(index, image)
+            if (!image){ image = backupImage}
             document.documentElement.style.setProperty(`--image-${index}`, "0deg")
             
             return (
                 <div key={index} className="image-roller-item">
-                    <img onClick={(event) => {scrollToIndex(index)}} src={image} onError={noImage} className="backing" style={{
+                    <img onClick={(event) => {scrollToIndex(index)}} src={image} onError={noImage} className={`backing ${image == backupImage ? "no-image" : ""}`} style={{
                         transform: `
                         rotateX(${index * (-360 / rollerImages.length)}deg) 
                         rotateZ(calc(${index * (-360 / rollerImages.length)}deg + var(--partial-rotation) + var(--image-${index}))) 
@@ -56,7 +58,7 @@ export default function ImageRoller({rollerImages, scrollPosition, projectsScrol
         }
 
         function noImage(event){
-            console.log(event.target.src)
+            console.log(event.target.src, backupImage)
             event.target.src = backupImage
             // add class to target
             event.target.classList.add("no-image")

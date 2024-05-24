@@ -13,7 +13,7 @@ import '../assets/styles/projects.css'
 const fullImageBlobImport = Object.values(import.meta.glob("@assets/images/*/*.{png,jpg,jpeg,PNG,JPEG,webp,WEBP,svg}", { eager: true, query: '?url', import: 'default' }))
 
 const placeholder = fullImageBlobImport.filter((blob) => blob.includes("placeholder"))[0]
-console.log(placeholder)
+// console.log(placeholder)
 /* expected:
 {
     "v2-stopwatch": [
@@ -51,6 +51,7 @@ export default function Projects() {
         projects.forEach(async (project, index) => {
             // fetch api from project
             if(project.api){
+            // console.log(project.api)
                 try {
                     const initialResponse = await fetch(project.api,
                         {
@@ -77,20 +78,20 @@ export default function Projects() {
                     )
                     newData.commits = await commitResponse.json()
                     //https://api.github.com/repos/moefingers/react-timer-stopwatch-v2/contents/social/square.png
-                    const meta = await fetch(`https://api.github.com/repos/${newData.owner.login}/${newData.name}/contents/social`,
+                    const meta = await fetch(`https://api.github.com/repos/${newData.owner.login}/${newData.name}/contents`,
                         {
                             method: 'GET',
                             headers: {'Content-Type': 'application/vnd.github+json'}
                         }
                     )
                     newData.meta = await meta.json()
-                    console.log(newData.meta)
+
                     newData.meta.forEach((file) => {
-                        file.name.includes("square") && (newData.squareImage = `https://raw.githubusercontent.com/${newData.owner.login}/${newData.name}/${newData.default_branch}/${file.path}`)
-                        file.name.includes("wide") && (newData.wideImage = `https://raw.githubusercontent.com/${newData.owner.login}/${newData.name}/${newData.default_branch}/${file.path}`)
+                        file.name.includes("social-square") && (newData.squareImage = `https://raw.githubusercontent.com/${newData.owner.login}/${newData.name}/${newData.default_branch}/${file.path}`)
+                        file.name.includes("social-wide") && (newData.wideImage = `https://raw.githubusercontent.com/${newData.owner.login}/${newData.name}/${newData.default_branch}/${file.path}`)
                     })
                     
-                    data = Object.assign({}, data, {[project.snakeName]: await newData})
+                    data = Object.assign({}, data, {[project.api]: await newData})
                    
                     setProjectData(data)
                     
@@ -128,14 +129,15 @@ export default function Projects() {
  
 
     useEffect(() => {
-        console.log(projectData)
+        // console.log(projectData)
         const sections = []
         const preStateRollerImages = []
         projects.forEach((project, index) => {
             // console.log(index,project)
-            if(projectData[project.snakeName]){ // if github
-                project = projectData[project.snakeName]
+            if(projectData[project.api]){ // if github
+                project = projectData[project.api]
                 preStateRollerImages.push(project.squareImage)
+                // console.log(project)
                 sections.push (
                     <section key={index} className="project-section">
                         <div className='safe-zone-top'>
@@ -169,7 +171,7 @@ export default function Projects() {
                     </section>
                 )
             } else { // if not github
-                preStateRollerImages.push("")
+                preStateRollerImages.push(placeholder)
                 sections.push (
                     <section key={index} className="project-section">
                         <h1 className="project-title">{project.name}</h1>

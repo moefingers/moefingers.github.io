@@ -121,8 +121,8 @@ ul.project-topics {
     transform: translate(-50%, 0);
     z-index: -10;
     width: 100%;
-    /* filter blur */
-    filter: blur(calc(var(--general-size-factor-px) * 4));
+    /* filter blur and darken */
+    filter: blur(calc(var(--general-size-factor-px) * 4)) brightness(60%);
 }
 
 

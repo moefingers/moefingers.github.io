@@ -17,6 +17,7 @@
     --partial-rotation: 10deg;
     --current-rotation-factor: 0;
 
+    --backing-offset: calc(var(--general-size-factor-px) * 10);
     
 }
 .image-roller-container{
@@ -66,7 +67,8 @@
 .image-roller-item img.backing {
     filter: blur(calc(var(--general-size-factor-px) * 3));
     opacity: .8;
-    animation: 3s backing-z-animation ease-out infinite alternate-reverse;
+    /* animation: 3s backing-z-animation ease-out infinite alternate-reverse forwards; */
+    
 }
 
 .roller-reminder {

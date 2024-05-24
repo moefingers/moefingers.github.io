@@ -2,16 +2,12 @@
     "projects": [
         {
             "api": "https://api.github.com/repos/MoeFingers/react-timer-stopwatch-v2",
-            "snakeName": "react-timer-stopwatch-v2",
-            "imagesFolder": "v2-stopwatch",
-
-            "name": "React Timer/Stopwatch Version 2",
-            "deployment": "https://moefingers.github.io/react-timer-stopwatch-v2/",
-            "repository": "https://github.com/moefingers/react-timer-stopwatch-v2",
-            "description": "A timer and stopwatch combo written in react.",
-            "coolest": "Uses infinite responsiveness.",
-            "tags": ["react", "javascript"],
             "showcase": false
+        },
+
+        {
+            "api":"https://api.github.com/repos/MoeFingers/UNLV-MilestO-W-N"
+            
         },
         {
             "api": "https://api.github.com/repos/MoeFingers/moefingers.github.io",

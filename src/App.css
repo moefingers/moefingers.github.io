@@ -112,10 +112,12 @@ nav {
 }
 a.nav-link:hover {
   font-size: calc(25 * var(--font-size-factor-px));
+  opacity: 1;
   text-shadow: var(--text-shadow-primary);
 }
 .nav-link.current {
   font-size: calc(23 * var(--font-size-factor-px));
+  opacity: 1;
   text-shadow: var(--text-shadow-primary-faded);
 }
 
