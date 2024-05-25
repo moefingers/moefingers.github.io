@@ -30,11 +30,9 @@
     line-height: calc(var(--general-size-factor-px) * 16);
     transform: translate3d(0, 0, 0) rotate3d(-30, 0, -30, 90deg) rotateX(calc(var(--partial-rotation) + (360deg * var(--current-rotation-factor))));
 
-    /* animation: image-roller-animation linear;
-    animation-composition: add;
-    animation-timeline: --projects-scroll-timeline; */
     
     pointer-events: none;
+    
 
 }
 
@@ -47,7 +45,7 @@
     left: 0;
     text-wrap: nowrap;
     /* backface-visibility: hidden; */
-
+    
 }
 
 .image-roller-item img {
@@ -62,6 +60,10 @@
     
     pointer-events:all;
     cursor: pointer;
+}
+
+.image-roller-item img.faded {
+    opacity: .3;
 }
 
 .image-roller-item img.backing {

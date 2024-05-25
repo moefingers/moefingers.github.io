@@ -2,7 +2,7 @@
     overflow:hidden;
 
     position: relative;
-
+    /* outline: dashed 2px red; */
 }
 
 
@@ -10,16 +10,19 @@
     position: relative;
     height: 100%;
     width: 100%;
-    overflow-x: auto;
+    overflow-y: scroll;
     scroll-snap-type: y mandatory;
-    scroll-timeline: --projects-scroll-timeline y;
     scroll-behavior: smooth;
+}
+
+.projects-page-container:first-child section{
+    /* margin-top: -1.77015643802647%; */
 }
 
 .projects-page-container section {
     height: 100%;
-    scroll-snap-align: center;
-    /* outline: solid 2px red */
+    scroll-snap-align: start;
+    /* outline: dashed cyan 4px */
 }
 
 a {
@@ -145,12 +148,6 @@ ul.project-topics {
     font-weight: 900;
 }
 
-
-@media screen and (orientation: portrait) {
-    main.page > div.projects-page-container {
-        height: calc(100vh - var(--nav-bar-height));
-    }
-}
 
 
 

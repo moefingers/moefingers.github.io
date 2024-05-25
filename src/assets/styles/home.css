@@ -1,6 +1,6 @@
 .home-page-container * {
-    font-size: calc(16 * var(--general-size-factor-px));
-    line-height: calc(16 * var(--general-size-factor-px));
+    font-size: calc(16 * var(--font-size-factor-px));
+    line-height: calc(24 * var(--font-size-factor-px));
 }
 
 
@@ -12,6 +12,7 @@ em {
     color: var(--complementary-color-quinary);
 }
 .intro {
+    text-wrap: wrap;
     margin: calc(8 * var(--general-size-factor-px)) 0 ;
 }
 

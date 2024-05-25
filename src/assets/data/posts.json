@@ -1,0 +1,16 @@
+{
+    "posts": [
+        {
+            "path": "path0",
+            "title": "title0",
+            "content": "content0",
+            "date": "date0"
+        },
+        {
+            "path": "path1",
+            "title": "title1",
+            "content": "content1",
+            "date": "date1"
+        }
+    ]
+}

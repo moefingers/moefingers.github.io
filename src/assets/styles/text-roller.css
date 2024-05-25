@@ -1,9 +1,8 @@
 .text-roller-container{
     position: absolute;
     transform-style: preserve-3d;
-    height: calc(var(--general-size-factor-px) * 16);
-    width: calc(var(--general-size-factor-px) * 48);
-    line-height: calc(var(--general-size-factor-px) * 16);
+    height: calc(var(--font-size-factor-px) * 24);
+    width: calc(var(--font-size-factor-px) * 200);
     transform: translate3d(0, 0, 0) rotateX(0deg);
 
     animation: text-roller-animation 7s infinite linear;

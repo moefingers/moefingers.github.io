@@ -4,7 +4,7 @@ import { fromZonedTime, toZonedTime } from 'date-fns-tz';
 
 
 
-import { projects } from "../assets/projects.json"
+import { projects } from "../assets/data/projects.json"
 
 import ImageRoller from "../components/ImageRoller"
 
@@ -105,15 +105,26 @@ export default function Projects() {
         
     
     const projectsScrollElement = useRef(null)
+    const projectsPageContainerElement = useRef(null)
     useEffect(() => {
+        
+        // projectsPageContainerElement.current.style.height = projectsPageContainerElement.current.offsetHeight + "px"
+
  
         fetchAll()
+        // const data = {}
+        // projects.forEach((project) => {
+        //     data[project] = project
+        // })
+        // setProjectData(data)
 
         projectsScrollElement.current.onscroll = () => {
             const currentPosition = (projectsScrollElement.current.scrollTop)
             const eachHeight = (document.querySelector("section").scrollHeight)
-
-            setScrollPosition(currentPosition / eachHeight)
+            const newScrollPosition = currentPosition / eachHeight
+            // console.log(currentPosition,    eachHeight, newScrollPosition)
+            // console.log(0.00188323 * window.innerWidth)
+            setScrollPosition(newScrollPosition)
         }
 
     }, [])
@@ -122,7 +133,8 @@ export default function Projects() {
     useEffect(() => {
         const scrollElement = projectsScrollElement.current
         const scrollBarWidth = (scrollElement.offsetWidth - scrollElement.clientWidth)
-        scrollElement.style.padding = `${scrollBarWidth / scrollElement.offsetWidth * 52}%`
+        scrollElement.style.paddingLeft = `${scrollBarWidth / scrollElement.offsetWidth * 52}%`
+        scrollElement.style.paddingRight = `${scrollBarWidth / scrollElement.offsetWidth * 52}%`
     }, [projectSectionElements])
 
 
@@ -193,7 +205,7 @@ export default function Projects() {
     }, [projectData])
 
     return (
-        <div className="projects-page-container">
+        <div className="projects-page-container" ref={projectsPageContainerElement}>
             {rateLimitExceeded && <div className="rate-limit-exceeded">GitHub API rate limit exceeded.</div>}
             <div ref={projectsScrollElement} className='scroll' >
                 {Object.values(projectData)[0] 

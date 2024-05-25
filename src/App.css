@@ -17,7 +17,7 @@
   --general-size-factor-px: (0.00188323 * 100vw); /* Will be overridden by media query.. */
   --font-size-factor-px: var(--general-size-factor-px);
 
-  --nav-bar-height: calc(var(--general-size-factor-px) * 27);
+  --nav-bar-height: calc(var(--font-size-factor-px) * 27);
 
   --background-color-primary: rgba(0, 0, 0, 1);
   --background-color-secondary: rgba(255,255,255, .2);
@@ -69,7 +69,7 @@ body {
 main.page {
   z-index: -2;
   position: absolute;
-  top: 0;
+  top: var(--nav-bar-height);
   left: 50%;
   transform: translate(-50%, 0%) scale(1);
 
@@ -78,8 +78,7 @@ main.page {
 main.page > * {
   position: absolute;
   width: 100%;
-  height: calc(100% - var(--nav-bar-height));
-  top: var(--nav-bar-height);
+  height: 100%
 }
 main.page * {
   transition: 300ms ease-out;
@@ -123,9 +122,6 @@ a.nav-link:hover {
 
 
 /* page animations  */
-main.page {
-  position: absolute;
-}
 
 main.page-enter {
   opacity: 0;
@@ -200,24 +196,42 @@ div.glowy-container div.trail-element {
     height: 100vh;
   }
   :root{
-    --general-size-factor-px: (0.00188323 * 100vh)
+    --general-size-factor-px: calc(0.00188323 * 100vh)
   }
 }
 
 @media screen and (orientation: portrait) {
   main.page {
     width: 100vw;
-    height: 100vw;
+    height: calc(100% - var(--nav-bar-height));
   }
   :root{
-    --general-size-factor-px: (0.00188323 * 100vw)
+    --general-size-factor-px: calc(0.00188323 * 100vw)
   }
 }
+
+
 
 
 @media screen and (width <= 600px ) {
   /* * {outline:green 1px solid} */
   :root {
+    --font-size-factor-px: calc(var(--general-size-factor-px) * 1.1);
+  }
+}
+
+@media screen and (width <= 400px ) {
+  /* * {outline:green 1px solid} */
+  :root {
+    --font-size-factor-px: calc(var(--general-size-factor-px) * 1.2);
+  } 
+  
+}
+
+@media screen and (width <= 200px ) {
+  /* * {outline:green 1px solid} */
+  :root {
     --font-size-factor-px: calc(var(--general-size-factor-px) * 1.3);
   }
+  
 }

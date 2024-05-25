@@ -19,10 +19,11 @@ export default function ImageRoller({rollerImages, scrollPosition, projectsScrol
             // console.log(index, image)
             if (!image){ image = backupImage}
             document.documentElement.style.setProperty(`--image-${index}`, "0deg")
+            document.documentElement.style.setProperty(`--opacity-${index}`, "0.4")
             
             return (
                 <div key={index} className="image-roller-item">
-                    <img onClick={(event) => {scrollToIndex(index)}} src={image} onError={noImage} className={`backing ${image == backupImage ? "no-image" : ""}`} style={{
+                    <img onClick={(event) => {scrollToIndex(index)}} src={image} onError={noImage} className={`backing ${image == backupImage ? "no-image" : ""} faded`} style={{
                         transform: `
                         rotateX(${index * (-360 / rollerImages.length)}deg) 
                         rotateZ(calc(${index * (-360 / rollerImages.length)}deg + var(--partial-rotation) + var(--image-${index}))) 
@@ -33,8 +34,9 @@ export default function ImageRoller({rollerImages, scrollPosition, projectsScrol
                             0, 
                             calc(  (( ${((rollerImages.length / Math.PI) / 2) * 119.5}  )  * var(--general-size-factor-px)) -   calc(var(--backing-offset))        )
                             `,
+                        opacity: `var(--opacity-${index})`
                     }}/>
-                    <img onClick={(event) => {scrollToIndex(index)}} src={image} onError={noImage} style={{
+                    <img onClick={(event) => {scrollToIndex(index)}} src={image} onError={noImage} className={`faded`} style={{
                         transform: `
                         rotateX(${index * (-360 / rollerImages.length)}deg) 
                         rotateZ(calc(${index * (-360 / rollerImages.length)}deg + var(--partial-rotation) + var(--image-${index}))) 
@@ -45,6 +47,7 @@ export default function ImageRoller({rollerImages, scrollPosition, projectsScrol
                             0, 
                             calc(${((rollerImages.length / Math.PI) / 2) * 120} * var(--general-size-factor-px)))
                             `,
+                        opacity: `var(--opacity-${index})`
                     }}/>
                 
             </div>
@@ -78,13 +81,21 @@ export default function ImageRoller({rollerImages, scrollPosition, projectsScrol
     const ImageRollerElement = useRef(null)
     useEffect(() => {
         const decimalFromTop = scrollPosition / rollerImages.length
-        document.documentElement.style.setProperty('--current-rotation-factor', decimalFromTop)
+        document.documentElement.style.setProperty('--current-rotation-factor', decimalFromTop + .05) // can offset rotation here
         // console.log(scrollPosition / rollerImages.length)
 
         for(let count = 0; count < rollerImages.length; count++) {
             // console.log(count * (360 / rollerImages.length))
             document.documentElement.style.setProperty(`--image-${count}`, `${decimalFromTop * 360}deg`)
+
         }
+        imageRollerItems.forEach((imageRollerItem) => {
+            if(imageRollerItem.key == Math.round(scrollPosition)){
+                document.documentElement.style.setProperty(`--opacity-${imageRollerItem.key}`, 1)
+            } else {
+                document.documentElement.style.setProperty(`--opacity-${imageRollerItem.key}`, .4)  
+            }
+        })
     }, [scrollPosition])
 
 

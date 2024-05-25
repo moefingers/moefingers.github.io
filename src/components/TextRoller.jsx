@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import '../assets/styles/text-roller.css'
-import { colorCycle } from '../assets/animations'
+import { colorCycle } from '../assets/js/animations'
 
 export default function TextRoller() {
 

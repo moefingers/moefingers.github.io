@@ -5,7 +5,7 @@ export default function NotFound() {
         <div className="not-found-page-container">
             <div>page not found at <code>{window.location.pathname}{window.location.hash}</code></div>
             
-            <Link to="/portfolio">Return home?</Link>
+            <Link to="/">Return home?</Link>
 
         </div>
     )
