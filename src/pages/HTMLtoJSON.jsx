@@ -100,7 +100,7 @@ export default function HTMLtoJSON() {
                     <a href="#/Posts/writing-react-posts#the-function">the function</a>
                     <a href="#/Posts/writing-react-posts#the-output">the output</a>
                     <a href="#/Posts/writing-react-posts#interpretation">json intrepretation</a>
-                    <a href="#/Posts/writing-react-posts#afterword">afterword</a>
+                    <a href="#/Posts/writing-react-posts#afterword">afterword and link to try it</a>
                 </section>
                 <section id = 'intro'>
                     <h2>Intro</h2>

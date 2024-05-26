@@ -82,623 +82,623 @@
             "createdAt": "2024-05-26T03:50:29.221Z",
             "updatedAt": "2024-05-26T08:01:16.558Z",
             "reactElementContent": {
-                "type": "div",
-                "props": {
-                   "className": "html-area",
-                   "class": "html-area"
-                },
-                "children": [
-                   {
-                      "type": "section",
-                      "props": {
-                         "className": "header",
-                         "class": "header"
-                      },
-                      "children": [
-                         {
-                            "type": "h1",
-                            "props": {
-                               "className": "post title",
-                               "class": "post title"
-                            },
-                            "children": [
-                               "$$$title$$$"
-                            ]
-                         },
-                         {
-                            "type": "p",
-                            "props": {
-                               "className": "post author",
-                               "class": "post author"
-                            },
-                            "children": [
-                               "By: $$$author$$$"
-                            ]
-                         },
-                         {
-                            "type": "p",
-                            "props": {
-                               "className": "post date created",
-                               "class": "post date created"
-                            },
-                            "children": [
-                               "Posted: $$$createdAt$$$"
-                            ]
-                         },
-                         {
-                            "type": "p",
-                            "props": {
-                               "className": "post date updated",
-                               "class": "post date updated"
-                            },
-                            "children": [
-                               "Last Edited: $$$updatedAt$$$"
-                            ]
-                         }
-                      ]
-                   },
-                   {
-                      "type": "section",
-                      "props": {
-                         "className": "index",
-                         "class": "index"
-                      },
-                      "children": [
-                         {
-                            "type": "h2",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "Index"
-                            ]
-                         },
-                         {
-                            "type": "a",
-                            "props": {
-                               "className": "",
-                               "href": "#/Posts/writing-react-posts#intro"
-                            },
-                            "children": [
-                               "intro"
-                            ]
-                         },
-                         {
-                            "type": "a",
-                            "props": {
-                               "className": "",
-                               "href": "#/Posts/writing-react-posts#the-html"
-                            },
-                            "children": [
-                               "the html"
-                            ]
-                         },
-                         {
-                            "type": "a",
-                            "props": {
-                               "className": "",
-                               "href": "#/Posts/writing-react-posts#the-function"
-                            },
-                            "children": [
-                               "the function"
-                            ]
-                         },
-                         {
-                            "type": "a",
-                            "props": {
-                               "className": "",
-                               "href": "#/Posts/writing-react-posts#the-output"
-                            },
-                            "children": [
-                               "the output"
-                            ]
-                         },
-                         {
-                            "type": "a",
-                            "props": {
-                               "className": "",
-                               "href": "#/Posts/writing-react-posts#interpretation"
-                            },
-                            "children": [
-                               "json intrepretation"
-                            ]
-                         },
-                         {
-                            "type": "a",
-                            "props": {
-                               "className": "",
-                               "href": "#/Posts/writing-react-posts#afterword"
-                            },
-                            "children": [
-                               "afterword and link to try it yourself"
-                            ]
-                         }
-                      ]
-                   },
-                   {
-                      "type": "section",
-                      "props": {
-                         "className": "",
-                         "id": "intro"
-                      },
-                      "children": [
-                         {
-                            "type": "h2",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "Intro"
-                            ]
-                         },
-                         {
-                            "type": "p",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "So essentially I wrote an entire program that would recursively interpet children of a given HTML element and spit them all out in JSON."
-                            ]
-                         }
-                      ]
-                   },
-                   {
-                      "type": "section",
-                      "props": {
-                         "className": "",
-                         "id": "/Posts/writing-react-posts#the-html"
-                      },
-                      "children": [
-                         {
-                            "type": "h2",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "The HTML (input)"
-                            ]
-                         },
-                         {
-                            "type": "p",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "This is an example of the type of HTML I wanted to turn into JSON that could be later interpreted by ",
-                               {
-                                  "type": "em",
-                                  "props": {
-                                     "className": ""
-                                  },
-                                  "children": [
-                                     "React.createElement"
-                                  ]
-                               },
-                               "."
-                            ]
-                         },
-                         {
-                            "type": "p",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "You may notice that there are tokens like ",
-                               {
-                                  "type": "em",
-                                  "props": {
-                                     "className": ""
-                                  },
-                                  "children": [
-                                     "$$$token$$$"
-                                  ]
-                               },
-                               ". These will be replaced later by other information that I'd provide for each post in the post database."
-                            ]
-                         },
-                         {
-                            "type": "SyntaxHighlighter",
-                            "props": {
-                               "className": "code-container",
-                               "class": "code-container",
-                               "overridetypeto": "SyntaxHighlighter",
-                               "syntaxhighlighterstyle": "xt256"
-                            },
-                            "children": "<div ref={postElementRef} className='post-content-container'>\n    <section className='header'>\n        <h1 className='post title'>$$$title$$$</h1>\n        <p className=\"post author\">By: $$$author$$$</p>\n        <p className=\"post date created\">Posted: $$$createdAt$$$</p>\n        <p className=\"post date updated\">Last Edited: $$$updatedAt$$$</p>\n    </section>\n    <div className='container'>\n        <div className='child'>hi</div>\n        <div className='child'>hey</div>\n        <div className='child'>hello</div>\n        <div className='child-with-children'>\n            <div className='nested-child'>hola</div>\n            <div className='nested-child'>hehe</div>\n            <div className='nested-child'>omg stop</div>\n        </div>\n    </div>\n</div>"
-                         }
-                      ]
-                   },
-                   {
-                      "type": "section",
-                      "props": {
-                         "className": "",
-                         "id": "/Posts/writing-react-posts#the-function"
-                      },
-                      "children": [
-                         {
-                            "type": "h2",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "The Function"
-                            ]
-                         },
-                         {
-                            "type": "p",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "So here's the function which will recursively pull out contents of children and their children."
-                            ]
-                         },
-                         {
-                            "type": "p",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "The expected input is an element, I got that from declaring a constant that invokes ",
-                               {
-                                  "type": "em",
-                                  "props": {
-                                     "className": ""
-                                  },
-                                  "children": [
-                                     "React.useRef"
-                                  ]
-                               },
-                               "... ",
-                               {
-                                  "type": "em",
-                                  "props": {
-                                     "className": ""
-                                  },
-                                  "children": [
-                                     "const postElementRef = useRef()"
-                                  ]
-                               },
-                               " and then I fed ",
-                               {
-                                  "type": "em",
-                                  "props": {
-                                     "className": ""
-                                  },
-                                  "children": [
-                                     "postElementRef.current"
-                                  ]
-                               },
-                               " into this function."
-                            ]
-                         },
-                         {
-                            "type": "p",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "Funny story about this, this function used to read children instead of childNodes. Reading childNodes is important to preserve text siblings, like ",
-                               {
-                                  "type": "em",
-                                  "props": {
-                                     "className": ""
-                                  },
-                                  "children": [
-                                     "<div>\n    textsibling\n    <a>nestedelement</a>\n</div>"
-                                  ]
-                               }
-                            ]
-                         },
-                         {
-                            "type": "SyntaxHighlighter",
-                            "props": {
-                               "className": "code-container",
-                               "class": "code-container",
-                               "overridetypeto": "SyntaxHighlighter",
-                               "syntaxhighlighterstyle": "xt256"
-                            },
-                            "children": "function readNode(node) {\n    if(node.nodeType == Node.ELEMENT_NODE) {\n        const attributes = {}\n        for(const attribute of node.attributes) {\n            if(attribute.name != \"style\" ){\n              attributes[attribute.name] = attribute.value\n            }\n        }\n        if(attributes.overridetypeto){\n            delete attributes.contentstring\n            return {type: attributes.overridetypeto, props: {className: node.classList.value, ...attributes}, children: node.attributes.contentstring.value}\n        }\n        const children = Array.from(node.childNodes).map(readNode)\n        return {type: node.tagName.toLowerCase(), props: {className: node.classList.value, ...attributes}, children: children}\n    } else if (node.nodeType == Node.TEXT_NODE) {\n        return node.data\n    }\n}"
-                         }
-                      ]
-                   },
-                   {
-                      "type": "section",
-                      "props": {
-                         "className": "",
-                         "id": "/Posts/writing-react-posts#the-output"
-                      },
-                      "children": [
-                         {
-                            "type": "h2",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "The JSON (output)"
-                            ]
-                         },
-                         {
-                            "type": "p",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "Here's the output of the function given the previous input."
-                            ]
-                         },
-                         {
-                            "type": "SyntaxHighlighter",
-                            "props": {
-                               "className": "code-container",
-                               "class": "code-container",
-                               "overridetypeto": "SyntaxHighlighter",
-                               "syntaxhighlighterstyle": "xt256"
-                            },
-                            "children": "{\n    \"type\": \"div\",\n    \"props\": {\n       \"className\": \"post-content-container\"\n    },\n    \"children\": [\n       {\n          \"type\": \"section\",\n          \"props\": {\n             \"className\": \"header\"\n          },\n          \"children\": [\n             {\n                \"type\": \"h1\",\n                \"props\": {\n                   \"className\": \"post title\"\n                },\n                \"children\": \"$$$title$$$\"\n             },\n             {\n                \"type\": \"p\",\n                \"props\": {\n                   \"className\": \"post author\"\n                },\n                \"children\": \"By: $$$author$$$\"\n             },\n             {\n                \"type\": \"p\",\n                \"props\": {\n                   \"className\": \"post date created\"\n                },\n                \"children\": \"Posted: $$$createdAt$$$\"\n             },\n             {\n                \"type\": \"p\",\n                \"props\": {\n                   \"className\": \"post date updated\"\n                },\n                \"children\": \"Last Edited: $$$updatedAt$$$\"\n             }\n          ]\n       },\n       {\n          \"type\": \"div\",\n          \"props\": {\n             \"className\": \"container\"\n          },\n          \"children\": [\n             {\n                \"type\": \"div\",\n                \"props\": {\n                   \"className\": \"child\"\n                },\n                \"children\": \"hi\"\n             },\n             {\n                \"type\": \"div\",\n                \"props\": {\n                   \"className\": \"child\"\n                },\n                \"children\": \"hey\"\n             },\n             {\n                \"type\": \"div\",\n                \"props\": {\n                   \"className\": \"child\"\n                },\n                \"children\": \"hello\"\n             },\n             {\n                \"type\": \"div\",\n                \"props\": {\n                   \"className\": \"child-with-children\"\n                },\n                \"children\": [\n                   {\n                      \"type\": \"div\",\n                      \"props\": {\n                         \"className\": \"nested-child\"\n                      },\n                      \"children\": \"hola\"\n                   },\n                   {\n                      \"type\": \"div\",\n                      \"props\": {\n                         \"className\": \"nested-child\"\n                      },\n                      \"children\": \"hehe\"\n                   },\n                   {\n                      \"type\": \"div\",\n                      \"props\": {\n                         \"className\": \"nested-child\"\n                      },\n                      \"children\": \"omg stop\"\n                   }\n                ]\n             }\n          ]\n       }\n    ]\n }"
-                         }
-                      ]
-                   },
-                   {
-                      "type": "section",
-                      "props": {
-                         "className": "",
-                         "id": "/Posts/writing-react-posts#interpretation"
-                      },
-                      "children": [
-                         {
-                            "type": "h2",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "Interpretation of the JSON by React"
-                            ]
-                         },
-                         {
-                            "type": "p",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "So now that we have a JSON, we could hypothetically pass it into ",
-                               {
-                                  "type": "em",
-                                  "props": {
-                                     "className": ""
-                                  },
-                                  "children": [
-                                     "React.createElement"
-                                  ]
-                               },
-                               " - but it's not that easy."
-                            ]
-                         },
-                         {
-                            "type": "p",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "React won't know to interpret nested children as new ",
-                               {
-                                  "type": "em",
-                                  "props": {
-                                     "className": ""
-                                  },
-                                  "children": [
-                                     "React"
-                                  ]
-                               },
-                               " elements that ought to be passed into another invocation ",
-                               {
-                                  "type": "em",
-                                  "props": {
-                                     "className": ""
-                                  },
-                                  "children": [
-                                     "React.createElement"
-                                  ]
-                               },
-                               "."
-                            ]
-                         },
-                         {
-                            "type": "p",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "Can you see where this is going? ",
-                               {
-                                  "type": "em",
-                                  "props": {
-                                     "className": ""
-                                  },
-                                  "children": [
-                                     "Recursion"
-                                  ]
-                               },
-                               ". "
-                            ]
-                         },
-                         {
-                            "type": "p",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "Here's what we came up with, assuming we made a state - ",
-                               {
-                                  "type": "em",
-                                  "props": {
-                                     "className": ""
-                                  },
-                                  "children": [
-                                     "const [reactPage, setReactPage] = useState(null)"
-                                  ]
-                               },
-                               " and rendered it later in the ",
-                               {
-                                  "type": "em",
-                                  "props": {
-                                     "className": ""
-                                  },
-                                  "children": [
-                                     "JSX"
-                                  ]
-                               },
-                               " as ",
-                               {
-                                  "type": "em",
-                                  "props": {
-                                     "className": ""
-                                  },
-                                  "children": [
-                                     "{reactPage}"
-                                  ]
-                               },
-                               "."
-                            ]
-                         },
-                         {
-                            "type": "SyntaxHighlighter",
-                            "props": {
-                               "className": "code-container",
-                               "class": "code-container",
-                               "overridetypeto": "SyntaxHighlighter",
-                               "syntaxhighlighterstyle": "xt256"
-                            },
-                            "children": "function createReactElement(reactElementContent) {\n    const { type, props, children } = reactElementContent;\n    if(props.class) { delete props.class }\n    if(type == \"SyntaxHighlighter\"){\n        return <SyntaxHighlighter language=\"javascript\" style={xt256}>{children}</SyntaxHighlighter>\n    }\n\n    // If children is a string, wrap it in an array\n    const childrenArray = Array.isArray(children) ? children : [children];\n\n    const elementChildren = childrenArray.map((child) => {\n        // If child is an object, recursively create the React element\n        if (typeof child === 'object') {\n            return createReactElement(child);\n        }\n        // If child is a string, create a text element\n        if (child.includes(\"$$$\")){\n            function replaceThreeDollarToken(fullString, postFromJSON) {\n                return fullString.replace(/${3}([^$]+)${3}/g, (match, group) => {\n                    try {\n                        if (parseISO(postFromJSON[group])) {\n                            return toUserTime(postFromJSON[group]);\n                        }\n                    } catch (error) {\n                        console.log(error)\n                    }\n                    return postFromJSON[group];\n                });\n            }\n\n            child = replaceThreeDollarToken(child, postFromJSON)\n        }\n        return child;\n    });\n\n    const element = createElement(type, props, ...elementChildren);\n    return element;\n}\n\nsetReactPage(createReactElement(postFromJSON.reactElementContent))"
-                         },
-                         {
-                            "type": "p",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "You'll note that I'm using parseISO from ",
-                               {
-                                  "type": "em",
-                                  "props": {
-                                     "className": ""
-                                  },
-                                  "children": [
-                                     "date-fns"
-                                  ]
-                               },
-                               " to convert ISO strings into dates if possible. "
-                            ]
-                         },
-                         {
-                            "type": "p",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "Then, if it is possible, my own function ",
-                               {
-                                  "type": "em",
-                                  "props": {
-                                     "className": ""
-                                  },
-                                  "children": [
-                                     "toUserTime"
-                                  ]
-                               },
-                               " to convert those dates into user-friendly strings."
-                            ]
-                         },
-                         {
-                            "type": "p",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "With that out of the way, I can mention what you probably see already, which is a nice RegExp to collect the string between the two ",
-                               {
-                                  "type": "em",
-                                  "props": {
-                                     "className": ""
-                                  },
-                                  "children": [
-                                     "$$$"
-                                  ]
-                               },
-                               " and replace the whole \"token\"."
-                            ]
-                         },
-                         {
-                            "type": "p",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "Then, that string is used as a key in the ",
-                               {
-                                  "type": "em",
-                                  "props": {
-                                     "className": ""
-                                  },
-                                  "children": [
-                                     "post"
-                                  ]
-                               },
-                               " object to get things like the title, or the dates."
-                            ]
-                         }
-                      ]
-                   },
-                   {
-                      "type": "section",
-                      "props": {
-                         "className": "",
-                         "id": "/Posts/writing-react-posts#afterword"
-                      },
-                      "children": [
-                         {
-                            "type": "h2",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "Afterword"
-                            ]
-                         },
-                         {
-                            "type": "p",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "Is it overengineered? Probably. Wanna use the function? Try visiting ",
-                               {
-                                  "type": "a",
-                                  "props": {
-                                     "className": "",
-                                     "href": "/#/dev",
-                                     "target": "_blank"
-                                  },
-                                  "children": [
-                                     "/#/dev"
-                                  ]
-                               },
-                               " on this site."
-                            ]
-                         },
-                         {
-                            "type": "p",
-                            "props": {
-                               "className": ""
-                            },
-                            "children": [
-                               "Wanna see a live example of all that in action? You just did. 🐇"
-                            ]
-                         }
-                      ]
-                   }
-                ]
-             }
+               "type": "div",
+               "props": {
+                  "className": "html-area",
+                  "class": "html-area"
+               },
+               "children": [
+                  {
+                     "type": "section",
+                     "props": {
+                        "className": "header",
+                        "class": "header"
+                     },
+                     "children": [
+                        {
+                           "type": "h1",
+                           "props": {
+                              "className": "post title",
+                              "class": "post title"
+                           },
+                           "children": [
+                              "$$$title$$$"
+                           ]
+                        },
+                        {
+                           "type": "p",
+                           "props": {
+                              "className": "post author",
+                              "class": "post author"
+                           },
+                           "children": [
+                              "By: $$$author$$$"
+                           ]
+                        },
+                        {
+                           "type": "p",
+                           "props": {
+                              "className": "post date created",
+                              "class": "post date created"
+                           },
+                           "children": [
+                              "Posted: $$$createdAt$$$"
+                           ]
+                        },
+                        {
+                           "type": "p",
+                           "props": {
+                              "className": "post date updated",
+                              "class": "post date updated"
+                           },
+                           "children": [
+                              "Last Edited: $$$updatedAt$$$"
+                           ]
+                        }
+                     ]
+                  },
+                  {
+                     "type": "section",
+                     "props": {
+                        "className": "index",
+                        "class": "index"
+                     },
+                     "children": [
+                        {
+                           "type": "h2",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "Index"
+                           ]
+                        },
+                        {
+                           "type": "a",
+                           "props": {
+                              "className": "",
+                              "href": "#/Posts/writing-react-posts#intro"
+                           },
+                           "children": [
+                              "intro"
+                           ]
+                        },
+                        {
+                           "type": "a",
+                           "props": {
+                              "className": "",
+                              "href": "#/Posts/writing-react-posts#the-html"
+                           },
+                           "children": [
+                              "the html"
+                           ]
+                        },
+                        {
+                           "type": "a",
+                           "props": {
+                              "className": "",
+                              "href": "#/Posts/writing-react-posts#the-function"
+                           },
+                           "children": [
+                              "the function"
+                           ]
+                        },
+                        {
+                           "type": "a",
+                           "props": {
+                              "className": "",
+                              "href": "#/Posts/writing-react-posts#the-output"
+                           },
+                           "children": [
+                              "the output"
+                           ]
+                        },
+                        {
+                           "type": "a",
+                           "props": {
+                              "className": "",
+                              "href": "#/Posts/writing-react-posts#interpretation"
+                           },
+                           "children": [
+                              "json intrepretation"
+                           ]
+                        },
+                        {
+                           "type": "a",
+                           "props": {
+                              "className": "",
+                              "href": "#/Posts/writing-react-posts#afterword"
+                           },
+                           "children": [
+                              "afterword"
+                           ]
+                        }
+                     ]
+                  },
+                  {
+                     "type": "section",
+                     "props": {
+                        "className": "",
+                        "id": "intro"
+                     },
+                     "children": [
+                        {
+                           "type": "h2",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "Intro"
+                           ]
+                        },
+                        {
+                           "type": "p",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "So essentially I wrote an entire program that would recursively interpet children of a given HTML element and spit them all out in JSON."
+                           ]
+                        }
+                     ]
+                  },
+                  {
+                     "type": "section",
+                     "props": {
+                        "className": "",
+                        "id": "/Posts/writing-react-posts#the-html"
+                     },
+                     "children": [
+                        {
+                           "type": "h2",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "The HTML (input)"
+                           ]
+                        },
+                        {
+                           "type": "p",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "This is an example of the type of HTML I wanted to turn into JSON that could be later interpreted by ",
+                              {
+                                 "type": "em",
+                                 "props": {
+                                    "className": ""
+                                 },
+                                 "children": [
+                                    "React.createElement"
+                                 ]
+                              },
+                              "."
+                           ]
+                        },
+                        {
+                           "type": "p",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "You may notice that there are tokens like ",
+                              {
+                                 "type": "em",
+                                 "props": {
+                                    "className": ""
+                                 },
+                                 "children": [
+                                    "$$$token$$$"
+                                 ]
+                              },
+                              ". These will be replaced later by other information that I'd provide for each post in the post database."
+                           ]
+                        },
+                        {
+                           "type": "SyntaxHighlighter",
+                           "props": {
+                              "className": "code-container",
+                              "class": "code-container",
+                              "overridetypeto": "SyntaxHighlighter",
+                              "syntaxhighlighterstyle": "xt256"
+                           },
+                           "children": "<div ref={postElementRef} className='post-content-container'>\n    <section className='header'>\n        <h1 className='post title'>$$$title$$$</h1>\n        <p className=\"post author\">By: $$$author$$$</p>\n        <p className=\"post date created\">Posted: $$$createdAt$$$</p>\n        <p className=\"post date updated\">Last Edited: $$$updatedAt$$$</p>\n    </section>\n    <div className='container'>\n        <div className='child'>hi</div>\n        <div className='child'>hey</div>\n        <div className='child'>hello</div>\n        <div className='child-with-children'>\n            <div className='nested-child'>hola</div>\n            <div className='nested-child'>hehe</div>\n            <div className='nested-child'>omg stop</div>\n        </div>\n    </div>\n</div>"
+                        }
+                     ]
+                  },
+                  {
+                     "type": "section",
+                     "props": {
+                        "className": "",
+                        "id": "/Posts/writing-react-posts#the-function"
+                     },
+                     "children": [
+                        {
+                           "type": "h2",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "The Function"
+                           ]
+                        },
+                        {
+                           "type": "p",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "So here's the function which will recursively pull out contents of children and their children."
+                           ]
+                        },
+                        {
+                           "type": "p",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "The expected input is an element, I got that from declaring a constant that invokes ",
+                              {
+                                 "type": "em",
+                                 "props": {
+                                    "className": ""
+                                 },
+                                 "children": [
+                                    "React.useRef"
+                                 ]
+                              },
+                              "... ",
+                              {
+                                 "type": "em",
+                                 "props": {
+                                    "className": ""
+                                 },
+                                 "children": [
+                                    "const postElementRef = useRef()"
+                                 ]
+                              },
+                              " and then I fed ",
+                              {
+                                 "type": "em",
+                                 "props": {
+                                    "className": ""
+                                 },
+                                 "children": [
+                                    "postElementRef.current"
+                                 ]
+                              },
+                              " into this function."
+                           ]
+                        },
+                        {
+                           "type": "p",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "Funny story about this, this function used to read children instead of childNodes. Reading childNodes is important to preserve text siblings, like ",
+                              {
+                                 "type": "em",
+                                 "props": {
+                                    "className": ""
+                                 },
+                                 "children": [
+                                    "<div>textsibling<a>nestedelement</a></div>"
+                                 ]
+                              }
+                           ]
+                        },
+                        {
+                           "type": "SyntaxHighlighter",
+                           "props": {
+                              "className": "code-container",
+                              "class": "code-container",
+                              "overridetypeto": "SyntaxHighlighter",
+                              "syntaxhighlighterstyle": "xt256"
+                           },
+                           "children": "function readNode(node) {\n    if(node.nodeType == Node.ELEMENT_NODE) {\n        const attributes = {}\n        for(const attribute of node.attributes) {\n            if(attribute.name != \"style\" ){\n              attributes[attribute.name] = attribute.value\n            }\n        }\n        if(attributes.overridetypeto){\n            delete attributes.contentstring\n            return {type: attributes.overridetypeto, props: {className: node.classList.value, ...attributes}, children: node.attributes.contentstring.value}\n        }\n        const children = Array.from(node.childNodes).map(readNode)\n        return {type: node.tagName.toLowerCase(), props: {className: node.classList.value, ...attributes}, children: children}\n    } else if (node.nodeType == Node.TEXT_NODE) {\n        return node.data\n    }\n}"
+                        }
+                     ]
+                  },
+                  {
+                     "type": "section",
+                     "props": {
+                        "className": "",
+                        "id": "/Posts/writing-react-posts#the-output"
+                     },
+                     "children": [
+                        {
+                           "type": "h2",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "The JSON (output)"
+                           ]
+                        },
+                        {
+                           "type": "p",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "Here's the output of the function given the previous input."
+                           ]
+                        },
+                        {
+                           "type": "SyntaxHighlighter",
+                           "props": {
+                              "className": "code-container",
+                              "class": "code-container",
+                              "overridetypeto": "SyntaxHighlighter",
+                              "syntaxhighlighterstyle": "xt256"
+                           },
+                           "children": "{\n    \"type\": \"div\",\n    \"props\": {\n       \"className\": \"post-content-container\"\n    },\n    \"children\": [\n       {\n          \"type\": \"section\",\n          \"props\": {\n             \"className\": \"header\"\n          },\n          \"children\": [\n             {\n                \"type\": \"h1\",\n                \"props\": {\n                   \"className\": \"post title\"\n                },\n                \"children\": \"$$$title$$$\"\n             },\n             {\n                \"type\": \"p\",\n                \"props\": {\n                   \"className\": \"post author\"\n                },\n                \"children\": \"By: $$$author$$$\"\n             },\n             {\n                \"type\": \"p\",\n                \"props\": {\n                   \"className\": \"post date created\"\n                },\n                \"children\": \"Posted: $$$createdAt$$$\"\n             },\n             {\n                \"type\": \"p\",\n                \"props\": {\n                   \"className\": \"post date updated\"\n                },\n                \"children\": \"Last Edited: $$$updatedAt$$$\"\n             }\n          ]\n       },\n       {\n          \"type\": \"div\",\n          \"props\": {\n             \"className\": \"container\"\n          },\n          \"children\": [\n             {\n                \"type\": \"div\",\n                \"props\": {\n                   \"className\": \"child\"\n                },\n                \"children\": \"hi\"\n             },\n             {\n                \"type\": \"div\",\n                \"props\": {\n                   \"className\": \"child\"\n                },\n                \"children\": \"hey\"\n             },\n             {\n                \"type\": \"div\",\n                \"props\": {\n                   \"className\": \"child\"\n                },\n                \"children\": \"hello\"\n             },\n             {\n                \"type\": \"div\",\n                \"props\": {\n                   \"className\": \"child-with-children\"\n                },\n                \"children\": [\n                   {\n                      \"type\": \"div\",\n                      \"props\": {\n                         \"className\": \"nested-child\"\n                      },\n                      \"children\": \"hola\"\n                   },\n                   {\n                      \"type\": \"div\",\n                      \"props\": {\n                         \"className\": \"nested-child\"\n                      },\n                      \"children\": \"hehe\"\n                   },\n                   {\n                      \"type\": \"div\",\n                      \"props\": {\n                         \"className\": \"nested-child\"\n                      },\n                      \"children\": \"omg stop\"\n                   }\n                ]\n             }\n          ]\n       }\n    ]\n }"
+                        }
+                     ]
+                  },
+                  {
+                     "type": "section",
+                     "props": {
+                        "className": "",
+                        "id": "/Posts/writing-react-posts#interpretation"
+                     },
+                     "children": [
+                        {
+                           "type": "h2",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "Interpretation of the JSON by React"
+                           ]
+                        },
+                        {
+                           "type": "p",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "So now that we have a JSON, we could hypothetically pass it into ",
+                              {
+                                 "type": "em",
+                                 "props": {
+                                    "className": ""
+                                 },
+                                 "children": [
+                                    "React.createElement"
+                                 ]
+                              },
+                              " - but it's not that easy."
+                           ]
+                        },
+                        {
+                           "type": "p",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "React won't know to interpret nested children as new ",
+                              {
+                                 "type": "em",
+                                 "props": {
+                                    "className": ""
+                                 },
+                                 "children": [
+                                    "React"
+                                 ]
+                              },
+                              " elements that ought to be passed into another invocation ",
+                              {
+                                 "type": "em",
+                                 "props": {
+                                    "className": ""
+                                 },
+                                 "children": [
+                                    "React.createElement"
+                                 ]
+                              },
+                              "."
+                           ]
+                        },
+                        {
+                           "type": "p",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "Can you see where this is going? ",
+                              {
+                                 "type": "em",
+                                 "props": {
+                                    "className": ""
+                                 },
+                                 "children": [
+                                    "Recursion"
+                                 ]
+                              },
+                              ". "
+                           ]
+                        },
+                        {
+                           "type": "p",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "Here's what we came up with, assuming we made a state - ",
+                              {
+                                 "type": "em",
+                                 "props": {
+                                    "className": ""
+                                 },
+                                 "children": [
+                                    "const [reactPage, setReactPage] = useState(null)"
+                                 ]
+                              },
+                              " and rendered it later in the ",
+                              {
+                                 "type": "em",
+                                 "props": {
+                                    "className": ""
+                                 },
+                                 "children": [
+                                    "JSX"
+                                 ]
+                              },
+                              " as ",
+                              {
+                                 "type": "em",
+                                 "props": {
+                                    "className": ""
+                                 },
+                                 "children": [
+                                    "{reactPage}"
+                                 ]
+                              },
+                              "."
+                           ]
+                        },
+                        {
+                           "type": "SyntaxHighlighter",
+                           "props": {
+                              "className": "code-container",
+                              "class": "code-container",
+                              "overridetypeto": "SyntaxHighlighter",
+                              "syntaxhighlighterstyle": "xt256"
+                           },
+                           "children": "function createReactElement(reactElementContent) {\n    const { type, props, children } = reactElementContent;\n    if(props.class) { delete props.class }\n    if(type == \"SyntaxHighlighter\"){\n        return <SyntaxHighlighter language=\"javascript\" style={xt256}>{children}</SyntaxHighlighter>\n    }\n\n    // If children is a string, wrap it in an array\n    const childrenArray = Array.isArray(children) ? children : [children];\n\n    const elementChildren = childrenArray.map((child) => {\n        // If child is an object, recursively create the React element\n        if (typeof child === 'object') {\n            return createReactElement(child);\n        }\n        // If child is a string, create a text element\n        if (child.includes(\"$$$\")){\n            function replaceThreeDollarToken(fullString, postFromJSON) {\n                return fullString.replace(/${3}([^$]+)${3}/g, (match, group) => {\n                    try {\n                        if (parseISO(postFromJSON[group])) {\n                            return toUserTime(postFromJSON[group]);\n                        }\n                    } catch (error) {\n                        console.log(error)\n                    }\n                    return postFromJSON[group];\n                });\n            }\n\n            child = replaceThreeDollarToken(child, postFromJSON)\n        }\n        return child;\n    });\n\n    const element = createElement(type, props, ...elementChildren);\n    return element;\n}\n\nsetReactPage(createReactElement(postFromJSON.reactElementContent))"
+                        },
+                        {
+                           "type": "p",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "You'll note that I'm using parseISO from ",
+                              {
+                                 "type": "em",
+                                 "props": {
+                                    "className": ""
+                                 },
+                                 "children": [
+                                    "date-fns"
+                                 ]
+                              },
+                              " to convert ISO strings into dates if possible. "
+                           ]
+                        },
+                        {
+                           "type": "p",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "Then, if it is possible, my own function ",
+                              {
+                                 "type": "em",
+                                 "props": {
+                                    "className": ""
+                                 },
+                                 "children": [
+                                    "toUserTime"
+                                 ]
+                              },
+                              " to convert those dates into user-friendly strings."
+                           ]
+                        },
+                        {
+                           "type": "p",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "With that out of the way, I can mention what you probably see already, which is a nice RegExp to collect the string between the two ",
+                              {
+                                 "type": "em",
+                                 "props": {
+                                    "className": ""
+                                 },
+                                 "children": [
+                                    "$$$"
+                                 ]
+                              },
+                              " and replace the whole \"token\"."
+                           ]
+                        },
+                        {
+                           "type": "p",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "Then, that string is used as a key in the ",
+                              {
+                                 "type": "em",
+                                 "props": {
+                                    "className": ""
+                                 },
+                                 "children": [
+                                    "post"
+                                 ]
+                              },
+                              " object to get things like the title, or the dates."
+                           ]
+                        }
+                     ]
+                  },
+                  {
+                     "type": "section",
+                     "props": {
+                        "className": "",
+                        "id": "/Posts/writing-react-posts#afterword"
+                     },
+                     "children": [
+                        {
+                           "type": "h2",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "Afterword"
+                           ]
+                        },
+                        {
+                           "type": "p",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "Is it overengineered? Probably. Wanna use the function? Try visiting ",
+                              {
+                                 "type": "a",
+                                 "props": {
+                                    "className": "",
+                                    "href": "/#/dev",
+                                    "target": "_blank"
+                                 },
+                                 "children": [
+                                    "/#/dev"
+                                 ]
+                              },
+                              " on this site."
+                           ]
+                        },
+                        {
+                           "type": "p",
+                           "props": {
+                              "className": ""
+                           },
+                           "children": [
+                              "Wanna see a live example of all that in action? You just did. 🐇"
+                           ]
+                        }
+                     ]
+                  }
+               ]
+            }
         }
     ]
 }
