@@ -207,7 +207,7 @@ export default function Projects() {
             <div ref={projectsScrollElement} className='scroll' >
                 {Object.values(projectData)[0] 
                 ? [...projectSectionElements] 
-                : rateLimitExceeded ? null :"Loading!"}
+                : rateLimitExceeded ? null :"Loading.. if you wait too long that means you hit a rate limit!"}
                 <ImageRoller scrollPosition={scrollPosition} projectsScrollElement={projectsScrollElement.current} rollerImages={rollerImages} backupImage={placeholder}/>
             </div>
         </div>
