@@ -1,4 +1,5 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
+import { useInterval } from "usehooks-ts"
 import "../assets/styles/mouse-over-spinner.css"
 
 /*
@@ -17,32 +18,55 @@ However, specifying a state, setState, and stateType (stateIsArrayOrString) will
 */
 
 export default function MouseOverSpinner({textArray, state=false, setState=false, stateIsArrayOrString=null}) {
+    // textArray = ["hi", "hello", "hola", "oi", "bruv"]
 
-    const spinnerRefElement = useRef(null)
-    useEffect(() => {
+    const [rotation, setRotation] = useState(0)
+    const [speedFactor, setSpeedFactor] = useState(0)
+    const [moving, setMoving] = useState(false)
 
-    }, [])
+    function handleMouseMoveOnSpinner(event){
+        // console.log(event)
+        const boundingRect = event.currentTarget.getBoundingClientRect()
+        const xPosInBox = (event.clientX - boundingRect.x)
+        const xPosFromCenter = xPosInBox - (boundingRect.width / 2)
+        const newSpeedFactor = xPosFromCenter / (boundingRect.width / 2)
+
+        // console.log(newSpeedFactor)
+        if(newSpeedFactor < .3 && newSpeedFactor > -.3){
+            setSpeedFactor(0)
+        } else {
+            if(newSpeedFactor >= .3){
+                setSpeedFactor(newSpeedFactor - .3)
+            } else if(newSpeedFactor <= -.3){
+                setSpeedFactor(newSpeedFactor + .3)
+            }
+        }
+    }
+
+    useInterval(() => {
+        setRotation(rotation + (speedFactor * -10))
+    }, moving ? 10 : null)
 
     return (
-        <div className="mouse-over-spinner-container">
-            <div className="mouse-over-spinner" ref={spinnerRefElement}>
-                {textArray.map((text, index) => 
-                    <div
-                        className={`mouse-over-spinner-item ${state?"clickable":""}
-                        ${stateIsArrayOrString === "string" ? (state === Object.values(text)[0] ? "selected" : "") : ""}
-                        ${stateIsArrayOrString === "array" ? (state.includes(Object.values(text)[0]) ? "selected" : "") : ""}
-                        `} key={index} 
-                        onClick={
-                            stateIsArrayOrString === "string" ? (() => setState(Object.values(text)[0]))
-                            : stateIsArrayOrString === "array" ? (() => 
-                                setState(state.includes(Object.values(text)[0])
-                                    ? state.filter((item) => item !== Object.values(text)[0])
-                                    : [...state, Object.values(text)[0]]))
-                            : null
-                        }
-                    >{Object.keys(text)}</div>
-                )}
-            </div>
+        <div className="mouse-over-spinner-container" onMouseMove={handleMouseMoveOnSpinner} onMouseEnter={() => setMoving(true)} onMouseLeave={() => setMoving(false)}>
+            
+            {textArray.map((text, index) => {
+                return (<div style={{transform: `translateX(-50%) rotateX(-20deg)  rotateY(${index * (360 / textArray.length) + rotation}deg) translateZ(calc(var(--general-size-factor-px) * 30 * pow(${typeof text === "object" ? Object.keys(text).length : text.length}, 0.5))) `}}
+                    className={`mouse-over-spinner-item ${state?"clickable":""}
+                    ${stateIsArrayOrString === "string" ? (state === Object.values(text)[0] ? "selected" : "") : ""}
+                    ${stateIsArrayOrString === "array" ? (state.includes(Object.values(text)[0]) ? "selected" : "") : ""}
+                    `} key={index} 
+                    onClick={
+                        stateIsArrayOrString === "string" ? (() => setState(Object.values(text)[0]))
+                        : stateIsArrayOrString === "array" ? (() => 
+                            setState(state.includes(Object.values(text)[0])
+                                ? state.filter((item) => item !== Object.values(text)[0])
+                                : [...state, Object.values(text)[0]]))
+                        : null
+                    }
+                >{typeof text === "object" ? Object.keys(text) : text}</div>)
+            })}
+            
         </div> 
     )
 }

@@ -62,6 +62,12 @@
     cursor: pointer;
 }
 
+
+.image-roller-item img ~ img:hover, 
+.image-roller-item img:hover ~ img {
+    opacity: 1 !important;
+}
+
 .image-roller-item img.faded {
     opacity: .3;
 }
