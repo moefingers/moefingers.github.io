@@ -7,6 +7,14 @@ div.post-single-page-container * {
     font-size: calc(var(--enlargeable-font-size-factor-px) *15);
 }
 
+div.post-single-page-container > div > section > a{
+    display: block;
+}
+
+div.post-single-page-container > div > section > a:hover{
+    font-size: calc(var(--enlargeable-font-size-factor-px) *17);
+}
+
 h1.post.title{
     font-size: calc(var(--enlargeable-font-size-factor-px) *20);
 }
