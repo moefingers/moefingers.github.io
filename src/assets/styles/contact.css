@@ -1,0 +1,14 @@
+div.contact-page-container ul {
+    list-style-type: none;
+    text-align: center;
+    margin-top: 20%;
+}
+
+div.contact-page-container ul li {
+    margin-bottom: 5%;
+}
+
+div.contact-page-container ul li a {
+    font-size: calc(var(--enlargeable-font-size-factor-px) * 16);
+    animation: color-cycle 2s infinite;
+}
