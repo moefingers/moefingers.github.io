@@ -8,7 +8,7 @@
             "title": "A Long Journey Through My SPA Blog/Portfolio",
             "author": "aohammad Zuiter",
             "createdAt": "2024-05-26T01:00:00Z",
-            "updatedAt": "2024-05-26T06:48:05.046Z",
+            "updatedAt": "2024-05-26T21:19:44.398Z",
             "reactElementContent": {
                 "type": "div",
                 "props": {
@@ -25,28 +25,28 @@
                    {
                       "type": "h1",
                       "props": {
-                         "className": "$$$title$$$"
+                         "className": ""
                       },
-                      "children": "Single Page Application Portfolio Including Projects and Posts"
+                      "children": "$$$title$$$"
                    },
                    {
                       "type": "p",
                       "props": {
-                         "className": "post $$$author$$$"
+                         "className": "post"
                       },
-                      "children": "By: {author}"
+                      "children": "By: $$$author$$$"
                    },
                    {
                       "type": "p",
                       "props": {
-                         "className": "post date $$$createdAt$$$"
+                         "className": "post date created"
                       },
                       "children": "Posted: $$$$createdAt$$$"
                    },
                    {
                       "type": "p",
                       "props": {
-                         "className": "post date $$$updatedAt$$$"
+                         "className": "post date updated"
                       },
                       "children": "Last Edited: $$$$updatedAt$$$"
                    },
@@ -61,7 +61,7 @@
                             "props": {
                                "className": "nested div"
                             },
-                            "children": "hi"
+                            "children": "You may notice this page looks really off. That's by design. It's not done. For now, it's a placeholder. Go see another post instead!"
                          },
                          {
                             "type": "div",
