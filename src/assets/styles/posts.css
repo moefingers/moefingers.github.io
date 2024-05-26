@@ -1,6 +1,7 @@
 .post-single-page-container{
     overflow-y: auto;
     scroll-behavior: smooth;
+    height: 100%;
 }
 
 div.post-single-page-container * {
@@ -9,12 +10,17 @@ div.post-single-page-container * {
     /* scrollbar-width: thin; */
 }
 
+div.post-single-page-container > :last-child{
+    display:block;
+    margin-bottom: calc(var(--enlargeable-font-size-factor-px) * 50);
+}
+
 div.post-single-page-container > div > section > a{
     display: block;
 }
 
 div.post-single-page-container > div > section > a:hover{
-    font-size: calc(var(--enlargeable-font-size-factor-px) *17);
+    font-size: calc(var(--enlargeable-font-size-factor-px) * 17);
 }
 
 h1.post.title{

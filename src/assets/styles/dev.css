@@ -17,3 +17,7 @@ div.dev-page-container *{
 button.dev {
     background-color: gray;
 }
+
+button.dev:hover {
+    background-color: lightgray;
+}
