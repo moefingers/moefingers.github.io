@@ -1,7 +1,9 @@
 div.contact-page-container ul {
     list-style-type: none;
     text-align: center;
-    margin-top: 20%;
+    position: relative;
+    top: 40%;
+    transform: translateY(-50%);
 }
 
 div.contact-page-container ul li {

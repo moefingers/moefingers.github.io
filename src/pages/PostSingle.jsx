@@ -12,9 +12,8 @@ import { Link } from 'react-router-dom'
 
 import { posts } from '../assets/data/posts.json'
 
-import "../assets/styles/posts.css"
+import "../assets/styles/post-single.css"
 
-import '../assets/styles/posts.css'
 import { parseISO } from "date-fns"
 
 export default function PostSingle() {

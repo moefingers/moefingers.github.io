@@ -1,11 +1,11 @@
 {
     "posts": [
         {
-            "hide": true,
+            "hide": false,
             "connectedToProject": "moefingers.github.io",
             "path": "portfolio",
 
-            "title": "Single Page Application Portfolio Including Projects and Posts",
+            "title": "A Long Journey Through My SPA Blog/Portfolio",
             "author": "Mohammad Zuiter",
             "createdAt": "2024-05-26T01:00:00Z",
             "updatedAt": "2024-05-26T06:48:05.046Z",
