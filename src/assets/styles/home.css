@@ -1,6 +1,12 @@
+div.home-page-container {
+    
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
 .home-page-container * {
-    font-size: calc(16 * var(--font-size-factor-px));
-    line-height: calc(24 * var(--font-size-factor-px));
+    font-size: calc(15 * var(--enlargeable-font-size-factor-px));
+    line-height: calc(20 * var(--enlargeable-font-size-factor-px));
 }
 
 

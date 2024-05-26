@@ -1,7 +1,7 @@
 .text-roller-container{
     position: absolute;
     transform-style: preserve-3d;
-    height: calc(var(--font-size-factor-px) * 24);
+    height: calc(20 * var(--enlargeable-font-size-factor-px));
     width: calc(var(--font-size-factor-px) * 200);
     transform: translate3d(0, 0, 0) rotateX(0deg);
 
