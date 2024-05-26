@@ -109,7 +109,7 @@ export default function HTMLtoJSON() {
                 <section id = '/Posts/writing-react-posts#the-html'>
                     <h2>The HTML (input)</h2>
                     <p>This is an example of the type of HTML I wanted to turn into JSON that could be later interpreted by <em>React.createElement</em>.</p>
-                    <p>You may notice that there are tokens like <em>$$$token$$$</em>. These will be replaced later by other information that I'd provide for each post in the post database.</p>
+                    <p>You may notice that there are tokens like <em>$$$</em><em>token$$$</em>. These will be replaced later by other information that I'd provide for each post in the post database.</p>
                     <SyntaxHighlighter language='html' style={xt256} className='code-container' contentstring={codeStringInputExample} overridetypeto={"SyntaxHighlighter"} syntaxhighlighterstyle={"xt256"}>
                         {codeStringInputExample}
                     </SyntaxHighlighter>
