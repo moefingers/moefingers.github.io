@@ -28,7 +28,7 @@ export default function PostSingle() {
             const goodPath = window.location.hash.toLowerCase() == "#/posts/" + postFromJSON.path.toLowerCase()
 
             if(goodPath){
-                console.log("good hash: " + "#/posts/" + postFromJSON.path.toLowerCase())
+                // console.log("good hash: " + "#/posts/" + postFromJSON.path.toLowerCase())
                 setPost(postFromJSON)
                 
                 function createReactElement(reactElementContent) {
@@ -55,7 +55,7 @@ export default function PostSingle() {
                                             return toUserTime(postFromJSON[group]);
                                         }
                                     } catch (error) {
-                                        console.log(error)
+                                        // console.log(error)
                                     }
                                     return postFromJSON[group];
                                 });
