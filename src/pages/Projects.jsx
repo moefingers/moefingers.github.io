@@ -130,12 +130,12 @@ export default function Projects() {
 
     useEffect(() => {
         // console.log(projectData)
-
+            // posts
         const projectPosts = {}; posts.forEach(({connectedToProject, path}, index) => {
             if(connectedToProject != undefined){
                 projectPosts[connectedToProject] = path
             }
-        }); console.log(projectPosts)
+        }); //console.log(projectPosts)
 
         const sections = []
         const preStateRollerImages = []
