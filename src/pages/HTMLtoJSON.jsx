@@ -182,10 +182,24 @@ const codeReadNodesFunction=`function readNode(node) {
         }
         if(attributes.overridetypeto){
             delete attributes.contentstring
-            return {type: attributes.overridetypeto, props: {className: node.classList.value, ...attributes}, children: node.attributes.contentstring.value}
+            return {
+                type: attributes.overridetypeto, 
+                props: {
+                    className: node.classList.value, 
+                    ...attributes
+                }, 
+                children: node.attributes.contentstring.value
+            }
         }
         const children = Array.from(node.childNodes).map(readNode)
-        return {type: node.tagName.toLowerCase(), props: {className: node.classList.value, ...attributes}, children: children}
+        return {
+            type: node.tagName.toLowerCase(), 
+            props: {
+                className: node.classList.value,
+                 ...attributes
+                }, 
+                children: children
+            }
     } else if (node.nodeType == Node.TEXT_NODE) {
         return node.data
     }

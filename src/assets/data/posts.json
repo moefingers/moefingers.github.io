@@ -210,7 +210,7 @@
                               "href": "#/Posts/writing-react-posts#afterword"
                            },
                            "children": [
-                              "afterword and link to try it yourself"
+                              "afterword and link to try it"
                            ]
                         }
                      ]
@@ -290,7 +290,16 @@
                                     "className": ""
                                  },
                                  "children": [
-                                    "$$$token$$$"
+                                    "$$$"
+                                 ]
+                              },
+                              {
+                                 "type": "em",
+                                 "props": {
+                                    "className": ""
+                                 },
+                                 "children": [
+                                    "token$$$"
                                  ]
                               },
                               ". These will be replaced later by other information that I'd provide for each post in the post database."
@@ -398,7 +407,7 @@
                               "overridetypeto": "SyntaxHighlighter",
                               "syntaxhighlighterstyle": "xt256"
                            },
-                           "children": "function readNode(node) {\n    if(node.nodeType == Node.ELEMENT_NODE) {\n        const attributes = {}\n        for(const attribute of node.attributes) {\n            if(attribute.name != \"style\" ){\n              attributes[attribute.name] = attribute.value\n            }\n        }\n        if(attributes.overridetypeto){\n            delete attributes.contentstring\n            return {type: attributes.overridetypeto, props: {className: node.classList.value, ...attributes}, children: node.attributes.contentstring.value}\n        }\n        const children = Array.from(node.childNodes).map(readNode)\n        return {type: node.tagName.toLowerCase(), props: {className: node.classList.value, ...attributes}, children: children}\n    } else if (node.nodeType == Node.TEXT_NODE) {\n        return node.data\n    }\n}"
+                           "children": "function readNode(node) {\n    if(node.nodeType == Node.ELEMENT_NODE) {\n        const attributes = {}\n        for(const attribute of node.attributes) {\n            if(attribute.name != \"style\" ){\n              attributes[attribute.name] = attribute.value\n            }\n        }\n        if(attributes.overridetypeto){\n            delete attributes.contentstring\n            return {\n                type: attributes.overridetypeto, \n                props: {\n                    className: node.classList.value, \n                    ...attributes\n                }, \n                children: node.attributes.contentstring.value\n            }\n        }\n        const children = Array.from(node.childNodes).map(readNode)\n        return {\n            type: node.tagName.toLowerCase(), \n            props: {\n                className: node.classList.value,\n                 ...attributes\n                }, \n                children: children\n            }\n    } else if (node.nodeType == Node.TEXT_NODE) {\n        return node.data\n    }\n}"
                         }
                      ]
                   },
