@@ -95,7 +95,10 @@ ul.project-topics {
     color: var(--complementary-color-quaternary)
 }
 
-.project-description {
+.project-post{
+    animation: color-cycle 5s infinite;
+}
+.project-description, .project-description * {
     font-size: calc(var(--font-size-factor-px) * 20);
 }
 

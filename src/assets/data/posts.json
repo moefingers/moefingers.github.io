@@ -14,11 +14,21 @@
         },
         {
             "connectedToProject": "moefingers.github.io",
-
             "path": "portfolio",
-            "title": "title2",
-            "content": "content2",
-            "date": "date2"
+
+            "title": "Single Page Application Portfolio Including Projects and Posts",
+            "author": "Mohammad Zuiter",
+            "createdAt": "2024-05-26T01:00:00Z",
+            "updatedAt": "2024-05-26T01:11:11Z",
+            "reactElements": [
+                {
+                    "type": "h1",
+                    "props": {
+                        "className": "post-title"
+                    },
+                    "children": "$$$title$$$"
+                }
+            ]
         }
     ]
 }

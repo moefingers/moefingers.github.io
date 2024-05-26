@@ -12,6 +12,9 @@ import {
 } from 'react-router-dom'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
 
+import { format } from 'date-fns'
+import { fromZonedTime, toZonedTime } from 'date-fns-tz';
+
 import NavigationBar from "./components/NavigationBar";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
@@ -21,7 +24,24 @@ import PostIndex from './pages/PostIndex';
 import PostSingle from './pages/PostSingle';
 import Glowy from "./components/Glowy";
 
+import './pages/HTMLtoJSON'
+
 import "./App.css";
+import HTMLtoJSON from './pages/HTMLtoJSON'
+
+
+export function toUserTime(utcTime) {
+  // Check if date-fns-tz is available (recommended for time zone handling)
+  if (typeof fromZonedTime === 'function') {
+    const timeZoneID = Intl.DateTimeFormat().resolvedOptions().timeZone; // Get user's time zone ID
+    const zonedTime = toZonedTime(new Date(utcTime), timeZoneID);
+    return format(zonedTime, 'PPp', { timeZone: timeZoneID }); // Format with time zone abbreviation
+  } else {
+    console.warn("date-fns-tz library not found. Timezone conversion might be inaccurate.");
+    const formattedTime = format(new Date(utcTime), 'PPp'); // Format without time zone info
+    return formattedTime;
+  }
+}
 
 const routes = [
   { 
@@ -65,6 +85,9 @@ routerChildren.push({ // these however, will only be paths, and not found in the
   index: false,
   path: "/Posts/*",
   element: <PostSingle/>
+},{
+  path: "/dev",
+  element: <HTMLtoJSON/>
 })
 const router = createHashRouter([
   {
@@ -89,14 +112,14 @@ function App() {
 
     for (const { path, friendlyPath } of routes) {
       if( "#" + currentOutlet.props.children.props.match.pathname !=window.location.hash){
-        console.log("outlet path and hash do not match")
-        console.log( "#" + currentOutlet.props.children.props.match.pathname, window.location.hash)
+        // console.log("outlet path and hash do not match")
+        // console.log( "#" + currentOutlet.props.children.props.match.pathname, window.location.hash)
         navigate(currentOutlet.props.children.props.match.pathname)
       }
 
       const checkedPath = "/#" + path
-      console.log( "chcking: "  + "/#  " + path)
-      console.log ("current: " + window.location.pathname + "  " + window.location.hash)
+      // console.log( "chcking: "  + "/#  " + path)
+      // console.log ("current: " + window.location.pathname + "  " + window.location.hash)
       if("/#" + path != window.location.pathname + window.location.hash){ // if not exact match
         // console.log("inexact match")
 

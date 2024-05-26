@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
-import { format } from 'date-fns'
-import { fromZonedTime, toZonedTime } from 'date-fns-tz';
+import { toUserTime } from '../App'
 
 
 
@@ -24,18 +23,6 @@ const placeholder = fullImageBlobImport.filter((blob) => blob.includes("placehol
 }
 */
 
-function toUserTime(utcTime) {
-    // Check if date-fns-tz is available (recommended for time zone handling)
-    if (typeof fromZonedTime === 'function') {
-      const timeZoneID = Intl.DateTimeFormat().resolvedOptions().timeZone; // Get user's time zone ID
-      const zonedTime = toZonedTime(new Date(utcTime), timeZoneID);
-      return format(zonedTime, 'PPp', { timeZone: timeZoneID }); // Format with time zone abbreviation
-    } else {
-      console.warn("date-fns-tz library not found. Timezone conversion might be inaccurate.");
-      const formattedTime = format(new Date(utcTime), 'PPp'); // Format without time zone info
-      return formattedTime;
-    }
-  }
 
 export default function Projects() {
     const [projectSectionElements, setProjectSectionElements] = useState([])
@@ -177,8 +164,8 @@ export default function Projects() {
                         </div>
                         <div className="safe-zone-bottom">
                             <p className="project-description">
-                                {projectPosts[project.name] && <a className='project-post' href={"#/posts/" +projectPosts[project.name]}>Read Full Post</a>}
-                                {project.description} - <span className="project-commits">{project.commits.length > 100 ? "100+" : project.commits.length } <span>commits</span></span> - <a 
+                                {projectPosts[project.name] && <a className='project-post' href={"#/Posts/" +projectPosts[project.name]}>Read Full Post</a>
+                                } - {project.description} - <span className="project-commits">{project.commits.length > 100 ? "100+" : project.commits.length } <span>commits</span></span> - <a 
                                 className='project-license' href={"https://choosealicense.com/licenses/" + project.license.key} target='_blank'>{project.license.name}</a>
                             </p>
                             
