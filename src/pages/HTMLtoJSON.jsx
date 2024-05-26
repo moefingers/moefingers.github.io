@@ -80,7 +80,7 @@ export default function HTMLtoJSON() {
             <h1>HTMLtoJSON (for react posts)</h1>
             <button className='dev' onClick={() => {logDate()}}>log date and print to box</button>
             <input type="text" readOnly ref={dateArea}/>
-            <button className='dev' onClick={() => {parseHTMLRef(HTMLArea)}}>Press to log HTML as json to console and textarea below</button> <br />
+            <button className='dev' onClick={() => {parseHTMLRef(HTMLArea)}}>Press to log <em>div.html-area</em> as json to console and textarea below</button> <br />
             <textarea readOnly ref={textareaElement}></textarea> <br />
 
             
@@ -95,18 +95,18 @@ export default function HTMLtoJSON() {
                 </section>
                 <section className='index'>
                     <h2>Index</h2>
-                    <a href="#/posts/writing-react-posts#intro">intro</a>
-                    <a href="#/posts/writing-react-posts#the-html">the html</a>
-                    <a href="#/posts/writing-react-posts#the-function">the function</a>
-                    <a href="#/posts/writing-react-posts#the-output">the output</a>
-                    <a href="#/posts/writing-react-posts#interpretation">json intrepretation</a>
-                    <a href="#/posts/writing-react-posts#afterword">afterword</a>
+                    <a href="#/Posts/writing-react-posts#intro">intro</a>
+                    <a href="#/Posts/writing-react-posts#the-html">the html</a>
+                    <a href="#/Posts/writing-react-posts#the-function">the function</a>
+                    <a href="#/Posts/writing-react-posts#the-output">the output</a>
+                    <a href="#/Posts/writing-react-posts#interpretation">json intrepretation</a>
+                    <a href="#/Posts/writing-react-posts#afterword">afterword</a>
                 </section>
                 <section id = 'intro'>
                     <h2>Intro</h2>
                     <p>So essentially I wrote an entire program that would recursively interpet children of a given HTML element and spit them all out in JSON.</p>
                 </section>
-                <section id = '/posts/writing-react-posts#the-html'>
+                <section id = '/Posts/writing-react-posts#the-html'>
                     <h2>The HTML (input)</h2>
                     <p>This is an example of the type of HTML I wanted to turn into JSON that could be later interpreted by <em>React.createElement</em>.</p>
                     <p>You may notice that there are tokens like <em>$$$token$$$</em>. These will be replaced later by other information that I'd provide for each post in the post database.</p>
@@ -114,7 +114,7 @@ export default function HTMLtoJSON() {
                         {codeStringInputExample}
                     </SyntaxHighlighter>
                 </section>
-                <section id ="/posts/writing-react-posts#the-function">
+                <section id ="/Posts/writing-react-posts#the-function">
                     <h2>The Function</h2>
                     <p>So here's the function which will recursively pull out contents of children and their children.</p>
                     <p>The expected input is an element, I got that from declaring a constant that invokes <em>React.useRef</em>... <em>const postElementRef = useRef()</em> and then I fed <em>postElementRef.current</em> into this function.</p>
@@ -123,14 +123,14 @@ export default function HTMLtoJSON() {
                         {codeReadNodesFunction}
                     </SyntaxHighlighter>
                 </section>
-                <section id="/posts/writing-react-posts#the-output">
+                <section id="/Posts/writing-react-posts#the-output">
                     <h2>The JSON (output)</h2>
                     <p>Here's the output of the function given the previous input.</p>
                     <SyntaxHighlighter language='javascript' style={xt256} className='code-container' contentstring={codeStringOutputExample} overridetypeto={"SyntaxHighlighter"} syntaxhighlighterstyle={"xt256"}>
                         {codeStringOutputExample}
                     </SyntaxHighlighter>
                 </section>
-                <section id="/posts/writing-react-posts#interpretation">
+                <section id="/Posts/writing-react-posts#interpretation">
                     <h2>Interpretation of the JSON by React</h2>
                     <p>So now that we have a JSON, we could hypothetically pass it into <em>React.createElement</em> - but it's not that easy.</p>
                     <p>React won't know to interpret nested children as new <em>React</em> elements that ought to be passed into another invocation <em>React.createElement</em>.</p>
@@ -144,7 +144,7 @@ export default function HTMLtoJSON() {
                     <p>With that out of the way, I can mention what you probably see already, which is a nice RegExp to collect the string between the two <em>$$$</em> and replace the whole "token".</p>
                     <p>Then, that string is used as a key in the <em>post</em> object to get things like the title, or the dates.</p>
                 </section>
-                <section id="/posts/writing-react-posts#afterword">
+                <section id="/Posts/writing-react-posts#afterword">
                     <h2>Afterword</h2>
                     <p>Is it overengineered? Probably. Wanna use the function? Try visiting <a href="/#/dev" target="_blank">/#/dev</a> on this site.</p>
                     <p>Wanna see a live example of all that in action? You just did. 🐇</p>
