@@ -18,6 +18,7 @@
   --general-size-factor-px: (0.00188323 * 100vw); /* Will be overridden by media query.. */
   --font-size-factor-px: var(--general-size-factor-px);
   --enlargeable-font-size-factor-px: calc(var(--font-size-factor-px) * 1);
+  --nav-size-factor-px: calc(var(--general-size-factor-px) * 1);
 
   --nav-bar-height: calc(var(--font-size-factor-px) * 27);
 
@@ -109,17 +110,17 @@ nav {
   text-decoration: none;
   background-color: transparent;
   transition: .3s ease-out;
-  font-size: calc(20 * var(--font-size-factor-px));
+  font-size: calc(20 * var(--nav-size-factor-px));
 
   pointer-events: all;
 }
 a.nav-link:hover {
-  font-size: calc(25 * var(--font-size-factor-px));
+  font-size: calc(26 * var(--nav-size-factor-px));
   opacity: 1;
   text-shadow: var(--text-shadow-primary);
 }
 .nav-link.current {
-  font-size: calc(23 * var(--font-size-factor-px));
+  font-size: calc(24 * var(--nav-size-factor-px));
   opacity: 1;
   text-shadow: var(--text-shadow-primary-faded);
 }
@@ -222,6 +223,7 @@ div.glowy-container div.trail-element {
   :root {
     --font-size-factor-px: calc(var(--general-size-factor-px) * 1);
     --enlargeable-font-size-factor-px: calc(var(--font-size-factor-px) * 1);
+    --nav-size-factor-px: calc(var(--general-size-factor-px) * 1.5);
   }
   
 }
@@ -232,6 +234,7 @@ div.glowy-container div.trail-element {
   :root {
     --font-size-factor-px: calc(var(--general-size-factor-px) * 1.1);
     --enlargeable-font-size-factor-px: calc(var(--font-size-factor-px) * 1.5);
+    --nav-size-factor-px: calc(var(--general-size-factor-px) * 1.7);
   }
 }
 
