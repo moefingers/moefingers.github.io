@@ -51,7 +51,12 @@ export default function MouseOverSpinner({textArray, state=false, setState=false
         <div className="mouse-over-spinner-container" onMouseMove={handleMouseMoveOnSpinner} onMouseEnter={() => setMoving(true)} onMouseLeave={() => setMoving(false)}>
             
             {textArray.map((text, index) => {
-                return (<div style={{transform: `translateX(-50%) rotateX(-20deg)  rotateY(${index * (360 / textArray.length) + rotation}deg) translateZ(calc(var(--general-size-factor-px) * 30 * pow(${typeof text === "object" ? Object.keys(text).length : text.length}, 0.5))) `}}
+                return (<div style={{
+                    transform: `
+                        translateX(-50%) 
+                        rotateX(-20deg)  
+                        rotateY(${index * (360 / textArray.length) + rotation}deg) 
+                        translateZ(calc(var(--general-size-factor-px) * 30 * pow(${typeof text === "object" ? Object.keys(text).length : text.length}, 0.5))) `}}
                     className={`mouse-over-spinner-item ${state?"clickable":""}
                     ${stateIsArrayOrString === "string" ? (state === Object.values(text)[0] ? "selected" : "") : ""}
                     ${stateIsArrayOrString === "array" ? (state.includes(Object.values(text)[0]) ? "selected" : "") : ""}
