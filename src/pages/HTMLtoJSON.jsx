@@ -3,6 +3,8 @@ import "../assets/styles/dev.css"
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { xt256 } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
+
+
 export default function HTMLtoJSON() {
 
     const textareaElement = useRef()
@@ -72,7 +74,13 @@ export default function HTMLtoJSON() {
         const now = new Date();
         const ISOtime = now.toISOString();
         console.log(ISOtime)
+        
         dateArea.current.value = ISOtime
+
+
+        const dateMStest = Date.now("2024-05-26T20:29:30.060Z").toString();;
+        const ms = dateMStest
+        console.log(ms)
     }
 
     return (
