@@ -5,6 +5,7 @@ import { fromZonedTime, toZonedTime } from 'date-fns-tz';
 
 
 import { projects } from "../assets/data/projects.json"
+import {posts} from '../assets/data/posts.json'
 
 import ImageRoller from "../components/ImageRoller"
 
@@ -142,6 +143,13 @@ export default function Projects() {
 
     useEffect(() => {
         // console.log(projectData)
+
+        const projectPosts = {}; posts.forEach(({connectedToProject, path}, index) => {
+            if(connectedToProject != undefined){
+                projectPosts[connectedToProject] = path
+            }
+        }); console.log(projectPosts)
+
         const sections = []
         const preStateRollerImages = []
         projects.forEach((project, index) => {
@@ -168,7 +176,9 @@ export default function Projects() {
                             <p>Updated: {toUserTime(project.updated_at)}</p>
                         </div>
                         <div className="safe-zone-bottom">
-                            <p className="project-description">{project.description} - <span className="project-commits">{project.commits.length > 100 ? "100+" : project.commits.length } <span>commits</span></span> - <a 
+                            <p className="project-description">
+                                {projectPosts[project.name] && <a className='project-post' href={"#/posts/" +projectPosts[project.name]}>Read Full Post</a>}
+                                {project.description} - <span className="project-commits">{project.commits.length > 100 ? "100+" : project.commits.length } <span>commits</span></span> - <a 
                                 className='project-license' href={"https://choosealicense.com/licenses/" + project.license.key} target='_blank'>{project.license.name}</a>
                             </p>
                             

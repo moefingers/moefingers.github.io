@@ -15,9 +15,9 @@
     scroll-behavior: smooth;
 }
 
-.projects-page-container:first-child section{
-    /* margin-top: -1.77015643802647%; */
-}
+/* .projects-page-container:first-child section{
+     margin-top: -1.77015643802647%; 
+} */
 
 .projects-page-container section {
     height: 100%;

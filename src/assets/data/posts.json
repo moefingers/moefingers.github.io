@@ -11,6 +11,14 @@
             "title": "title1",
             "content": "content1",
             "date": "date1"
+        },
+        {
+            "connectedToProject": "moefingers.github.io",
+
+            "path": "portfolio",
+            "title": "title2",
+            "content": "content2",
+            "date": "date2"
         }
     ]
 }

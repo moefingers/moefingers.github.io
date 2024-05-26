@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
+import NotFound from "./NotFound"
+
 import { Link } from 'react-router-dom'
 
 import {posts} from '../assets/data/posts.json'
@@ -13,28 +15,29 @@ export default function PostSingle() {
     useEffect(() => {
         setPathHash(window.location.hash)
         // correct hash to 
-        posts.forEach(  ({path}, index, postFromJSON) => {
-            const goodPath = window.location.hash.toLowerCase() == "#/posts/" + path.toLowerCase()
+        for(const postFromJSON of posts){
+            const goodPath = window.location.hash.toLowerCase() == "#/posts/" + postFromJSON.path.toLowerCase()
 
             if(goodPath){
-                console.log("good hash: " + "#/posts/" + path.toLowerCase())
-            } else {
-                console.log("bad hash: " + "#/posts/" + path.toLowerCase())
+                console.log("good hash: " + "#/posts/" + postFromJSON.path.toLowerCase())
                 setPost(postFromJSON)
+                break
+            } else {
+                console.log("bad hash: " + "#/posts/" + postFromJSON.path.toLowerCase())
             }
             
-        })
+        }
         
         if(window.location.hash == "" || window.location.hash == "#/"){
             navigate("/")
         }
     }, [])
     
-    return (
+    return post ? (
         <div className="post-single-page-container">
-            <Link to="/Posts">Return home?</Link>
+            <Link to="/Posts">Return to posts?</Link>
             <h1>PostSingle.jsx</h1>
             {pathHash}
         </div>
-    )
+    ) : <NotFound/>
 }

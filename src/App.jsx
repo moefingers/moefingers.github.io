@@ -81,20 +81,31 @@ function App() {
   
   function validatePath() {
     const currentPath = window.location.pathname + window.location.hash
-    // correct casing if necessary
+
+    if (window.location.pathname != "/") { // for example prefixing hash asdfasdfasdf#/Contact
+      window.location = ("/" + window.location.hash)
+      return
+    }
+
     for (const { path, friendlyPath } of routes) {
+      if( "#" + currentOutlet.props.children.props.match.pathname !=window.location.hash){
+        console.log("outlet path and hash do not match")
+        console.log( "#" + currentOutlet.props.children.props.match.pathname, window.location.hash)
+        navigate(currentOutlet.props.children.props.match.pathname)
+      }
+
       const checkedPath = "/#" + path
       console.log( "chcking: "  + "/#  " + path)
       console.log ("current: " + window.location.pathname + "  " + window.location.hash)
       if("/#" + path != window.location.pathname + window.location.hash){ // if not exact match
         // console.log("inexact match")
 
-        if(window.location.hash.toLowerCase() == "#" + friendlyPath.toLowerCase()){ // for example #pOsTs
+        if(window.location.hash.toLowerCase() == "#" + friendlyPath.toLowerCase()){ // for example domain/#pOsTs or domain/#Posts
           // console.log(`partial match`)
           navigate(path)
           break
         }
-        if(window.location.hash.toLowerCase() == "#" + path.toLowerCase()){ // for example #posts
+        if(window.location.hash.toLowerCase() == "#" + path.toLowerCase()){ // for example domain/#/pOsTs
           // console.log("within inexact match, there is a casing match")
           navigate(path)
           break
@@ -106,11 +117,11 @@ function App() {
       // console.log("no match, continuing")
     }
 
-    // the below code was scrapped.. not sure if it's still necessary since we now have the above but we're keeping just in case
     // if(window.location.pathname != "/"){
     //   console.log("redirecting to /")
     //   window.location = "/"
     // }
+    // the below code was scrapped.. not sure if it's still necessary since we now have the above but we're keeping just in case
     // // correct hash to #/
     // if(window.location.hash == "" || window.location.hash == "#/"){
     //   window.location.hash = "#/"
@@ -118,6 +129,7 @@ function App() {
     // }
   }
   useEffect(() => {
+    // console.log(currentOutlet.props.children.props.match.pathnameBase)
     validatePath()
   }, [location])
 
