@@ -157,7 +157,7 @@
                             "type": "a",
                             "props": {
                                "className": "",
-                               "href": "#/posts/writing-react-posts#intro"
+                               "href": "#/Posts/writing-react-posts#intro"
                             },
                             "children": [
                                "intro"
@@ -167,7 +167,7 @@
                             "type": "a",
                             "props": {
                                "className": "",
-                               "href": "#/posts/writing-react-posts#the-html"
+                               "href": "#/Posts/writing-react-posts#the-html"
                             },
                             "children": [
                                "the html"
@@ -177,7 +177,7 @@
                             "type": "a",
                             "props": {
                                "className": "",
-                               "href": "#/posts/writing-react-posts#the-function"
+                               "href": "#/Posts/writing-react-posts#the-function"
                             },
                             "children": [
                                "the function"
@@ -187,7 +187,7 @@
                             "type": "a",
                             "props": {
                                "className": "",
-                               "href": "#/posts/writing-react-posts#the-output"
+                               "href": "#/Posts/writing-react-posts#the-output"
                             },
                             "children": [
                                "the output"
@@ -197,7 +197,7 @@
                             "type": "a",
                             "props": {
                                "className": "",
-                               "href": "#/posts/writing-react-posts#interpretation"
+                               "href": "#/Posts/writing-react-posts#interpretation"
                             },
                             "children": [
                                "json intrepretation"
@@ -207,7 +207,7 @@
                             "type": "a",
                             "props": {
                                "className": "",
-                               "href": "#/posts/writing-react-posts#afterword"
+                               "href": "#/Posts/writing-react-posts#afterword"
                             },
                             "children": [
                                "afterword and link to try it yourself"
@@ -246,7 +246,7 @@
                       "type": "section",
                       "props": {
                          "className": "",
-                         "id": "/posts/writing-react-posts#the-html"
+                         "id": "/Posts/writing-react-posts#the-html"
                       },
                       "children": [
                          {
@@ -312,7 +312,7 @@
                       "type": "section",
                       "props": {
                          "className": "",
-                         "id": "/posts/writing-react-posts#the-function"
+                         "id": "/Posts/writing-react-posts#the-function"
                       },
                       "children": [
                          {
@@ -406,7 +406,7 @@
                       "type": "section",
                       "props": {
                          "className": "",
-                         "id": "/posts/writing-react-posts#the-output"
+                         "id": "/Posts/writing-react-posts#the-output"
                       },
                       "children": [
                          {
@@ -443,7 +443,7 @@
                       "type": "section",
                       "props": {
                          "className": "",
-                         "id": "/posts/writing-react-posts#interpretation"
+                         "id": "/Posts/writing-react-posts#interpretation"
                       },
                       "children": [
                          {
@@ -653,7 +653,7 @@
                       "type": "section",
                       "props": {
                          "className": "",
-                         "id": "/posts/writing-react-posts#afterword"
+                         "id": "/Posts/writing-react-posts#afterword"
                       },
                       "children": [
                          {
