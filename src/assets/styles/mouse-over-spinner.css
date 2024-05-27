@@ -10,6 +10,21 @@ div.mouse-over-spinner-container {
     
 }
 
+div.mouse-over-spinner-selected{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: calc( var(--font-size-factor-px) * 8 ) !important;
+    opacity:  .4;
+
+}
+div.mouse-over-spinner-container:hover div.mouse-over-spinner-selected{
+    opacity:  1;
+}
+
+
 div.mouse-over-spinner-container:hover {
     background-color: var(--background-color-secondary);
     box-shadow: 0px 0px calc(var(--font-size-factor-px) *10) calc(var(--font-size-factor-px) *10) var(--background-color-secondary);

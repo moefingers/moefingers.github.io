@@ -31,7 +31,7 @@ export default function PostIndex() {
     return (
         <div className="post-index-page-container">
             <MouseOverSpinner textArray={[{"Created At": "createdAt"},{"Updated At": "updatedAt"}, {"Author": "author"}]} state={sortBy} setState={setSortBy} stateIsArrayOrString="string"/>
-            <div>{sortBy.toString()}</div>
+            
             <ul>
                 {sortedPosts.filter(({ hide }) => !hide).map((post, index) => 
                     <li key={index}>
