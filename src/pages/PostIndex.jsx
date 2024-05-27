@@ -28,9 +28,10 @@ export default function PostIndex() {
 
     }, [null, sortBy])
 
+    const sortByArray =[{"Created At": "createdAt"},{"Updated At": "updatedAt"}, {"Author": "author"}]
     return (
         <div className="post-index-page-container">
-            <MouseOverSpinner textArray={[{"Created At": "createdAt"},{"Updated At": "updatedAt"}, {"Author": "author"}]} state={sortBy} setState={setSortBy} stateIsArrayOrString="string"/>
+            <MouseOverSpinner textArray={sortByArray} state={sortBy} setState={setSortBy} stateIsArrayOrString="string"/>
             
             <ul>
                 {sortedPosts.filter(({ hide }) => !hide).map((post, index) => 
