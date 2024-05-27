@@ -21,8 +21,9 @@ export default function PostIndex() {
             setSortedPosts(sortedPosts);
         }
         
-        if(sortBy === 'createdAt' || sortBy === 'updatedAt'){ 
-            setSortedPosts(posts.sort((a, b) => new Date(b[sortBy]) - new Date(a[sortBy])))
+        if(sortBy === 'createdAt' || sortBy === 'updatedAt'){
+            const sortedPosts = [...posts].sort((a, b) => new Date(a[sortBy]) - new Date(b[sortBy]));
+            setSortedPosts( sortedPosts );
         }
 
     }, [null, sortBy])
