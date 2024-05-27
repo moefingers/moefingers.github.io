@@ -49,7 +49,7 @@ export default function MouseOverSpinner({textArray, state=false, setState=false
 
     return (
         <div className="mouse-over-spinner-container" onMouseMove={handleMouseMoveOnSpinner} onMouseEnter={() => setMoving(true)} onMouseLeave={() => setMoving(false)}>
-            <div className="mouse-over-spinner-selected">{state.toString()}</div>
+            <div className="mouse-over-spinner-selected">Sort By: {Object.keys(Object.values(textArray).filter(pair => Object.entries(pair)[0][1] == state)[0])[0]}</div>
             {textArray.map((text, index) => {
                 return (<div style={{
                     // 0.7 * Math.sin((Math.PI * 2 * X) + 1.5) + 0.7  // to have a curve that exceeds 1 across a region around x = 0 rather than at a point

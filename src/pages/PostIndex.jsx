@@ -15,7 +15,7 @@ export default function PostIndex() {
     const [sortBy, setSortBy] = useState('updatedAt')
 
     useEffect(() => {
-        console.log(sortBy)
+        // console.log(sortBy)
         if (sortBy === 'author') {
             const sortedPosts = [...posts].sort((a, b) => a[sortBy].localeCompare(b[sortBy], undefined, { sensitivity: 'base' }));
             setSortedPosts(sortedPosts);
@@ -28,7 +28,9 @@ export default function PostIndex() {
 
     }, [null, sortBy])
 
+
     const sortByArray =[{"Created At": "createdAt"},{"Updated At": "updatedAt"}, {"Author": "author"}]
+    // console.log(Object.keys(Object.values(sortByArray).filter(pair => Object.entries(pair)[0][1] === "createdAt")[0])[0])
     return (
         <div className="post-index-page-container">
             <MouseOverSpinner textArray={sortByArray} state={sortBy} setState={setSortBy} stateIsArrayOrString="string"/>
