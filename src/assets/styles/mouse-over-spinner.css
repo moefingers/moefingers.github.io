@@ -25,6 +25,21 @@ div.mouse-over-spinner-container:hover div.mouse-over-spinner-selected{
     opacity:  1;
 }
 
+div.touch-controls div.spin-left, div.touch-controls div.spin-right {
+    position: absolute;
+    font-size: calc( var(--font-size-factor-px) * 40 );
+    line-height: calc( var(--font-size-factor-px) * 18 );
+}
+
+div.touch-controls div.spin-left {
+    left: 0;
+    bottom: 23%;
+}
+div.touch-controls div.spin-right {
+    right: 0;
+    bottom: 23%;
+}
+
 
 div.mouse-over-spinner-container:hover {
     background-color: var(--background-color-secondary);
@@ -45,17 +60,20 @@ div div.mouse-over-spinner-item {
 
 div.mouse-over-spinner-item.clickable {
     cursor: pointer;
-    opacity: 0.6 !important;
+    /* opacity: 0.6 !important; */
 }
 
 div.mouse-over-spinner-item.clickable:hover {
     text-shadow: var(--text-shadow-primary);
     font-size: calc( var(--font-size-factor-px) * 20 );
-    opacity: .9 !important
+    filter: blur(0px) !important;
 }
 
 div.mouse-over-spinner-item.selected.clickable {
     text-shadow: var(--text-shadow-primary);
     font-size: calc( var(--font-size-factor-px) * 20 );
-    opacity: 1
+    
+}
+div.mouse-over-spinner-item.selected.clickable:hover {
+    filter: blur(0px) !important;
 }
