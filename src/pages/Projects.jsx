@@ -58,14 +58,36 @@ export default function Projects() {
                     })
                     const newData = await initialResponse.json()
 
-                    const commitResponse = await fetch(`https://api.github.com/repos/${newData.owner.login}/${newData.name}/commits?per_page=100`,
-                        {
-                            method: 'GET',
-                            headers: {'Content-Type': 'application/vnd.github+json'}
-                        }
-                    )
+                    async function getCommits(page){
+                        return fetch(`https://api.github.com/repos/${newData.owner.login}/${newData.name}/commits?per_page=100&page=${page}`,
+                            {
+                                method: 'GET',
+                                headers: {'Content-Type': 'application/vnd.github+json'}
+                            }
+                        ).then((response) => {
+                            if (!response.ok) {
+                                if (response.status == 403) {
+                                    console.log("403, setting rate limit exceeded message")
+                                    setRateLimitExceeded(true)
+                                }
+                                throw new Error(`HTTP error! status: ${response.status}`);
+                            }
+                            return response
+                        })
+                    }
+                    let page = 1
+                    let commitResponse = await getCommits(page)
                     newData.commits = await commitResponse.json()
+
+                    while(commitResponse.headers.get('Link') && commitResponse.headers.get('Link').includes('rel="next"')){
+                        page++
+                        commitResponse = await getCommits(page)
+                        newData.commits = newData.commits.concat(await commitResponse.json())
+                    }
+
+
                     //https://api.github.com/repos/moefingers/react-timer-stopwatch-v2/contents/social/square.png
+                    
                     const meta = await fetch(`https://api.github.com/repos/${newData.owner.login}/${newData.name}/contents`,
                         {
                             method: 'GET',
@@ -75,8 +97,8 @@ export default function Projects() {
                     newData.meta = await meta.json()
 
                     newData.meta.forEach((file) => {
-                        file.name.includes("social-square") && (newData.squareImage = `https://raw.githubusercontent.com/${newData.owner.login}/${newData.name}/${newData.default_branch}/${file.path}`)
-                        file.name.includes("social-wide") && (newData.wideImage = `https://raw.githubusercontent.com/${newData.owner.login}/${newData.name}/${newData.default_branch}/${file.path}`)
+                        if(file.name.includes("social-square")){newData.squareImage = `https://raw.githubusercontent.com/${newData.owner.login}/${newData.name}/${newData.default_branch}/${file.path}`}
+                        if(file.name.includes("social-wide")){newData.wideImage = `https://raw.githubusercontent.com/${newData.owner.login}/${newData.name}/${newData.default_branch}/${file.path}`}
                     })
                     
                     data = Object.assign({}, data, {[project.api]: await newData})
@@ -85,6 +107,7 @@ export default function Projects() {
                     
                 } catch (error) {
                     console.log(error)
+                    console.log("eeee")
                 }
             }
         })
@@ -165,7 +188,7 @@ export default function Projects() {
                         <div className="safe-zone-bottom">
                             <p className="project-description">
                                 {projectPosts[project.name] && <a className='project-post' href={"#/Posts/" +projectPosts[project.name]}>Read Full Post</a>
-                                } - {project.description} - <span className="project-commits">{project.commits.length >= 100 ? "100+" : project.commits.length } <span>commits</span></span> - <a 
+                                } - {project.description} - <span className="project-commits">{project.commits.length } <span>commits</span></span> - <a 
                                 className='project-license' href={"https://choosealicense.com/licenses/" + project.license.key} target='_blank'>{project.license.name}</a>
                             </p>
                             
