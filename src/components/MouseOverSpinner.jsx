@@ -18,7 +18,7 @@ However, specifying a state, setState, and stateType (stateIsArrayOrString) will
 */
 
 export default function MouseOverSpinner({textArray, state=false, setState=false, stateIsArrayOrString=null}) {
-    // textArray = ["hi", "hello", "hola", "oi", "bruv"]
+    textArray = ["hi", "hello", "hola", "oi", "bruv"]
 
     const [rotation, setRotation] = useState(0)
     const [speedFactor, setSpeedFactor] = useState(0)
@@ -52,6 +52,9 @@ export default function MouseOverSpinner({textArray, state=false, setState=false
             
             {textArray.map((text, index) => {
                 return (<div style={{
+                    // 0.7 * Math.sin((Math.PI * 2 * X) + 1.5) + 0.7  // to have a curve that exceeds 1 across a region around x = 0 rather than at a point
+                    // 0.5 * Math.sin((Math.PI * 2 * X) + 1.5) + 0.5 // to have a curve that is at 1 at x = 0
+                    opacity: ( 0.7 * Math.sin(Math.PI * 2 * (   Math.abs((rotation % 360) / 360) - (index/textArray.length)   )   + 1.5) ) + 0.7,
                     transform: `
                         translateX(-50%) 
                         rotateX(-20deg)  

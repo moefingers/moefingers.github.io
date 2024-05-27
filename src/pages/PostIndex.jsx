@@ -36,6 +36,8 @@ export default function PostIndex() {
                     <li key={index}>
                         <Link to={post.path}>{post.title}</Link>
                         <p>Last Edited: {toUserTime(post.updatedAt)}</p>
+                        <p>Created At: {toUserTime(post.createdAt)}</p>
+                        <p>Author: {post.author}</p>
                     </li>
                 )}
             </ul>
