@@ -54,7 +54,7 @@ export default function MouseOverSpinner({textArray, state=false, setState=false
                 return (<div style={{
                     // 0.7 * Math.sin((Math.PI * 2 * X) + 1.5) + 0.7  // to have a curve that exceeds 1 across a region around x = 0 rather than at a point
                     // 0.5 * Math.sin((Math.PI * 2 * X) + 1.5) + 0.5 // to have a curve that is at 1 at x = 0
-                    opacity: ( 0.7 * Math.sin(Math.PI * 2 * (   Math.abs((rotation % 360) / 360) - (index/textArray.length)   )   + 1.5) ) + 0.7,
+                    opacity: ( 0.7 * Math.sin(Math.PI * 2 * (   Math.abs((rotation % 360) / 360) + (index/textArray.length)   )   + 1.5) ) + 0.7,
                     transform: `
                         translate(-50%, -50%) 
                         rotateX(-20deg)  
