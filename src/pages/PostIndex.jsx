@@ -16,7 +16,7 @@ export default function PostIndex() {
 
     useEffect(() => {
         // console.log(sortBy)
-        if (sortBy === 'author') {
+        if (sortBy === 'author' || sortBy === 'title') {
             const sortedPosts = [...posts].sort((a, b) => a[sortBy].localeCompare(b[sortBy], undefined, { sensitivity: 'base' }));
             setSortedPosts(sortedPosts);
         }
@@ -29,7 +29,7 @@ export default function PostIndex() {
     }, [null, sortBy])
 
 
-    const sortByArray =[{"Created At": "createdAt"},{"Updated At": "updatedAt"}, {"Author": "author"}]
+    const sortByArray =[{"Created At": "createdAt"},{"Updated At": "updatedAt"}, {"Author": "author"}, {"Title": "title"}]
     // console.log(Object.keys(Object.values(sortByArray).filter(pair => Object.entries(pair)[0][1] === "createdAt")[0])[0])
     return (
         <div className="post-index-page-container">
