@@ -165,7 +165,7 @@ export default function Projects() {
                         <div className="safe-zone-bottom">
                             <p className="project-description">
                                 {projectPosts[project.name] && <a className='project-post' href={"#/Posts/" +projectPosts[project.name]}>Read Full Post</a>
-                                } - {project.description} - <span className="project-commits">{project.commits.length > 100 ? "100+" : project.commits.length } <span>commits</span></span> - <a 
+                                } - {project.description} - <span className="project-commits">{project.commits.length >= 100 ? "100+" : project.commits.length } <span>commits</span></span> - <a 
                                 className='project-license' href={"https://choosealicense.com/licenses/" + project.license.key} target='_blank'>{project.license.name}</a>
                             </p>
                             
