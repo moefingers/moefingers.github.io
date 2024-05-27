@@ -18,7 +18,7 @@ However, specifying a state, setState, and stateType (stateIsArrayOrString) will
 */
 
 export default function MouseOverSpinner({textArray, state=false, setState=false, stateIsArrayOrString=null}) {
-    textArray = ["hi", "hello", "hola", "oi", "bruv"]
+    // textArray = ["hi", "hello", "hola", "oi", "bruv"]
 
     const [rotation, setRotation] = useState(0)
     const [speedFactor, setSpeedFactor] = useState(0)
