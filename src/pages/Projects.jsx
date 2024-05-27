@@ -170,7 +170,7 @@ export default function Projects() {
                 // console.log(project)
                 // console.log(index, project.homepage)
                 sections.push (
-                    <section key={index} className="project-section">
+                    <section key={index} className="project-section" id={project.name}>
                         <div className='safe-zone-top'>
                             <h1 className="project-title">
                                 GitHub - <a href={project.owner.html_url} target='_blank'>{project.owner.login}</a> /<br/>
