@@ -56,10 +56,10 @@ export default function MouseOverSpinner({textArray, state=false, setState=false
                     // 0.5 * Math.sin((Math.PI * 2 * X) + 1.5) + 0.5 // to have a curve that is at 1 at x = 0
                     opacity: ( 0.7 * Math.sin(Math.PI * 2 * (   Math.abs((rotation % 360) / 360) - (index/textArray.length)   )   + 1.5) ) + 0.7,
                     transform: `
-                        translateX(-50%) 
+                        translate(-50%, -50%) 
                         rotateX(-20deg)  
                         rotateY(${index * (360 / textArray.length) + rotation}deg) 
-                        translateZ(calc(var(--general-size-factor-px) * 30 * pow(${typeof text === "object" ? Object.keys(text).length : text.length}, 0.5))) `}}
+                        translateZ(calc(var(--font-size-factor-px) * 36 * pow(${typeof text === "object" ? Object.keys(text).length : text.length}, 0.5))) `}}
                     className={`mouse-over-spinner-item ${state?"clickable":""}
                     ${stateIsArrayOrString === "string" ? (state === Object.values(text)[0] ? "selected" : "") : ""}
                     ${stateIsArrayOrString === "array" ? (state.includes(Object.values(text)[0]) ? "selected" : "") : ""}

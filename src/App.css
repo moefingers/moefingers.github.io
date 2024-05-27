@@ -23,7 +23,7 @@
   --nav-bar-height: calc(var(--font-size-factor-px) * 27);
 
   --background-color-primary: rgba(0, 0, 0, 1);
-  --background-color-secondary: rgba(255,255,255, .2);
+  --background-color-secondary: rgba(255,255,255, .05);
 
 
   --complementary-color-primary: rgba(255, 255, 255, 1);

@@ -1,21 +1,26 @@
 div.mouse-over-spinner-container {
 
-    /* background-color: rgba(255,255,255,0.2); */
-    width: calc(var(--general-size-factor-px) * 100);
-    height: calc( var(--font-size-factor-px) * 18 );
+    border-radius: 50%;
+    width: calc(var(--font-size-factor-px) * 170);
+    height: calc( var(--font-size-factor-px) * 80 );
     position: relative;
     left: 50%;
     top: 5%;
-    transform: translate(-50%, 0%) ;
+    transform: translate(-50%, 0%)
     
+}
+
+div.mouse-over-spinner-container:hover {
+    background-color: var(--background-color-secondary);
+    box-shadow: 0px 0px calc(var(--font-size-factor-px) *10) calc(var(--font-size-factor-px) *10) var(--background-color-secondary);
 }
 
 
 div.mouse-over-spinner-item {
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, 0%);
+    transform: translate(-50%, -50%);
 
     font-size: calc( var(--font-size-factor-px) * 18 );
     line-height: calc( var(--font-size-factor-px) * 18 );
