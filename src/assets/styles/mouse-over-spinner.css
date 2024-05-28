@@ -4,8 +4,8 @@ div.mouse-over-spinner-container {
     width: calc(var(--font-size-factor-px) * 170);
     height: calc( var(--font-size-factor-px) * 80 );
     position: relative;
+    margin-top: 6%;
     left: 50%;
-    top: 5%;
     transform: translate(-50%, 0%)
     
 }

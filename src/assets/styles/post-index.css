@@ -12,12 +12,14 @@ div.sorting-by-note{
     vertical-align:baseline;
     position: absolute;
     left: 50%;
-    top: 18%;
+    margin-top: 6%;
     transform: translate(-50%, 0%);
 
     font-size: calc( var(--enlargeable-font-size-factor-px) * 10 );
     line-height:calc( var(--enlargeable-font-size-factor-px) * 12 );
-    text-wrap: nowrap;
+    text-wrap: wrap;
+    width: 100%;
+    text-align: center;
     opacity:  .4;
 
 }
@@ -42,7 +44,7 @@ div.post-index-page-container > ul {
     list-style-type: none;
     text-align: center;
     position: relative;
-    margin-top: 14%;
+    margin-top: 18%;
 }
 
 div.post-index-page-container > ul > li {

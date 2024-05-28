@@ -40,7 +40,7 @@ export default function PostIndex() {
     // console.log(Object.keys(Object.values(sortByArray).filter(pair => Object.entries(pair)[0][1] === "createdAt")[0])[0])
     return (
         <div className="post-index-page-container">
-            <MouseOverSpinner textArray={sortByArray} state={sortBy} setState={setSortBy} stateIsArrayOrString="string"/>
+            <MouseOverSpinner className="sorting-by-spinner" textArray={sortByArray} state={sortBy} setState={setSortBy} stateIsArrayOrString="string"/>
             <div className="sorting-by-note">
                 Sorting By: <em className='quaternary'>{Object.keys(Object.values(sortByArray).filter(pair => Object.entries(pair)[0][1] == sortBy)[0])[0]}</em> (
                 <em className='clickable'onClick={() => setAscending(!ascending)}>{ascending ? "Ascending" : "Descending"}</em>
