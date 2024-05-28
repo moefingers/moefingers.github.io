@@ -20,7 +20,7 @@ However, specifying a state, setState, and stateType (stateIsArrayOrString) will
 export default function MouseOverSpinner({textArray, state=false, setState=false, stateIsArrayOrString=null}) {
     // textArray = ["hi", "hello", "hola", "oi", "bruv"]
 
-    const [rotation, setRotation] = useState(0)
+    const [rotation, setRotation] = useState(15)
     const [speedFactor, setSpeedFactor] = useState(0)
     const [moving, setMoving] = useState(false)
     
@@ -62,11 +62,12 @@ export default function MouseOverSpinner({textArray, state=false, setState=false
         onMouseMove={handleMouseMoveOnSpinner} 
         onMouseEnter={() => {if(matchMedia('(pointer:fine)').matches){setMoving(true)}}} 
         onMouseLeave={() => {if(matchMedia('(pointer:fine)').matches){setMoving(false)}}}>
-            <div className="mouse-over-spinner-selected">{/*((rotation % 360)/360).toFixed(2)*/}Sort By: {Object.keys(Object.values(textArray).filter(pair => Object.entries(pair)[0][1] == state)[0])[0]}</div>
+            {/* <div className="mouse-over-spinner-selected">Sorting By: {Object.keys(Object.values(textArray).filter(pair => Object.entries(pair)[0][1] == state)[0])[0]}</div> */}
             {matchMedia('(pointer:coarse)').matches && <div className="touch-controls">
                 <div className="spin-left" onClick={(event) => handleSpinByTouch(event, "left")}> &lt;</div>
                 <div className="spin-right" onClick={(event) => handleSpinByTouch(event, "right")}> &gt;</div>    
             </div>}
+            {/*((rotation % 360)/360).toFixed(2)*/}
             {textArray.map((text, index) => {
                 return (<div style={{
                     // 0.7 * Math.sin((Math.PI * 2 * X) + 1.5) + 0.7  // to have a curve that exceeds 1 across a region around x = 0 rather than at a point
@@ -81,7 +82,7 @@ export default function MouseOverSpinner({textArray, state=false, setState=false
                         translate(-50%, -50%) 
                         rotateX(-20deg)  
                         rotateY(${index * (360 / textArray.length) + rotation}deg) 
-                        translateZ(calc(var(--font-size-factor-px) * 36 * pow(${typeof text === "object" ? Object.keys(text).length : text.length}, 0.5))) `}}
+                        translateZ(calc(var(--font-size-factor-px) * 14 * pow(${typeof text === "object" ? Object.keys(text)[0].length : text.length}, .6))) `}}
                     className={`mouse-over-spinner-item ${state?"clickable":""}
                     ${stateIsArrayOrString === "string" ? (state === Object.values(text)[0] ? "selected" : "") : ""}
                     ${stateIsArrayOrString === "array" ? (state.includes(Object.values(text)[0]) ? "selected" : "") : ""}

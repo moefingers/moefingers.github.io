@@ -8,6 +8,36 @@ div.post-index-page-container * {
     font-size: calc(var(--enlargeable-font-size-factor-px) *16);
 }
 
+div.sorting-by-note{
+    vertical-align:baseline;
+    position: absolute;
+    left: 50%;
+    top: 18%;
+    transform: translate(-50%, 0%);
+
+    font-size: calc( var(--enlargeable-font-size-factor-px) * 10 );
+    line-height:calc( var(--enlargeable-font-size-factor-px) * 12 );
+    text-wrap: nowrap;
+    opacity:  .4;
+
+}
+div.sorting-by-note:hover{
+    opacity:  1;
+}
+div.sorting-by-note:hover > em.clickable {
+    font-size:  calc( var(--enlargeable-font-size-factor-px) * 12 );
+}
+
+div.sorting-by-note > em {
+    font-size: calc( var(--enlargeable-font-size-factor-px) * 10 );
+    line-height:calc( var(--enlargeable-font-size-factor-px) * 10 );
+}
+div.sorting-by-note > em.clickable:hover {
+    text-shadow: var(--text-shadow-primary);
+    cursor: pointer;
+}
+
+
 div.post-index-page-container > ul {
     list-style-type: none;
     text-align: center;

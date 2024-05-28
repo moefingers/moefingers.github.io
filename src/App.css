@@ -150,8 +150,17 @@ main.page-exit-active {
   transition: 300ms;
 }
 
-em {
+em, em.secondary {
   color: var(--complementary-color-secondary);
+}
+em.tertiary {
+  color: var(--complementary-color-tertiary);
+}
+em.quaternary {
+  color: var(--complementary-color-quaternary);
+}
+em.quinary {
+  color: var(--complementary-color-quinary);
 }
 
 /* glowy!*/
