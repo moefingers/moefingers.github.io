@@ -17,7 +17,7 @@ and nothing will happen if you click them.
 However, specifying a state, setState, and stateType (stateIsArrayOrString) will make the items clickable, and animate on hover.
 */
 
-export default function MouseOverSpinner({textArray, state=false, setState=false, stateIsArrayOrString=null}) {
+export default function MouseOverSpinner({passedClass, textArray, state=false, setState=false, stateIsArrayOrString=null}) {
     // textArray = ["hi", "hello", "hola", "oi", "bruv"]
 
     const [rotation, setRotation] = useState(15)
@@ -58,7 +58,7 @@ export default function MouseOverSpinner({textArray, state=false, setState=false
     }, moving ? 10 : null)
 
     return (
-        <div className="mouse-over-spinner-container" 
+        <div className={`${passedClass} mouse-over-spinner-container` }
         onMouseMove={handleMouseMoveOnSpinner} 
         onMouseEnter={() => {if(matchMedia('(pointer:fine)').matches){setMoving(true)}}} 
         onMouseLeave={() => {if(matchMedia('(pointer:fine)').matches){setMoving(false)}}}>
