@@ -83,7 +83,7 @@ main.page {
 main.page > * {
   position: absolute;
   width: 100%;
-  height: 100%
+  height: calc(100% )
 }
 main.page * {
   transition: 300ms ease-out;
@@ -210,7 +210,7 @@ div.glowy-container div.trail-element {
 @media screen and (orientation: landscape) {
   main.page {
     width: 100vh;
-    height: 100vh;
+    height: calc(100% - var(--nav-bar-height));
   }
   :root{
     --general-size-factor-px: calc(0.00188323 * 100vh)

@@ -43,3 +43,19 @@ code {
     color: var(--complementary-color-quaternary);
     white-space: preserve;
 }
+
+img {
+    width: 100%;
+}
+
+.container-side-by-side {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    margin-top: calc(var(--enlargeable-font-size-factor-px) * 10);
+}
+
+.container-side-by-side > * {
+    flex-grow: 1;
+}

@@ -86,12 +86,20 @@ export default function HTMLtoJSON() {
         console.log(ms)
     }
 
+    /*
+    <p className='post editor'>Editor: <a editorlinktag="true" >XXXXXXXXXXXXXXXXX</a></p>
+    <a href="#/Posts/getting-all-commits#intro" target="_blank">inter-site-link in new tab</a>
+    <SyntaxHighlighter language='html' style={xt256} className='code-container' contentstring={stringofcontents} overridetypeto={"SyntaxHighlighter"} syntaxhighlighterstyle={"xt256"}>
+        {stringofcontents}
+    </SyntaxHighlighter>
+    */
+
     return (
         <div className="dev-page-container post-single-page-container">
             <h1>HTMLtoJSON (for react posts)</h1>
-            <button className='dev' onClick={() => {logDate()}}>log date and print to box</button>
+            <button className='dev' onClick={() => {logDate()}}><em className='quaternary'>console.log</em>(<em>ISOtime</em>) and print to page</button>
             <input type="text" readOnly ref={dateArea}/>
-            <button className='dev' onClick={() => {parseHTMLRef(HTMLArea)}}>Press to log <em>div.html-area</em> as json to console and textarea below</button> <br />
+            <button className='dev' onClick={() => {parseHTMLRef(HTMLArea)}}><em className='quaternary'>console.log</em> <em>div.html-area</em> as <em className='tertiary'>JSON</em> and print to page</button> <br />
             <textarea readOnly ref={textareaElement}></textarea> <br />
 
             
@@ -101,159 +109,393 @@ export default function HTMLtoJSON() {
                 <section className='header'>
                     <h1 className='post title'>$$$title$$$</h1>
                     <p className="post author">By: $$$author$$$</p>
-                    <p className='post editor'>Editor: <a editorlinktag="true" >editorlinktag="true"</a></p>
                     <p className="post date created">Posted: $$$createdAt$$$</p>
                     <p className="post date updated">Last Edited: $$$updatedAt$$$</p>
                 </section>
                 <section className='index'>
                     <h2>Index</h2>
-                    <a href="#/Posts/getting-all-commits#intro">Introduction</a>
-                    <a href="#/Posts/getting-all-commits#the-plan">The Plan</a>
-                    <a href="#/Posts/getting-all-commits#documentation">Reading The Documentation</a>
-                    <a href="#/Posts/getting-all-commits#the-initial-request">The Initial Request</a>
-                    <a href="#/Posts/getting-all-commits#follow-up-request">The Follow-Up Request</a>
-                    <a href="#/Posts/getting-all-commits#the-output">Seeing The Output</a>
-                    <a href="#/Posts/getting-all-commits#afterword">Afterword, GitHub Link</a>
+                    <a href="#/Posts/infinity-response#intro">Introduction, The Problem</a>
+                    <a href="#/Posts/infinity-response#my-situation">My Situation</a>
+                    <a href="#/Posts/infinity-response#the-plan">The Plan</a>
+                    <a href="#/Posts/infinity-response#relationship">Finding The Relationship</a>
+                    <a href="#/Posts/infinity-response#implementation">The Implementation</a>
+                    <a href="#/Posts/infinity-response#expansion">Expanding The Implentation</a>
+                    <a href="#/Posts/infinity-response#another-situation">Another Situation??</a>
+                    <a href="#/Posts/infinity-response#considerations">Accessibility Considerations</a>
+                    <a href="#/Posts/infinity-response#accessibility-solutions">Accessibility Solutions</a>
+                    <a href="#/Posts/infinity-response#afterword">Afterword, Real Uses</a>
                 </section>
-                <section id = '/Posts/getting-all-commits#intro'>
-                    <h2>Intro</h2>
-                    <p>I was applying for a job that highlighted the ability to use GitHub or other version control systems, as well as the ability to use APIs.</p>
-                    <p>I've used GitHub, and I've had recent experience with their API. So I figured why not pair the two and slap another thing onto my resume.</p>
+                <section id = '/Posts/infinity-response#intro'>
+                    <h2>Intro, The Problem</h2>
+                    <p>Have you ever been making a set of <em>media queries</em> to have font-size fit in a given width and thought there might be a pattern?</p>
+                    <p>Well you'd be correct. As developers though, it's not very <em>DRY</em> (Don't Repeat Yourself).</p>
+                    <p>What's the problem? It doesn't make sense to have twenty-plus <em>media queries</em> for maximum responsiveness when there is a relationship between width and font-size.</p>
+                    <p>This does begin to lead us to a solution, although we will first have to identify that relationship.</p>
                 </section>
-                <section id = '/Posts/getting-all-commits#the-plan'>
+                <section id = '/Posts/infinity-response#my-situation'>
+                    <h2>My Situation</h2>
+                    <p>On <a href="https://moefingers.github.io/react-timer-stopwatch-v2/" target="_blank">version 2</a> of my <em>React</em> Stopwatch / Timer combo, I wanted the application to look correct on any screen size. It's very simple, there is a maximum allowable width for a given text.</p>
+                    <p>Given a time such as <em>00:00</em>, I do not want that to ever exceed the width of the screen. You might be questioning the accessibility of that, and we'll get into that later. For now, let me ask you the following:</p>
+                    <p>How accessible is it to have half of your text off-screen? </p>
+                    <p>Further complicating matters, my application was technically a rectangle, and not a square. And while I could adjust the layout to take advantage of screen <em>orientation</em>, the constraints would fluctuate between <em>width</em> and <em>height</em>.</p>
+                    <p>I left the full set of original <em>media queries</em> below so you can understand the gravity of the situation.</p>
+                    <SyntaxHighlighter language='html' style={xt256} className='code-container' contentstring={originalMediaQueries} overridetypeto={"SyntaxHighlighter"} syntaxhighlighterstyle={"xt256"}>
+                        {originalMediaQueries}
+                    </SyntaxHighlighter>
+                </section>
+                <section id = '/Posts/infinity-response#the-plan'>
                     <h2>The Plan</h2>
-                    <p>From the logic I wrote in my <a href="/#/Projects" target="_blank">Projects</a> section, I knew there was a particular url from the API to get all the commits for a particular repository.</p>
-                    <p>So the plan was, to get all the repositories for a user, then get all the commits for each repository, and finally add them all up.</p>
+                    <p>Following the previous point, I knew I needed to identify the unique constraint scenarios. While we will ultimately escape twenty-plus <em>media queries</em>, we will not be escaping more than one.</p>
+                    <p>Keeping that in mind, let's move on to how we're going to get to the solution itself and what the primary objective is right now.</p>
+                    <p>We need to identify the relationship between <em>font-size</em> and the current <em>width</em>. Fortunately for us, there is something called <em>linear regression</em>.</p>
+                    <p>Now I'm not going to get into the specifics of the math behind that, but I'll tell you that a spreadsheet like <em>Google Sheets</em> can take care of this and some more advanced regressions for us later for us.</p>
+                    <p>The final goal would be using something like CSS's <em><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/calc" target="_blank">calc (MDN)</a></em> to calculate the <em>font-size</em> based on a given <em>width</em> constraint, which would be known from something like <em>vw</em> (viewport width).</p>
                 </section>
-
-                <section id = '/Posts/getting-all-commits#documentation'>
-                    <h2>Reading The Documentation</h2>
-                    <p>Let's look at the documentation together to find out how to get the repositories for a given user. <a href="https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-a-user" target="_blank">GitHub Docs REST API (list repos for a user)</a></p>
+                <section id = '/Posts/infinity-response#relationship'>
+                    <h2>Finding The Relationship</h2>
                     
-                    {/* I would recommend explaining the below p in more detail. What is it exactly that you need to do? Are the readers supposed to already know this? What is the next page information? */}
-                    <p>Looking at the request example <em>{`/users/{username}/repos`}</em> we can see exactly how we need to format our request <em>url</em>. We can also see <a href="https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api?apiVersion=2022-11-28#using-link-headers" target="_blank">elsewhere</a> in the documentation that there is next page information that will be in the response <em>Link</em> header.</p>
-                    <p>In the request url parameters, we can include things like <em>per_page=100</em> to reduce the number of overall requests that we make.</p>
-                    <p>Due to rate limits, it is wisest to use a <a href="https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api?apiVersion=2022-11-28#authenticating-with-a-personal-access-token" target="_blank">fine-grained personal access token</a> since we'll be repeatedly hitting the endpoint.</p>
-                    <p>Also, it's worth noting that the <a href="https://docs.github.com/en/rest/using-the-rest-api/getting-started-with-the-rest-api?apiVersion=2022-11-28#accept" target="_blank">documentation</a> for the <em>Accept</em> header states we need to include <em>application/vnd.github+json</em> in it.</p>
-                </section>
-
-                <section id="/Posts/getting-all-commits#the-initial-request">
-                    <h2>The Initial Request</h2>
-                    <p>With what we've learned, the first request to get all the repositories for a given user is as follows, you'll see I've incorporated use of a local <em>.env</em> to protect my token.</p>
-                    <em>https://api.github.com/users/MoeFingers/repos?per_page=100&page=1</em>
-                    <SyntaxHighlighter language='html' style={xt256} className='code-container' contentstring={initialRequestString1} overridetypeto={"SyntaxHighlighter"} syntaxhighlighterstyle={"xt256"}>
-                        {initialRequestString1}
-                    </SyntaxHighlighter>
-                    <p>Since all the results fit on one page, there is no information in the <em>Link</em> header.</p>
-                    <p>If we reduce the number of results per page for testing purposes, we can see the <em>Link</em> header is now populated.</p>
-                    <p>Knowing this, we can plan to conditionally fetch the next page of results until we're at the last page, where there will be no information in the <em>Link</em> header.</p>
-                    <p>For now, what's important is that we can see each result has an api <em>url</em> key on which we can affix <em>/commits?per_page=100&page=1</em> to get the commits for that repository.</p>
-                </section>
-
-                <section id = '/Posts/getting-all-commits#follow-up-request'>
-                    <h2>The Follow-Up Request</h2>
-                    <p>As stated in the previous section, each result has a <em>url</em> key on which we can affix <em>/commits?per_page=100&page=1</em> to get the commits for that repository.</p>
+                    <p>Let's get each smallest <em>width</em> (the minimum width) for each corresponding <em>font-size</em>.</p>
+                    <p>These values are unique to my situation, but a similar process can be done for other elements, and we will create a factor that can be generalized to other sizes as well.</p>
                     
-                    {/* I would add more emphasis on the importance/point of this step in the process. I think it could be explained in more detail. */}
-                    <p>We'll use something like this as our address to get: <em>`${`{url}`}/commits?per_page=100&page=${`{page}`}`</em></p>
-                    <p>You can see in the previous code for our intial request, it follows up by an invocation of <em>fetchCommits</em> with each repository <em>url</em> as an argument, and then getting the <em>length</em> of each return and adding it to a previously declared <em>totalLength</em>.</p>
-                    <p>Let's look at that function.</p>
-                    <SyntaxHighlighter language='html' style={xt256} className='code-container' contentstring={commitsRequestString1} overridetypeto={"SyntaxHighlighter"} syntaxhighlighterstyle={"xt256"}>
-                        {commitsRequestString1}
+                    <p><a href="https://docs.google.com/spreadsheets/d/1YWHZGA8QqJ0v5L1qUkIltfGuPRdSJtqExeKh91BiiWw/edit?usp=sharing " target="_blank">Here's a link</a> to that spreadsheet that includes a <em>linear trendline</em>.</p>
+                    <img src="/infinity-response/linear-chart-0.png" alt="Two columns representing X and Y values followed by a graph plotting these points and the linear trendline" />
+                    <p>Due to human error, not all the dots are exactly on the line, but that's to be expected. What's important and worth noting is that they do generally fall close to the <em>trendline</em>.</p>
+                </section>
+                <section id='/Posts/infinity-response#implementation'>
+                    <h2>The Implementation</h2>
+                    <p>Now that we have our formula, let's throw it into <em>calc</em> on the <em>font-size.</em></p>
+                    <code>{`css.selector#title { font-size: calc((0.0716 * 100vw) -1.57px); }`}</code>
+                    <p>Or better yet, let's set a variable in the <em>:root</em> element.</p>
+                    <code>{`:root { --font-size-title: calc((0.0716 * 100vw) -1.57px); }`}</code>
+                    <p>Or, somehow even better, we can make a more general size factor to address problems that arise from using <em>px</em> elsewhere (on differently sized devices) such as outlines, placement, or shadows.</p>
+                    <p>Here's an example of what the issue I'm referring to.</p>
+                    <div className='container-side-by-side'>
+                        <img src="/infinity-response/box-shadow-0.png" alt="showing box shadow normal" />
+                        <img src="/infinity-response/box-shadow-1.png" alt="showing box shadow oversized" />
+                        <img src="/infinity-response/box-shadow-2.png" alt="showing box shadow undersized" />
+                    </div>
+                    <p>And the proposed solution to be used.</p>
+                    <code>{`:root {--general-size-factor-px: (0.00188323 * 100vw);}`}</code>
+                    <p>You'll notice it's pretty much identical except the factor is different. This number can be adjusted to meet any <em>linear</em> need.</p>
+                </section>
+                <section id="/Posts/infinity-response#expansion">
+                    <h2>Expanding The Implementation</h2>
+                    <p>For my unique needs, I needed a factor that would adjust to be dependent on <em>width</em> or <em>height</em> depending on the situation.</p>
+                    <p>In fact, I had four situations.. </p>
+                    <img src="/infinity-response/four-situations.png" alt="four unique situations including where ratio exceeds 2:1, between 2:1 and 1:1, between 1:1 and 1:2, and exceeding 1:2" />
+                    <p>So here's what I came up with. (I'm reailzing the syntax highlighter that I've chosen struggles, and so I may create one down the road. How hard could it be?)</p>
+                    <SyntaxHighlighter language='html' style={xt256} className='code-container' contentstring={fourSolutions} overridetypeto={"SyntaxHighlighter"} syntaxhighlighterstyle={"xt256"}>
+                        {fourSolutions}
                     </SyntaxHighlighter>
-                    <p>You'll notice the logic for pagination is pretty similar to what we had earlier. This probably isn't very DRY (we're repeating the logic), but that doesn't really matter to me since the entire application is probably less than a hundred lines, and I want to be able to follow the difference in requests.</p>
+                    <p>You'll notice there are some <em>offset-path</em>s, <em>offset-distance</em>s, and some <em>transform: rotate</em>s. This is because I want the two components to animate between going from side by side to on top of one another, following a circular path. This isn't super relevant here and maybe we'll discuss the magic of <em>offset-path</em>s another day.</p>
+
                 </section>
 
-                <section id='/Posts/getting-all-commits#the-output'>
-                    <h2>The Output</h2>
-                    <p>Now, when we run the application, we'll get the following output.</p>
-                    <code>{outputString1}</code>
+                <section id = '/Posts/infinity-response#another-situation'>
+                    <h2>Another Situation??</h2>
+                    <p>Have you ever wanted a set of text which has a changing <em>length</em> of characters to take up a given <em>width</em>?</p>
+                    <p>Well I have, because depending on which units you choose to display and how many decimal places in the settings of my <a href="https://moefingers.github.io/react-timer-stopwatch-v2/" target='_blank'>stopwatch</a>, there is an unspecified set of characters.</p>
+                    <p>After the third of ~17 <em>case</em>s in a <em>switch</em>, I recognized there was going to be a relationship between the <em>length</em> of the characters and the <em>font-size</em> I was applying to the element.</p>
+                    <p>Back to the <a href="">sheets</a> we go... And unlike before, the relationship is now negative and non linear.</p>
+                    <img src="/infinity-response/power-series-chart-0.png" alt="plotting power-series" />
+                    <p>I still had a <em>switch</em>, but in this case (no pun intended), it is only to say the <em>font-size</em> should have a maximum if it is below a certain size.</p>
+                    <p>It's worth noting that to get all the points to fall onto the line, I had to use a <em>power series</em> equation. It was perfect after that.</p>
+                    <SyntaxHighlighter language='html' style={xt256} className='code-container' contentstring={switchCase} overridetypeto={"SyntaxHighlighter"} syntaxhighlighterstyle={"xt256"}>
+                        {switchCase}
+                    </SyntaxHighlighter>
                 </section>
-                
-                <section id = '/Posts/getting-all-commits#afterword'>
-                    <h2>Afterword</h2>
-                    <p>Now we know at this particular moment I had 875 commits, and <a href="https://github.com/MoeFingers/how-many-commits-do-i-have" target="_blank">here</a>'s the link to the repository if you want to try it yourself. Don't hesitate to <a href="/#/Contact" target="_blank">contact</a> me if you have any questions.</p>
+
+                <section id="/Posts/infinity-response#considerations">
+                    <h2>Accessibility Considerations</h2>
+                    <p><em>["All of you are shepherds and each of you is responsible for his flock"]</em><a href='https://sunnah.com/adab:212' target="_blank">(source)</a> - Prophet Muhammad (pbuh) </p>
+                    <p>A front-end developer is the shepherd of his front-end, and it falls on his shoulders to ensure that his site meets the needs of those who are less fortunate.</p>
+                    <p>A critical point was brought to me when I was sharing with <a href="https://chriscoyier.net/" target="_blank">Chris Coyier</a> these solutions I've created.</p>
+                    <p><em>"Ah so it prevents the text size changing when you zoom? Just as a heads up, that's an accessibility no-no. Clever how it works though."</em></p>
+                    <p>He's correct. A lot of people (including my own dad) rely on and benefit from being able to increase general magnification on a page, which induces a reduction in <em>viewport</em>, causing a static <em>font-size</em> to seem as though it has enlarged.</p>
+                    <p>There are a few solutions that come to mind.</p>
                 </section>
-            </div> 
-            
+
+                <section id="/Posts/infinity-response#accessibility-solutions">
+                    <h2>Accessibility Solutions</h2>
+                    <p>More simply, and what I've done even on the page you're reading, is implement more traditional <em>media queries</em> that apply a factor on top of the factor we created earlier.</p>
+                    <p>Here is two of four <em>media queries</em> regarding this.</p>
+                    <SyntaxHighlighter language='html' style={xt256} className='code-container' contentstring={accsol1} overridetypeto={"SyntaxHighlighter"} syntaxhighlighterstyle={"xt256"}>
+                        {accsol1}
+                    </SyntaxHighlighter>
+
+                    <p>Another potential solution is to simply change the formula and how the <em>font-size</em> scales to be non-linear.</p>
+
+                    <p>And a third solution is to just leave it alone, although I argue against this when there are sites that look like this at <em>200px</em>x<em>100px</em>.</p>
+                    <img src="/infinity-response/gmail-200x100.png" alt="Gmail at 200 x 100" />
+                </section>
+                <section id="/Posts/infinity-response#afterword">
+                    <h2>Afterword, Real Uses</h2>
+                    <p>As mentioned before, when you have a fixed constraint for a single line of text, like in my <a href="https://moefingers.github.io/react-timer-stopwatch-v2/" target='_blank'>stopwatch</a>, these solutions are great.</p>
+                    <p>There is notable benefit in using these for other styling elements that use <em>px</em> values, or general placement on screen as well.</p>
+                    <p>For text that changes in length where you don't want to waste space, an often but not necessarily non-linear solution can be pursued.</p>
+
+                    <p>And lastly, for bodies of text that can survive enlargement by <em>text-wrap</em>, a factor should be applied or those <em>font-size</em>s should just be left alone.</p>
+                </section>
+            </div>
 
         </div>
     )
 }
 
-
-const initialRequestString1 = `async function fetchRepos() {
-    let page = 1;
-  
-    async function fetchPage(page) {
-      return fetch(\`https://api.github.com/users/\${process.env.USER}/repos?per_page=100&page=\${page}\`, {
-          method: "GET",
-          headers: {
-            "Authorization": \`token \${process.env.GITHUB_TOKEN}\`,
-            "Content-Type": "application/vnd.github+json",
-          },
-        })
+const originalMediaQueries = `@media screen and ( width >= 2000px){
+    :root {
+      --font-size-title: 140px;
     }
-  
-    let data = [];
-    let initialResponse = await fetchPage(page);
-    let responseData = await initialResponse.json();
-    data.push(...responseData);
-  
-    while(initialResponse.headers.get('Link') && initialResponse.headers.get('Link').includes('rel="next"')){
-      page++;
-      initialResponse = await fetchPage(page);
-      responseData = await initialResponse.json();
-      data.push(...responseData);
+  }
+  @media screen and ( width >= 1800px) and ( width < 2000px){
+    :root {
+      --font-size-title: 130px;
     }
-  
-    console.log("how many repos: " + data.length);
-    let totalLength = 0;
-    data.forEach(async (repo, index) => {
-      let commits = await fetchCommits(repo.url);
-      totalLength += commits.length;
-      console.log("total: " + totalLength)
-    });
+  }
+  @media screen and ( width >= 1600px) and ( width < 1800px){
+    :root {
+      --font-size-title: 116px;
+    }
+  }
+  @media screen and ( width >= 1400px) and ( width < 1600px){
+    :root {
+      --font-size-title: 95px;
+    }
+  }
+  @media screen and ( width >= 1200px) and ( width < 1400px){
+    :root {
+      --font-size-title: 80px;
+    }
+  }
+  @media screen and ( width >= 1000px) and ( width < 1200px){
+    :root {
+      --font-size-title: 70px;
+    }
+  }
+  @media screen and ( width >= 800px) and ( width < 1000px){
+    :root {
+      --font-size-title: 56px;
+    }
+  }
+  @media screen and ( width >= 700px) and ( width < 800px){
+    :root {
+      --font-size-title: 50px;
+    }
+  }
+  @media screen and ( width >= 600px) and ( width < 700px){
+    :root {
+      --font-size-title: 40px;
+    }
+  }
+  @media screen and ( width >= 550px) and ( width < 600px){
+    :root {
+      --font-size-title: 37px;
+    }
+  }
+  @media screen and ( width >= 500px) and ( width < 550px){
+    :root {
+      --font-size-title: 33px;
+    }
+  }
+  @media screen and ( width >= 450px) and ( width < 500px){
+    :root {
+      --font-size-title: 31px;
+    }
+  }
+  @media screen and ( width >= 400px) and ( width < 450px){
+    :root {
+      --font-size-title: 27px;
+    }
+  }
+  @media screen and ( width >= 350px) and ( width < 400px){
+    :root {
+      --font-size-title: 24px;
+    } 
+  }
+  @media screen and ( width >= 300px) and ( width < 350px){
+    :root {
+      --font-size-title: 21px;
+    }
+  }
+  @media screen and ( width >= 250px) and ( width < 300px){
+    :root {
+      --font-size-title: 17px;
+    }
+  }
+  @media screen and ( width >= 210px) and ( width < 250px){
+    :root {
+      --font-size-title: 14px;
+    }
+  }
+  @media screen and ( width >= 180px) and ( width < 210px){
+    :root {
+      --font-size-title: 11px;
+    }
+  }
+  @media screen and ( width >= 150px) and ( width < 180px){
+    :root {
+      --font-size-title: 9px;
+    }
+  }
+  @media screen and ( width >= 120px) and ( width < 150px){
+    :root {
+      --font-size-title: 7px;
+    }
+  }
+  @media screen and ( width >= 100px) and ( width < 120px){
+    :root {
+      --font-size-title: 6px;
+    }
+  }
+  @media screen and ( width >= 80px) and ( width < 100px){
+    :root {
+      --font-size-title: 4.5px;
+    }
+  }
+  @media screen and ( width >= 60px) and ( width < 80px){
+    :root {
+      --font-size-title: 3px;
+    }
   }`
 
+const fourSolutions = `@media screen and ( width < 50vh ) and (orientation:portrait){ /*case 1*/
+.app{
+  width: 100vw;
+  height: 200vw;
+}
+.stopwatch-section, .timer-section {
+  width: 100vw;
+  height: 100vw;
+}
 
-const commitsRequestString1 =`async function fetchCommits(url) {
-    let page = 1;
-    async function fetchPage(page) {
-      return fetch(\`\${url}/commits?per_page=100&page=\${page}\`, {
-          method: "GET",
-          headers: {
-            "Authorization": \`token \${process.env.GITHUB_TOKEN}\`,
-            "Content-Type": "application/vnd.github+json",
-          },
-        })
+.stopwatch-section{
+  transform: translate(0, 0) rotate(0deg);
+  offset-path: circle(50vw at 50vw 50vh);
+  offset-distance:75%;
+}
+.timer-section{
+  transform: translate(0, 0) rotate(180deg);
+  offset-path: circle(50vw at 50vw 50vh);
+  offset-distance:25%;
+}
+:root {
+  --font-size-title: calc((0.0650 * 100vw) - 1.57px);
+  --general-size-factor-px: (0.00188323 * 100vw);
+}
+.title{
+  offset-path: circle(45% at 50% 50%);
+  offset-distance:75%;
+}
+}
+/* stack using height to avoid exceeding width where vh > 2x vw 
+Imagine a portrait phone between 1:1 and 1:2*/
+@media screen and ( width >= 50vh ) and (orientation:portrait){
+.app{
+  width: 50vh;
+  height: 100%;
+}
+.stopwatch-section, .timer-section {
+  width: 50vh;
+  height: 50vh;
+}
+
+.stopwatch-section{
+  transform: translate(0, 0) rotate(0deg);
+  offset-path: circle(25vh at 50vw 50vh);
+  offset-distance:75%;
+}
+.timer-section{
+  transform: translate(0, 0) rotate(180deg);
+  offset-path: circle(25vh at 50vw 50vh);
+  offset-distance:25%;
+}
+:root {
+  --font-size-title: calc((0.0650 * 50vh) - 1.57px);
+  --general-size-factor-px: (0.00188323 * 50vh);
+}
+.title{
+  offset-path: circle(45% at 50% 50%);
+  offset-distance:50%;
+}
+}
+
+
+/************** Landscape */
+
+/* stack using width to avoid exceeding height where 2x vh > vw
+Imagine a landscape phone between 1:1 and 2:1  */
+@media screen and ( height > 50vw ) and (orientation:landscape) {
+.stopwatch-section, .timer-section {
+  width: 50vw;
+  height: 50vw; 
+}
+
+.stopwatch-section{
+  transform: translate(0, 0) rotate(90deg);
+  offset-path: circle(25vw at 50vw 50vh);
+  offset-distance:50%;
+}
+.timer-section{
+  transform: translate(0, 0) rotate(270deg);
+  offset-path: circle(25vw at 50vw 50vh);
+  offset-distance:0%;
+}
+:root {
+  --font-size-title: calc((0.0650 *50vw) - 1.57px);
+  --general-size-factor-px: (0.00188323 * 50vw);
+}
+.title{
+  offset-path: circle(45% at 50% 50%);
+  offset-distance:75%;
+}
+}
+/* stack using height to avoid exceeding width where vw > 2x vh 
+Imagine a landscape phone more extreme/longer than 2:1*/
+@media screen and ( height <= 50vw ) and (orientation:landscape) {
+.stopwatch-section, .timer-section {
+  width: 100vh;
+  height: 100%; 
+}
+
+.stopwatch-section{
+  transform: translate(0, 0) rotate(90deg);
+  offset-path: circle(50vh at 50vw 50vh);
+  offset-distance:50%;
+}
+.timer-section{
+  transform: translate(0, 0) rotate(270deg);
+  offset-path: circle(50vh at 50vw 50vh);
+  offset-distance:0%;
+}
+:root {
+  --font-size-title: calc((0.0650 * 100vh) - 1.57px);
+  --general-size-factor-px: (0.00188323 * 100vh);
+}
+.title{
+  offset-path: circle(45% at 50% 50%);
+  offset-distance:50%;
+}
+}`
+
+const switchCase =`let caseResult = 797 * (newPrettyTime.length ** -1.03)
+switch(newPrettyTime.length) {
+    case 0: case 1: case 2: case 3: case 4: {caseResult = 180; break}
+    default: {caseResult = (730 * (newPrettyTime.length ** -1.03))}
+}
+mainStopwatchTimeElement.current.style.fontSize = \`calc(var(--general-size-factor-px) * \${caseResult})\` // 12, 62 | 11, 69 | 10, 76 | 9, 83 | 8, 94`
+
+const accsol1 = `@media screen and (width <= 400px ) {
+    :root {
+      --font-size-factor-px: calc(var(--general-size-factor-px) * 1.2);
+      --enlargeable-font-size-factor-px: calc(var(--font-size-factor-px) * 2);
+    } 
+    
+  }
+  
+  @media screen and (width <= 200px ) {
+    :root {
+      --font-size-factor-px: calc(var(--general-size-factor-px) * 1.3);
+      --enlargeable-font-size-factor-px: calc(var(--font-size-factor-px) * 2.5);
     }
-  
-    let data = [];
-    let initialResponse = await fetchPage(page);
-    let responseData = await initialResponse.json();
-    data.push(...responseData);
-  
-    while(initialResponse.headers.get('Link') && initialResponse.headers.get('Link').includes('rel="next"')){
-      page++;
-      initialResponse = await fetchPage(page);
-      responseData = await initialResponse.json();
-      data.push(...responseData);
-    }
-  
-    console.log(url, data.length);
-  
-    return data
+    
   }`
-
-
-const outputString1 = `how many repos: 60
-https://api.github.com/repos/moefingers/5.5.5-activity-array-automotive 12
-total: 12
-
-{...}
-  
-https://api.github.com/repos/moefingers/UNLV-react-art-gallery 6
-total: 762
-https://api.github.com/repos/moefingers/moefingers.github.io 113
-total: 875`

@@ -32,22 +32,30 @@ export default function PostSingle() {
                 
                 function createReactElement(reactElementContent) {
                     const { type, props, children } = reactElementContent;
+                    currentKey++
+                    props.key = `${postFromJSON.path}-${currentKey}`
                     if(props.class) { delete props.class }
+                    if(type == "img") {
+                        return <img key={props.key} src={props.src} alt={props.alt} />
+                    }
                     if(type == "SyntaxHighlighter"){
-                        return <SyntaxHighlighter language="javascript" style={xt256}>{children}</SyntaxHighlighter>
+                        return <SyntaxHighlighter key={props.key} language="javascript" style={xt256}>{children}</SyntaxHighlighter>
                     }
                     if(props.editorlinktag == "true"){
-                        return <a href={personLinks[postFromJSON.editor]} target="_blank">{postFromJSON.editor}</a>
+                        return <a key={props.key} href={personLinks[postFromJSON.editor]} target="_blank">{postFromJSON.editor}</a>
                     }
                 
                     // If children is a string, wrap it in an array
                     const childrenArray = Array.isArray(children) ? children : [children];
                     
                     let addLink = false
-                    const elementChildren = childrenArray.map((child) => {
+                    const elementChildren = childrenArray.map((child, index) => {
                         // If child is an object, recursively create the React element
                         if (typeof child === 'object') {
-                            return createReactElement(child);
+                            // console.log(child)
+                            const { type, props, children } = child;
+                            // props.key = index
+                            return createReactElement({type, props, children});
                         }
                         // If child is a string, create a text element
                         if (child.includes("$$$")){
@@ -60,17 +68,6 @@ export default function PostSingle() {
                                     } catch (error) {
                                         // console.log(error)
                                     }
-                                    if(group == "editor"){
-                                        // return ""
-                                        // return createReactElement({
-                                        //     type: "a",
-                                        //     props: {
-                                        //         href: personLinks[postFromJSON[group]],
-                                        //         target: "_blank",
-                                        //     },
-                                        //     children: postFromJSON[group]
-                                        // })
-                                    }
                                     return postFromJSON[group];
                                 });
                             }
@@ -80,10 +77,12 @@ export default function PostSingle() {
                         return child;
                     });
                     // element
+                    currentKey++
+                    props.key = `${postFromJSON.path}-${currentKey}`
                     const element = createElement(type, props, [...elementChildren]);
                     return element;
                 }
-                
+                let currentKey = 0
                 setReactPage(createReactElement(postFromJSON.reactElementContent))
 
                 break
