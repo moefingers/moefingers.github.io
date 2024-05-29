@@ -76,6 +76,781 @@
              }
         },
         {
+         "hide": false,
+         "connectedToProject": "how-many-commits-do-i-have",
+         "path": "getting-all-commits",
+
+         "title": "Getting All Commits For A User in GitHub",
+         "author": "Mohammad Zuiter",
+         "createdAt": "2024-05-28T22:05:39.289Z",
+         "updatedAt": "2024-05-29T01:43:58.652Z",
+         "reactElementContent": {
+            "type": "div",
+            "props": {
+               "className": "html-area",
+               "class": "html-area"
+            },
+            "children": [
+               {
+                  "type": "section",
+                  "props": {
+                     "className": "header",
+                     "class": "header"
+                  },
+                  "children": [
+                     {
+                        "type": "h1",
+                        "props": {
+                           "className": "post title",
+                           "class": "post title"
+                        },
+                        "children": [
+                           "$$$title$$$"
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": "post author",
+                           "class": "post author"
+                        },
+                        "children": [
+                           "By: $$$author$$$"
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": "post date created",
+                           "class": "post date created"
+                        },
+                        "children": [
+                           "Posted: $$$createdAt$$$"
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": "post date updated",
+                           "class": "post date updated"
+                        },
+                        "children": [
+                           "Last Edited: $$$updatedAt$$$"
+                        ]
+                     }
+                  ]
+               },
+               {
+                  "type": "section",
+                  "props": {
+                     "className": "index",
+                     "class": "index"
+                  },
+                  "children": [
+                     {
+                        "type": "h2",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "Index"
+                        ]
+                     },
+                     {
+                        "type": "a",
+                        "props": {
+                           "className": "",
+                           "href": "#/Posts/getting-all-commits#intro"
+                        },
+                        "children": [
+                           "Introduction"
+                        ]
+                     },
+                     {
+                        "type": "a",
+                        "props": {
+                           "className": "",
+                           "href": "#/Posts/getting-all-commits#the-plan"
+                        },
+                        "children": [
+                           "The Plan"
+                        ]
+                     },
+                     {
+                        "type": "a",
+                        "props": {
+                           "className": "",
+                           "href": "#/Posts/getting-all-commits#documentation"
+                        },
+                        "children": [
+                           "Reading The Documentation"
+                        ]
+                     },
+                     {
+                        "type": "a",
+                        "props": {
+                           "className": "",
+                           "href": "#/Posts/getting-all-commits#the-initial-request"
+                        },
+                        "children": [
+                           "The Initial Request"
+                        ]
+                     },
+                     {
+                        "type": "a",
+                        "props": {
+                           "className": "",
+                           "href": "#/Posts/getting-all-commits#follow-up-request"
+                        },
+                        "children": [
+                           "The Follow-Up Request"
+                        ]
+                     },
+                     {
+                        "type": "a",
+                        "props": {
+                           "className": "",
+                           "href": "#/Posts/getting-all-commits#the-output"
+                        },
+                        "children": [
+                           "Seeing The Output"
+                        ]
+                     },
+                     {
+                        "type": "a",
+                        "props": {
+                           "className": "",
+                           "href": "#/Posts/getting-all-commits#afterword"
+                        },
+                        "children": [
+                           "Afterword, GitHub Link"
+                        ]
+                     }
+                  ]
+               },
+               {
+                  "type": "section",
+                  "props": {
+                     "className": "",
+                     "id": "/Posts/getting-all-commits#intro"
+                  },
+                  "children": [
+                     {
+                        "type": "h2",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "Intro"
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "I was applying for a job that highlighted the ability to use GitHub or other version control systems, as well as the ability to use APIs."
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "I've used GitHub, and I've had recent experience with their API. So I figured why not pair the two and slap another thing onto my resume."
+                        ]
+                     }
+                  ]
+               },
+               {
+                  "type": "section",
+                  "props": {
+                     "className": "",
+                     "id": "/Posts/getting-all-commits#the-plan"
+                  },
+                  "children": [
+                     {
+                        "type": "h2",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "The Plan"
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "From the logic I wrote in my ",
+                           {
+                              "type": "a",
+                              "props": {
+                                 "className": "",
+                                 "href": "/#/Projects",
+                                 "target": "_blank"
+                              },
+                              "children": [
+                                 "Projects"
+                              ]
+                           },
+                           " section, I knew there was a particular url to get all the commits for a particular repository."
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "So the plan was, to get all the repositories for a user, and then get all the commits for each repository. (and then add them all up)"
+                        ]
+                     }
+                  ]
+               },
+               {
+                  "type": "section",
+                  "props": {
+                     "className": "",
+                     "id": "/Posts/getting-all-commits#documentation"
+                  },
+                  "children": [
+                     {
+                        "type": "h2",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "Reading The Documentation"
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "Let's look at the documentation together to find out how to get the repositories for a given user. ",
+                           {
+                              "type": "a",
+                              "props": {
+                                 "className": "",
+                                 "href": "https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-a-user",
+                                 "target": "_blank"
+                              },
+                              "children": [
+                                 "GitHub Docs REST API (list repos for a user)"
+                              ]
+                           }
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "Looking at the request example ",
+                           {
+                              "type": "em",
+                              "props": {
+                                 "className": ""
+                              },
+                              "children": [
+                                 "/users/{username}/repos"
+                              ]
+                           },
+                           " we can see exactly what we need to do. We can also see ",
+                           {
+                              "type": "a",
+                              "props": {
+                                 "className": "",
+                                 "href": "https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api?apiVersion=2022-11-28#using-link-headers",
+                                 "target": "_blank"
+                              },
+                              "children": [
+                                 "elsewhere"
+                              ]
+                           },
+                           " in the documentation that there is next page information that will be in the response ",
+                           {
+                              "type": "em",
+                              "props": {
+                                 "className": ""
+                              },
+                              "children": [
+                                 "Link"
+                              ]
+                           },
+                           " header."
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "In the request url parameters, we can include things like ",
+                           {
+                              "type": "em",
+                              "props": {
+                                 "className": ""
+                              },
+                              "children": [
+                                 "per_page=100"
+                              ]
+                           },
+                           " to reduce the number of overall requests that we make."
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "Due to rate limits, it is wisest to use a ",
+                           {
+                              "type": "a",
+                              "props": {
+                                 "className": "",
+                                 "href": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api?apiVersion=2022-11-28#authenticating-with-a-personal-access-token",
+                                 "target": "_blank"
+                              },
+                              "children": [
+                                 "fine-grained personal access token"
+                              ]
+                           },
+                           " since we'll be repeatedly hitting the endopint."
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "Also, it's worth noting that the ",
+                           {
+                              "type": "a",
+                              "props": {
+                                 "className": "",
+                                 "href": "https://docs.github.com/en/rest/using-the-rest-api/getting-started-with-the-rest-api?apiVersion=2022-11-28#accept",
+                                 "target": "_blank"
+                              },
+                              "children": [
+                                 "documentation"
+                              ]
+                           },
+                           " for the ",
+                           {
+                              "type": "em",
+                              "props": {
+                                 "className": ""
+                              },
+                              "children": [
+                                 "Accept"
+                              ]
+                           },
+                           " header states we need to include ",
+                           {
+                              "type": "em",
+                              "props": {
+                                 "className": ""
+                              },
+                              "children": [
+                                 "application/vnd.github+json"
+                              ]
+                           },
+                           " in it."
+                        ]
+                     }
+                  ]
+               },
+               {
+                  "type": "section",
+                  "props": {
+                     "className": "",
+                     "id": "/Posts/getting-all-commits#the-initial-request"
+                  },
+                  "children": [
+                     {
+                        "type": "h2",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "The Initial Request"
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "With what we've learned, the first request to get all the repositories for a given user is as follows, you'll see I've incorporated use of a local ",
+                           {
+                              "type": "em",
+                              "props": {
+                                 "className": ""
+                              },
+                              "children": [
+                                 ".env"
+                              ]
+                           },
+                           " to protect my token."
+                        ]
+                     },
+                     {
+                        "type": "em",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "https://api.github.com/users/MoeFingers/repos?per_page=100&page=1"
+                        ]
+                     },
+                     {
+                        "type": "SyntaxHighlighter",
+                        "props": {
+                           "className": "code-container",
+                           "class": "code-container",
+                           "overridetypeto": "SyntaxHighlighter",
+                           "syntaxhighlighterstyle": "xt256"
+                        },
+                        "children": "async function fetchRepos() {\n    let page = 1;\n  \n    async function fetchPage(page) {\n      return fetch(`https://api.github.com/users/${process.env.USER}/repos?per_page=100&page=${page}`, {\n          method: \"GET\",\n          headers: {\n            \"Authorization\": `token ${process.env.GITHUB_TOKEN}`,\n            \"Content-Type\": \"application/vnd.github+json\",\n          },\n        })\n    }\n  \n    let data = [];\n    let initialResponse = await fetchPage(page);\n    let responseData = await initialResponse.json();\n    data.push(...responseData);\n  \n    while(initialResponse.headers.get('Link') && initialResponse.headers.get('Link').includes('rel=\"next\"')){\n      page++;\n      initialResponse = await fetchPage(page);\n      responseData = await initialResponse.json();\n      data.push(...responseData);\n    }\n  \n    console.log(\"how many repos: \" + data.length);\n    let totalLength = 0;\n    data.forEach(async (repo, index) => {\n      let commits = await fetchCommits(repo.url);\n      totalLength += commits.length;\n      console.log(\"total: \" + totalLength)\n    });\n  }"
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "Since all the results fit on one page, there is no information in the ",
+                           {
+                              "type": "em",
+                              "props": {
+                                 "className": ""
+                              },
+                              "children": [
+                                 "Link"
+                              ]
+                           },
+                           " header."
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "If we reduce the number of results per page for testing purposes, we can see the ",
+                           {
+                              "type": "em",
+                              "props": {
+                                 "className": ""
+                              },
+                              "children": [
+                                 "Link"
+                              ]
+                           },
+                           " header is now populated."
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "Knowing this, we can plan to conditionally fetch the next page of results until we're at the last page, where there will be no information in the ",
+                           {
+                              "type": "em",
+                              "props": {
+                                 "className": ""
+                              },
+                              "children": [
+                                 "Link"
+                              ]
+                           },
+                           " header."
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "For now, what's important is that we can see each result has an api ",
+                           {
+                              "type": "em",
+                              "props": {
+                                 "className": ""
+                              },
+                              "children": [
+                                 "url"
+                              ]
+                           },
+                           " key on which we can affix ",
+                           {
+                              "type": "em",
+                              "props": {
+                                 "className": ""
+                              },
+                              "children": [
+                                 "/commits?per_page=100&page=1"
+                              ]
+                           },
+                           " to get the commits for that repository."
+                        ]
+                     }
+                  ]
+               },
+               {
+                  "type": "section",
+                  "props": {
+                     "className": "",
+                     "id": "/Posts/getting-all-commits#follow-up-request"
+                  },
+                  "children": [
+                     {
+                        "type": "h2",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "The Follow-Up Request"
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "As stated in the previous section, each result has a ",
+                           {
+                              "type": "em",
+                              "props": {
+                                 "className": ""
+                              },
+                              "children": [
+                                 "url"
+                              ]
+                           },
+                           " key on which we can affix ",
+                           {
+                              "type": "em",
+                              "props": {
+                                 "className": ""
+                              },
+                              "children": [
+                                 "/commits?per_page=100&page=1"
+                              ]
+                           },
+                           " to get the commits for that repository."
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "We'll use something like this as our address to get: ",
+                           {
+                              "type": "em",
+                              "props": {
+                                 "className": ""
+                              },
+                              "children": [
+                                 "`$",
+                                 "{url}",
+                                 "/commits?per_page=100&page=$",
+                                 "{page}",
+                                 "`"
+                              ]
+                           }
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "You can see in the previous code for our intial request, it follows up by an invocation of ",
+                           {
+                              "type": "em",
+                              "props": {
+                                 "className": ""
+                              },
+                              "children": [
+                                 "fetchCommits"
+                              ]
+                           },
+                           " with each repository ",
+                           {
+                              "type": "em",
+                              "props": {
+                                 "className": ""
+                              },
+                              "children": [
+                                 "url"
+                              ]
+                           },
+                           " as an argument, and then getting the ",
+                           {
+                              "type": "em",
+                              "props": {
+                                 "className": ""
+                              },
+                              "children": [
+                                 "length"
+                              ]
+                           },
+                           " of each return and adding it to a previously declared ",
+                           {
+                              "type": "em",
+                              "props": {
+                                 "className": ""
+                              },
+                              "children": [
+                                 "totalLength"
+                              ]
+                           },
+                           "."
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "Let's look at that function."
+                        ]
+                     },
+                     {
+                        "type": "SyntaxHighlighter",
+                        "props": {
+                           "className": "code-container",
+                           "class": "code-container",
+                           "overridetypeto": "SyntaxHighlighter",
+                           "syntaxhighlighterstyle": "xt256"
+                        },
+                        "children": "async function fetchCommits(url) {\n    let page = 1;\n    async function fetchPage(page) {\n      return fetch(`${url}/commits?per_page=100&page=${page}`, {\n          method: \"GET\",\n          headers: {\n            \"Authorization\": `token ${process.env.GITHUB_TOKEN}`,\n            \"Content-Type\": \"application/vnd.github+json\",\n          },\n        })\n    }\n  \n    let data = [];\n    let initialResponse = await fetchPage(page);\n    let responseData = await initialResponse.json();\n    data.push(...responseData);\n  \n    while(initialResponse.headers.get('Link') && initialResponse.headers.get('Link').includes('rel=\"next\"')){\n      page++;\n      initialResponse = await fetchPage(page);\n      responseData = await initialResponse.json();\n      data.push(...responseData);\n    }\n  \n    console.log(url, data.length);\n  \n    return data\n  }"
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "You'll notice the logic for pagination is pretty similar to what we had earlier. This probably isn't very DRY, (we're repeating the logic) but that doesn't really matter to me since the entire application is probably less than a hundred lines, and I want to be able to follow the difference in requests."
+                        ]
+                     }
+                  ]
+               },
+               {
+                  "type": "section",
+                  "props": {
+                     "className": "",
+                     "id": "/Posts/getting-all-commits#the-output"
+                  },
+                  "children": [
+                     {
+                        "type": "h2",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "The Output"
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "Now, when we run the application, we'll get the following output."
+                        ]
+                     },
+                     {
+                        "type": "code",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "how many repos: 60\nhttps://api.github.com/repos/moefingers/5.5.5-activity-array-automotive 12\ntotal: 12\n\n{...}\n  \nhttps://api.github.com/repos/moefingers/UNLV-react-art-gallery 6\ntotal: 762\nhttps://api.github.com/repos/moefingers/moefingers.github.io 113\ntotal: 875"
+                        ]
+                     }
+                  ]
+               },
+               {
+                  "type": "section",
+                  "props": {
+                     "className": "",
+                     "id": "/Posts/getting-all-commits#afterword"
+                  },
+                  "children": [
+                     {
+                        "type": "h2",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "Afterword"
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": ""
+                        },
+                        "children": [
+                           "Now we know at this particular moment I had 875 commits, and ",
+                           {
+                              "type": "a",
+                              "props": {
+                                 "className": "",
+                                 "href": "https://github.com/MoeFingers/how-many-commits-do-i-have",
+                                 "target": "_blank"
+                              },
+                              "children": [
+                                 "here"
+                              ]
+                           },
+                           "'s the link to the repository if you want to try it yourself. Don't hesitate to ",
+                           {
+                              "type": "a",
+                              "props": {
+                                 "className": "",
+                                 "href": "/#/Contact",
+                                 "target": "_blank"
+                              },
+                              "children": [
+                                 "contact"
+                              ]
+                           },
+                           " me if you have any questions."
+                        ]
+                     }
+                  ]
+               }
+            ]
+         }
+     },
+        {
             "path": "writing-react-posts",
             "title": "Writing and Storing Posts in React...",
             "author":"Mohammad Zuiter",

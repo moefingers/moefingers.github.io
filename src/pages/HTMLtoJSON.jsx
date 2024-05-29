@@ -1,5 +1,8 @@
 import { useRef } from 'react'
 import "../assets/styles/dev.css"
+
+import "../assets/styles/post-single.css"
+
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { xt256 } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
@@ -84,7 +87,7 @@ export default function HTMLtoJSON() {
     }
 
     return (
-        <div className="dev-page-container">
+        <div className="dev-page-container post-single-page-container">
             <h1>HTMLtoJSON (for react posts)</h1>
             <button className='dev' onClick={() => {logDate()}}>log date and print to box</button>
             <input type="text" readOnly ref={dateArea}/>
@@ -103,61 +106,69 @@ export default function HTMLtoJSON() {
                 </section>
                 <section className='index'>
                     <h2>Index</h2>
-                    <a href="#/Posts/writing-react-posts#intro">intro</a>
-                    <a href="#/Posts/writing-react-posts#the-html">the html</a>
-                    <a href="#/Posts/writing-react-posts#the-function">the function</a>
-                    <a href="#/Posts/writing-react-posts#the-output">the output</a>
-                    <a href="#/Posts/writing-react-posts#interpretation">json intrepretation</a>
-                    <a href="#/Posts/writing-react-posts#afterword">afterword and link to try it</a>
+                    <a href="#/Posts/getting-all-commits#intro">Introduction</a>
+                    <a href="#/Posts/getting-all-commits#the-plan">The Plan</a>
+                    <a href="#/Posts/getting-all-commits#documentation">Reading The Documentation</a>
+                    <a href="#/Posts/getting-all-commits#the-initial-request">The Initial Request</a>
+                    <a href="#/Posts/getting-all-commits#follow-up-request">The Follow-Up Request</a>
+                    <a href="#/Posts/getting-all-commits#the-output">Seeing The Output</a>
+                    <a href="#/Posts/getting-all-commits#afterword">Afterword, GitHub Link</a>
                 </section>
-                <section id = 'intro'>
+                <section id = '/Posts/getting-all-commits#intro'>
                     <h2>Intro</h2>
-                    <p>So essentially I wrote an entire program that would recursively interpet children of a given HTML element and spit them all out in JSON.</p>
+                    <p>I was applying for a job that highlighted the ability to use GitHub or other version control systems, as well as the ability to use APIs.</p>
+                    <p>I've used GitHub, and I've had recent experience with their API. So I figured why not pair the two and slap another thing onto my resume.</p>
                 </section>
-                <section id = '/Posts/writing-react-posts#the-html'>
-                    <h2>The HTML (input)</h2>
-                    <p>This is an example of the type of HTML I wanted to turn into JSON that could be later interpreted by <em>React.createElement</em>.</p>
-                    <p>You may notice that there are tokens like <em>$$$</em><em>token$$$</em>. These will be replaced later by other information that I'd provide for each post in the post database.</p>
-                    <SyntaxHighlighter language='html' style={xt256} className='code-container' contentstring={codeStringInputExample} overridetypeto={"SyntaxHighlighter"} syntaxhighlighterstyle={"xt256"}>
-                        {codeStringInputExample}
-                    </SyntaxHighlighter>
-                </section>
-                <section id ="/Posts/writing-react-posts#the-function">
-                    <h2>The Function</h2>
-                    <p>So here's the function which will recursively pull out contents of children and their children.</p>
-                    <p>The expected input is an element, I got that from declaring a constant that invokes <em>React.useRef</em>... <em>const postElementRef = useRef()</em> and then I fed <em>postElementRef.current</em> into this function.</p>
-                    <p>Funny story about this, this function used to read children instead of childNodes. Reading childNodes is important to preserve text siblings, like <em>{`<div>textsibling<a>nestedelement</a></div>`}</em></p>
-                    <SyntaxHighlighter language='javascript' style={xt256} className='code-container' contentstring={codeReadNodesFunction} overridetypeto={"SyntaxHighlighter"} syntaxhighlighterstyle={"xt256"}>
-                        {codeReadNodesFunction}
-                    </SyntaxHighlighter>
-                </section>
-                <section id="/Posts/writing-react-posts#the-output">
-                    <h2>The JSON (output)</h2>
-                    <p>Here's the output of the function given the previous input.</p>
-                    <SyntaxHighlighter language='javascript' style={xt256} className='code-container' contentstring={codeStringOutputExample} overridetypeto={"SyntaxHighlighter"} syntaxhighlighterstyle={"xt256"}>
-                        {codeStringOutputExample}
-                    </SyntaxHighlighter>
-                </section>
-                <section id="/Posts/writing-react-posts#interpretation">
-                    <h2>Interpretation of the JSON by React</h2>
-                    <p>So now that we have a JSON, we could hypothetically pass it into <em>React.createElement</em> - but it's not that easy.</p>
-                    <p>React won't know to interpret nested children as new <em>React</em> elements that ought to be passed into another invocation <em>React.createElement</em>.</p>
-                    <p>Can you see where this is going? <em>Recursion</em>. </p>
-                    <p>Here's what we came up with, assuming we made a state - <em>const [reactPage, setReactPage] = useState(null)</em> and rendered it later in the <em>JSX</em> as <em>{`{reactPage}`}</em>.</p>
-                    <SyntaxHighlighter language='javascript' style={xt256} className='code-container' contentstring={codeStringReact} overridetypeto={"SyntaxHighlighter"} syntaxhighlighterstyle={"xt256"}>
-                        {codeStringReact}
-                    </SyntaxHighlighter>
-                    <p>You'll note that I'm using parseISO from <em>date-fns</em> to convert ISO strings into dates if possible. </p>
-                    <p>Then, if it is possible, my own function <em>toUserTime</em> to convert those dates into user-friendly strings.</p>
-                    <p>With that out of the way, I can mention what you probably see already, which is a nice RegExp to collect the string between the two <em>$$$</em> and replace the whole "token".</p>
-                    <p>Then, that string is used as a key in the <em>post</em> object to get things like the title, or the dates.</p>
-                </section>
-                <section id="/Posts/writing-react-posts#afterword">
-                    <h2>Afterword</h2>
-                    <p>Is it overengineered? Probably. Wanna use the function? Try visiting <a href="/#/dev" target="_blank">/#/dev</a> on this site.</p>
-                    <p>Wanna see a live example of all that in action? You just did. 🐇</p>
+                <section id = '/Posts/getting-all-commits#the-plan'>
+                    <h2>The Plan</h2>
+                    <p>From the logic I wrote in my <a href="/#/Projects" target="_blank">Projects</a> section, I knew there was a particular url to get all the commits for a particular repository.</p>
+                    <p>So the plan was, to get all the repositories for a user, and then get all the commits for each repository. (and then add them all up)</p>
                 </section>
 
+                <section id = '/Posts/getting-all-commits#documentation'>
+                    <h2>Reading The Documentation</h2>
+                    <p>Let's look at the documentation together to find out how to get the repositories for a given user. <a href="https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-a-user" target="_blank">GitHub Docs REST API (list repos for a user)</a></p>
+                    <p>Looking at the request example <em>{`/users/{username}/repos`}</em> we can see exactly what we need to do. We can also see <a href="https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api?apiVersion=2022-11-28#using-link-headers" target="_blank">elsewhere</a> in the documentation that there is next page information that will be in the response <em>Link</em> header.</p>
+                    <p>In the request url parameters, we can include things like <em>per_page=100</em> to reduce the number of overall requests that we make.</p>
+                    <p>Due to rate limits, it is wisest to use a <a href="https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api?apiVersion=2022-11-28#authenticating-with-a-personal-access-token" target="_blank">fine-grained personal access token</a> since we'll be repeatedly hitting the endopint.</p>
+                    <p>Also, it's worth noting that the <a href="https://docs.github.com/en/rest/using-the-rest-api/getting-started-with-the-rest-api?apiVersion=2022-11-28#accept" target="_blank">documentation</a> for the <em>Accept</em> header states we need to include <em>application/vnd.github+json</em> in it.</p>
+                </section>
+
+                <section id="/Posts/getting-all-commits#the-initial-request">
+                    <h2>The Initial Request</h2>
+                    <p>With what we've learned, the first request to get all the repositories for a given user is as follows, you'll see I've incorporated use of a local <em>.env</em> to protect my token.</p>
+                    <em>https://api.github.com/users/MoeFingers/repos?per_page=100&page=1</em>
+                    <SyntaxHighlighter language='html' style={xt256} className='code-container' contentstring={initialRequestString1} overridetypeto={"SyntaxHighlighter"} syntaxhighlighterstyle={"xt256"}>
+                        {initialRequestString1}
+                    </SyntaxHighlighter>
+                    <p>Since all the results fit on one page, there is no information in the <em>Link</em> header.</p>
+                    <p>If we reduce the number of results per page for testing purposes, we can see the <em>Link</em> header is now populated.</p>
+                    <p>Knowing this, we can plan to conditionally fetch the next page of results until we're at the last page, where there will be no information in the <em>Link</em> header.</p>
+                    <p>For now, what's important is that we can see each result has an api <em>url</em> key on which we can affix <em>/commits?per_page=100&page=1</em> to get the commits for that repository.</p>
+                </section>
+
+                <section id = '/Posts/getting-all-commits#follow-up-request'>
+                    <h2>The Follow-Up Request</h2>
+                    <p>As stated in the previous section, each result has a <em>url</em> key on which we can affix <em>/commits?per_page=100&page=1</em> to get the commits for that repository.</p>
+                    <p>We'll use something like this as our address to get: <em>`${`{url}`}/commits?per_page=100&page=${`{page}`}`</em></p>
+                    <p>You can see in the previous code for our intial request, it follows up by an invocation of <em>fetchCommits</em> with each repository <em>url</em> as an argument, and then getting the <em>length</em> of each return and adding it to a previously declared <em>totalLength</em>.</p>
+                    <p>Let's look at that function.</p>
+                    <SyntaxHighlighter language='html' style={xt256} className='code-container' contentstring={commitsRequestString1} overridetypeto={"SyntaxHighlighter"} syntaxhighlighterstyle={"xt256"}>
+                        {commitsRequestString1}
+                    </SyntaxHighlighter>
+                    <p>You'll notice the logic for pagination is pretty similar to what we had earlier. This probably isn't very DRY, (we're repeating the logic) but that doesn't really matter to me since the entire application is probably less than a hundred lines, and I want to be able to follow the difference in requests.</p>
+                </section>
+
+                <section id='/Posts/getting-all-commits#the-output'>
+                    <h2>The Output</h2>
+                    <p>Now, when we run the application, we'll get the following output.</p>
+                    <code>{outputString1}</code>
+                </section>
+                
+                <section id = '/Posts/getting-all-commits#afterword'>
+                    <h2>Afterword</h2>
+                    <p>Now we know at this particular moment I had 875 commits, and <a href="https://github.com/MoeFingers/how-many-commits-do-i-have" target="_blank">here</a>'s the link to the repository if you want to try it yourself. Don't hesitate to <a href="/#/Contact" target="_blank">contact</a> me if you have any questions.</p>
+                </section>
             </div> 
             
 
@@ -165,213 +176,79 @@ export default function HTMLtoJSON() {
     )
 }
 
-const codeString1 =`function readChildren(element) {
-    console.log(element.children)
-    
-    if(element.children.length == 0){
-        console.log(\`\${element.tagName} has no children\`)
-        return {type: element.tagName.toLowerCase(), props: {className: element.classList.value}, children: element.innerText}
-    } else {
-        console.log(\`\${element} has children\`)
-        let children = []
-        for (const child of element.children) {
-            children.push(readChildren(child))
-        }
-        return {type: element.tagName.toLowerCase(), props: {className: element.classList.value}, children: children}
-    }
-}`
-const codeReadNodesFunction=`function readNode(node) {
-    if(node.nodeType == Node.ELEMENT_NODE) {
-        const attributes = {}
-        for(const attribute of node.attributes) {
-            if(attribute.name != "style" ){
-              attributes[attribute.name] = attribute.value
-            }
-        }
-        if(attributes.overridetypeto){
-            delete attributes.contentstring
-            return {
-                type: attributes.overridetypeto, 
-                props: {
-                    className: node.classList.value, 
-                    ...attributes
-                }, 
-                children: node.attributes.contentstring.value
-            }
-        }
-        const children = Array.from(node.childNodes).map(readNode)
-        return {
-            type: node.tagName.toLowerCase(), 
-            props: {
-                className: node.classList.value,
-                 ...attributes
-                }, 
-                children: children
-            }
-    } else if (node.nodeType == Node.TEXT_NODE) {
-        return node.data
-    }
-}`
 
-const codeStringInputExample = `<div ref={postElementRef} className='post-content-container'>
-    <section className='header'>
-        <h1 className='post title'>$$$title$$$</h1>
-        <p className="post author">By: $$$author$$$</p>
-        <p className="post date created">Posted: $$$createdAt$$$</p>
-        <p className="post date updated">Last Edited: $$$updatedAt$$$</p>
-    </section>
-    <div className='container'>
-        <div className='child'>hi</div>
-        <div className='child'>hey</div>
-        <div className='child'>hello</div>
-        <div className='child-with-children'>
-            <div className='nested-child'>hola</div>
-            <div className='nested-child'>hehe</div>
-            <div className='nested-child'>omg stop</div>
-        </div>
-    </div>
-</div>`
-
-const codeStringOutputExample = `{
-    "type": "div",
-    "props": {
-       "className": "post-content-container"
-    },
-    "children": [
-       {
-          "type": "section",
-          "props": {
-             "className": "header"
+const initialRequestString1 = `async function fetchRepos() {
+    let page = 1;
+  
+    async function fetchPage(page) {
+      return fetch(\`https://api.github.com/users/\${process.env.USER}/repos?per_page=100&page=\${page}\`, {
+          method: "GET",
+          headers: {
+            "Authorization": \`token \${process.env.GITHUB_TOKEN}\`,
+            "Content-Type": "application/vnd.github+json",
           },
-          "children": [
-             {
-                "type": "h1",
-                "props": {
-                   "className": "post title"
-                },
-                "children": "$$$title$$$"
-             },
-             {
-                "type": "p",
-                "props": {
-                   "className": "post author"
-                },
-                "children": "By: $$$author$$$"
-             },
-             {
-                "type": "p",
-                "props": {
-                   "className": "post date created"
-                },
-                "children": "Posted: $$$createdAt$$$"
-             },
-             {
-                "type": "p",
-                "props": {
-                   "className": "post date updated"
-                },
-                "children": "Last Edited: $$$updatedAt$$$"
-             }
-          ]
-       },
-       {
-          "type": "div",
-          "props": {
-             "className": "container"
-          },
-          "children": [
-             {
-                "type": "div",
-                "props": {
-                   "className": "child"
-                },
-                "children": "hi"
-             },
-             {
-                "type": "div",
-                "props": {
-                   "className": "child"
-                },
-                "children": "hey"
-             },
-             {
-                "type": "div",
-                "props": {
-                   "className": "child"
-                },
-                "children": "hello"
-             },
-             {
-                "type": "div",
-                "props": {
-                   "className": "child-with-children"
-                },
-                "children": [
-                   {
-                      "type": "div",
-                      "props": {
-                         "className": "nested-child"
-                      },
-                      "children": "hola"
-                   },
-                   {
-                      "type": "div",
-                      "props": {
-                         "className": "nested-child"
-                      },
-                      "children": "hehe"
-                   },
-                   {
-                      "type": "div",
-                      "props": {
-                         "className": "nested-child"
-                      },
-                      "children": "omg stop"
-                   }
-                ]
-             }
-          ]
-       }
-    ]
- }`
-
- const codeStringReact = `function createReactElement(reactElementContent) {
-    const { type, props, children } = reactElementContent;
-    if(props.class) { delete props.class }
-    if(type == "SyntaxHighlighter"){
-        return <SyntaxHighlighter language="javascript" style={xt256}>{children}</SyntaxHighlighter>
+        })
     }
-
-    // If children is a string, wrap it in an array
-    const childrenArray = Array.isArray(children) ? children : [children];
-
-    const elementChildren = childrenArray.map((child) => {
-        // If child is an object, recursively create the React element
-        if (typeof child === 'object') {
-            return createReactElement(child);
-        }
-        // If child is a string, create a text element
-        if (child.includes("$$$")){
-            function replaceThreeDollarToken(fullString, postFromJSON) {
-                return fullString.replace(/\${3}([^$]+)\${3}/g, (match, group) => {
-                    try {
-                        if (parseISO(postFromJSON[group])) {
-                            return toUserTime(postFromJSON[group]);
-                        }
-                    } catch (error) {
-                        console.log(error)
-                    }
-                    return postFromJSON[group];
-                });
-            }
-
-            child = replaceThreeDollarToken(child, postFromJSON)
-        }
-        return child;
+  
+    let data = [];
+    let initialResponse = await fetchPage(page);
+    let responseData = await initialResponse.json();
+    data.push(...responseData);
+  
+    while(initialResponse.headers.get('Link') && initialResponse.headers.get('Link').includes('rel="next"')){
+      page++;
+      initialResponse = await fetchPage(page);
+      responseData = await initialResponse.json();
+      data.push(...responseData);
+    }
+  
+    console.log("how many repos: " + data.length);
+    let totalLength = 0;
+    data.forEach(async (repo, index) => {
+      let commits = await fetchCommits(repo.url);
+      totalLength += commits.length;
+      console.log("total: " + totalLength)
     });
+  }`
 
-    const element = createElement(type, props, ...elementChildren);
-    return element;
-}
 
-setReactPage(createReactElement(postFromJSON.reactElementContent))`
+const commitsRequestString1 =`async function fetchCommits(url) {
+    let page = 1;
+    async function fetchPage(page) {
+      return fetch(\`\${url}/commits?per_page=100&page=\${page}\`, {
+          method: "GET",
+          headers: {
+            "Authorization": \`token \${process.env.GITHUB_TOKEN}\`,
+            "Content-Type": "application/vnd.github+json",
+          },
+        })
+    }
+  
+    let data = [];
+    let initialResponse = await fetchPage(page);
+    let responseData = await initialResponse.json();
+    data.push(...responseData);
+  
+    while(initialResponse.headers.get('Link') && initialResponse.headers.get('Link').includes('rel="next"')){
+      page++;
+      initialResponse = await fetchPage(page);
+      responseData = await initialResponse.json();
+      data.push(...responseData);
+    }
+  
+    console.log(url, data.length);
+  
+    return data
+  }`
+
+
+const outputString1 = `how many repos: 60
+https://api.github.com/repos/moefingers/5.5.5-activity-array-automotive 12
+total: 12
+
+{...}
+  
+https://api.github.com/repos/moefingers/UNLV-react-art-gallery 6
+total: 762
+https://api.github.com/repos/moefingers/moefingers.github.io 113
+total: 875`
