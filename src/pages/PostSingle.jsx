@@ -10,7 +10,7 @@ import NotFound from "./NotFound"
 
 import { Link } from 'react-router-dom'
 
-import { posts } from '../assets/data/posts.json'
+import { posts, personLinks } from '../assets/data/posts.json'
 
 import "../assets/styles/post-single.css"
 
@@ -36,10 +36,14 @@ export default function PostSingle() {
                     if(type == "SyntaxHighlighter"){
                         return <SyntaxHighlighter language="javascript" style={xt256}>{children}</SyntaxHighlighter>
                     }
+                    if(props.editorlinktag == "true"){
+                        return <a href={personLinks[postFromJSON.editor]} target="_blank">{postFromJSON.editor}</a>
+                    }
                 
                     // If children is a string, wrap it in an array
                     const childrenArray = Array.isArray(children) ? children : [children];
-                
+                    
+                    let addLink = false
                     const elementChildren = childrenArray.map((child) => {
                         // If child is an object, recursively create the React element
                         if (typeof child === 'object') {
@@ -56,16 +60,27 @@ export default function PostSingle() {
                                     } catch (error) {
                                         // console.log(error)
                                     }
+                                    if(group == "editor"){
+                                        // return ""
+                                        // return createReactElement({
+                                        //     type: "a",
+                                        //     props: {
+                                        //         href: personLinks[postFromJSON[group]],
+                                        //         target: "_blank",
+                                        //     },
+                                        //     children: postFromJSON[group]
+                                        // })
+                                    }
                                     return postFromJSON[group];
                                 });
                             }
-
+                            // here
                             child = replaceThreeDollarToken(child, postFromJSON)
                         }
                         return child;
                     });
-                
-                    const element = createElement(type, props, ...elementChildren);
+                    // element
+                    const element = createElement(type, props, [...elementChildren]);
                     return element;
                 }
                 

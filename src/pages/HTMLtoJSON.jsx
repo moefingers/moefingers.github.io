@@ -101,6 +101,7 @@ export default function HTMLtoJSON() {
                 <section className='header'>
                     <h1 className='post title'>$$$title$$$</h1>
                     <p className="post author">By: $$$author$$$</p>
+                    <p className='post editor'>Editor: <a editorlinktag="true" >editorlinktag="true"</a></p>
                     <p className="post date created">Posted: $$$createdAt$$$</p>
                     <p className="post date updated">Last Edited: $$$updatedAt$$$</p>
                 </section>
@@ -130,7 +131,7 @@ export default function HTMLtoJSON() {
                     <p>Let's look at the documentation together to find out how to get the repositories for a given user. <a href="https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-a-user" target="_blank">GitHub Docs REST API (list repos for a user)</a></p>
                     
                     {/* I would recommend explaining the below p in more detail. What is it exactly that you need to do? Are the readers supposed to already know this? What is the next page information? */}
-                    <p>Looking at the request example <em>{`/users/{username}/repos`}</em> we can see exactly what we need to do. We can also see <a href="https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api?apiVersion=2022-11-28#using-link-headers" target="_blank">elsewhere</a> in the documentation that there is next page information that will be in the response <em>Link</em> header.</p>
+                    <p>Looking at the request example <em>{`/users/{username}/repos`}</em> we can see exactly how we need to format our request <em>url</em>. We can also see <a href="https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api?apiVersion=2022-11-28#using-link-headers" target="_blank">elsewhere</a> in the documentation that there is next page information that will be in the response <em>Link</em> header.</p>
                     <p>In the request url parameters, we can include things like <em>per_page=100</em> to reduce the number of overall requests that we make.</p>
                     <p>Due to rate limits, it is wisest to use a <a href="https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api?apiVersion=2022-11-28#authenticating-with-a-personal-access-token" target="_blank">fine-grained personal access token</a> since we'll be repeatedly hitting the endpoint.</p>
                     <p>Also, it's worth noting that the <a href="https://docs.github.com/en/rest/using-the-rest-api/getting-started-with-the-rest-api?apiVersion=2022-11-28#accept" target="_blank">documentation</a> for the <em>Accept</em> header states we need to include <em>application/vnd.github+json</em> in it.</p>

@@ -1,4 +1,7 @@
-{
+{   
+   "personLinks": {
+      "Vanessa Kasminoff": "https://github.com/VanessaKasminoff"
+   },
     "posts": [
         {
             "hide": false,
@@ -82,8 +85,9 @@
 
          "title": "Getting All Commits For A User in GitHub",
          "author": "Mohammad Zuiter",
+         "editor": "Vanessa Kasminoff",
          "createdAt": "2024-05-28T22:05:39.289Z",
-         "updatedAt": "2024-05-29T01:43:58.652Z",
+         "updatedAt": "2024-05-29T03:47:25.005Z",
          "reactElementContent": {
             "type": "div",
             "props": {
@@ -116,6 +120,26 @@
                         },
                         "children": [
                            "By: $$$author$$$"
+                        ]
+                     },
+                     {
+                        "type": "p",
+                        "props": {
+                           "className": "post editor",
+                           "class": "post editor"
+                        },
+                        "children": [
+                           "Editor: ",
+                           {
+                              "type": "a",
+                              "props": {
+                                 "className": "",
+                                 "editorlinktag": "true"
+                              },
+                              "children": [
+                                 "$$$editor$$$"
+                              ]
+                           }
                         ]
                      },
                      {
@@ -298,7 +322,7 @@
                                  "Projects"
                               ]
                            },
-                           " section, I knew there was a particular url to get all the commits for a particular repository."
+                           " section, I knew there was a particular url from the API to get all the commits for a particular repository."
                         ]
                      },
                      {
@@ -307,7 +331,7 @@
                            "className": ""
                         },
                         "children": [
-                           "So the plan was, to get all the repositories for a user, and then get all the commits for each repository. (and then add them all up)"
+                           "So the plan was, to get all the repositories for a user, then get all the commits for each repository, and finally add them all up."
                         ]
                      }
                   ]
@@ -364,7 +388,17 @@
                                  "/users/{username}/repos"
                               ]
                            },
-                           " we can see exactly what we need to do. We can also see ",
+                           " we can see exactly how we need to format our request ",
+                           {
+                              "type": "em",
+                              "props": {
+                                 "className": ""
+                              },
+                              "children": [
+                                 "url"
+                              ]
+                           },
+                           ". We can also see ",
                            {
                               "type": "a",
                               "props": {
@@ -426,7 +460,7 @@
                                  "fine-grained personal access token"
                               ]
                            },
-                           " since we'll be repeatedly hitting the endopint."
+                           " since we'll be repeatedly hitting the endpoint."
                         ]
                      },
                      {
@@ -755,7 +789,7 @@
                            "className": ""
                         },
                         "children": [
-                           "You'll notice the logic for pagination is pretty similar to what we had earlier. This probably isn't very DRY, (we're repeating the logic) but that doesn't really matter to me since the entire application is probably less than a hundred lines, and I want to be able to follow the difference in requests."
+                           "You'll notice the logic for pagination is pretty similar to what we had earlier. This probably isn't very DRY (we're repeating the logic), but that doesn't really matter to me since the entire application is probably less than a hundred lines, and I want to be able to follow the difference in requests."
                         ]
                      }
                   ]
