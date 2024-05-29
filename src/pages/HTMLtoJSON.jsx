@@ -121,16 +121,18 @@ export default function HTMLtoJSON() {
                 </section>
                 <section id = '/Posts/getting-all-commits#the-plan'>
                     <h2>The Plan</h2>
-                    <p>From the logic I wrote in my <a href="/#/Projects" target="_blank">Projects</a> section, I knew there was a particular url to get all the commits for a particular repository.</p>
-                    <p>So the plan was, to get all the repositories for a user, and then get all the commits for each repository. (and then add them all up)</p>
+                    <p>From the logic I wrote in my <a href="/#/Projects" target="_blank">Projects</a> section, I knew there was a particular url from the API to get all the commits for a particular repository.</p>
+                    <p>So the plan was, to get all the repositories for a user, then get all the commits for each repository, and finally add them all up.</p>
                 </section>
 
                 <section id = '/Posts/getting-all-commits#documentation'>
                     <h2>Reading The Documentation</h2>
                     <p>Let's look at the documentation together to find out how to get the repositories for a given user. <a href="https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-a-user" target="_blank">GitHub Docs REST API (list repos for a user)</a></p>
+                    
+                    {/* I would recommend explaining the below p in more detail. What is it exactly that you need to do? Are the readers supposed to already know this? What is the next page information? */}
                     <p>Looking at the request example <em>{`/users/{username}/repos`}</em> we can see exactly what we need to do. We can also see <a href="https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api?apiVersion=2022-11-28#using-link-headers" target="_blank">elsewhere</a> in the documentation that there is next page information that will be in the response <em>Link</em> header.</p>
                     <p>In the request url parameters, we can include things like <em>per_page=100</em> to reduce the number of overall requests that we make.</p>
-                    <p>Due to rate limits, it is wisest to use a <a href="https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api?apiVersion=2022-11-28#authenticating-with-a-personal-access-token" target="_blank">fine-grained personal access token</a> since we'll be repeatedly hitting the endopint.</p>
+                    <p>Due to rate limits, it is wisest to use a <a href="https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api?apiVersion=2022-11-28#authenticating-with-a-personal-access-token" target="_blank">fine-grained personal access token</a> since we'll be repeatedly hitting the endpoint.</p>
                     <p>Also, it's worth noting that the <a href="https://docs.github.com/en/rest/using-the-rest-api/getting-started-with-the-rest-api?apiVersion=2022-11-28#accept" target="_blank">documentation</a> for the <em>Accept</em> header states we need to include <em>application/vnd.github+json</em> in it.</p>
                 </section>
 
@@ -150,13 +152,15 @@ export default function HTMLtoJSON() {
                 <section id = '/Posts/getting-all-commits#follow-up-request'>
                     <h2>The Follow-Up Request</h2>
                     <p>As stated in the previous section, each result has a <em>url</em> key on which we can affix <em>/commits?per_page=100&page=1</em> to get the commits for that repository.</p>
+                    
+                    {/* I would add more emphasis on the importance/point of this step in the process. I think it could be explained in more detail. */}
                     <p>We'll use something like this as our address to get: <em>`${`{url}`}/commits?per_page=100&page=${`{page}`}`</em></p>
                     <p>You can see in the previous code for our intial request, it follows up by an invocation of <em>fetchCommits</em> with each repository <em>url</em> as an argument, and then getting the <em>length</em> of each return and adding it to a previously declared <em>totalLength</em>.</p>
                     <p>Let's look at that function.</p>
                     <SyntaxHighlighter language='html' style={xt256} className='code-container' contentstring={commitsRequestString1} overridetypeto={"SyntaxHighlighter"} syntaxhighlighterstyle={"xt256"}>
                         {commitsRequestString1}
                     </SyntaxHighlighter>
-                    <p>You'll notice the logic for pagination is pretty similar to what we had earlier. This probably isn't very DRY, (we're repeating the logic) but that doesn't really matter to me since the entire application is probably less than a hundred lines, and I want to be able to follow the difference in requests.</p>
+                    <p>You'll notice the logic for pagination is pretty similar to what we had earlier. This probably isn't very DRY (we're repeating the logic), but that doesn't really matter to me since the entire application is probably less than a hundred lines, and I want to be able to follow the difference in requests.</p>
                 </section>
 
                 <section id='/Posts/getting-all-commits#the-output'>
