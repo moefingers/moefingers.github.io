@@ -11,17 +11,19 @@ div.sorting-by-spinner{
     position: relative;
     margin-top: 6%;
 }
+
+/* sorting by note *********** */
 div.sorting-by-note{
     vertical-align:baseline;
     position: relative;
     left: 50%;
     margin-top: 3%;
+    width: fit-content;
     transform: translate(-50%, 0%);
 
     font-size: calc( var(--enlargeable-font-size-factor-px) * 16 );
     line-height:calc( var(--enlargeable-font-size-factor-px) * 18 );
     text-wrap: wrap;
-    width: 100%;
     text-align: center;
     opacity:  .4;
 
@@ -41,6 +43,35 @@ div.sorting-by-note > em.clickable:hover {
     text-shadow: var(--text-shadow-primary);
     cursor: pointer;
 }
+/* search bar************* */
+input.search-bar {
+    position: relative;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    text-align: center;
+    width: 20%;
+    
+    border-radius: calc(var(--general-size-factor-px) * 14);
+
+    border: calc(var(--general-size-factor-px) * 1) solid var(--background-color-secondary);
+}
+input.search-bar.no-results{
+    border: calc(var(--general-size-factor-px) * 1) solid var(--complementary-color-tertiary);
+    box-shadow: 0 0 calc(var(--general-size-factor-px) * 5) var(--complementary-color-tertiary);
+    color: var(--complementary-color-tertiary)
+}
+
+input.search-bar:hover,
+input.search-bar:focus {
+    outline: none;
+    box-shadow: 0 0 calc(var(--general-size-factor-px) * 5) var(--complementary-color-primary);
+}
+
+input.search-bar:hover{width: 40%;}
+input.search-bar:focus{width: 60%;}
+
 
 
 div.post-index-page-container > ul {

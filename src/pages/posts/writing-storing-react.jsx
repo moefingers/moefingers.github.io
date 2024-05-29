@@ -1,5 +1,4 @@
-export default function WritingStoringReact() {
-    return (
+
         <div className="html-area" ref={HTMLArea}>
 
                 
@@ -67,9 +66,6 @@ export default function WritingStoringReact() {
                 </section>
 
             </div> 
-    )
-}   
-
 
 const codeString1 =`function readChildren(element) {
     console.log(element.children)

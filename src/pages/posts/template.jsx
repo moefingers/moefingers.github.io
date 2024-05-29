@@ -4,6 +4,7 @@
     <section className='header'>
         <h1 className='post title'>$$$title$$$</h1>
         <p className="post author">By: $$$author$$$</p>
+                    <p className='post editor'>Editor: <a editorlinktag="true" >XXXXXXXXXX</a></p>
         <p className="post date created">Posted: $$$createdAt$$$</p>
         <p className="post date updated">Last Edited: $$$updatedAt$$$</p>
     </section>
