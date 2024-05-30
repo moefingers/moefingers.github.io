@@ -10,18 +10,33 @@ export default function Home() {
 
 
     async function handleMouseMoveImage(event) {
+        
+        const mouseDevice = matchMedia('(pointer:fine)').matches
+        const touchDevice = matchMedia('(pointer:coarse)').matches
+
+        let percentXFromTop
+        let percentYFromTop
         const boundingRect = event.currentTarget.getBoundingClientRect()
 
-        const xPosInBox = (event.clientX - boundingRect.x)
-        const yPosInBox = (event.clientY - boundingRect.y)
+        if(mouseDevice){
 
-        const percentXFromTop = xPosInBox / boundingRect.width * 100
-        const percentYFromTop = yPosInBox / boundingRect.height * 100
+            const xPosInBox = (event.clientX - boundingRect.x)
+            const yPosInBox = (event.clientY - boundingRect.y)
 
-        console.log( )
+            percentXFromTop = xPosInBox / boundingRect.width * 100
+            percentYFromTop = yPosInBox / boundingRect.height * 100
+        } else if(touchDevice){
+            
+            const xPosInBox = (event.touches[0].clientX - boundingRect.x)
+            const yPosInBox = (event.touches[0].clientY - boundingRect.y)
+            
+            percentXFromTop = xPosInBox / boundingRect.width * 100
+            percentYFromTop = yPosInBox / boundingRect.height * 100
+        }
+
         event.target.style.setProperty('--x', percentXFromTop + '%')
         event.target.style.setProperty('--y', percentYFromTop + '%')
-
+        
     }
 
     return (    
@@ -34,7 +49,7 @@ export default function Home() {
                 extremely clever <em>javascript</em> for <em>maximum compatability</em> across older devices.
             </div>
 
-            <div className='image-container' onMouseMove={handleMouseMoveImage}>
+            <div className='image-container' onMouseMove={handleMouseMoveImage} onTouchMove={handleMouseMoveImage}>
                 <img className='background' src={fullReds} alt="a blurred image of mohammad zuiter in a red blazer" />
                 <img className='foreground' src={fullReds} alt="an overlaying image of mohammad zuiter in a red blazer that is has visible portions on hover" />
             </div>
