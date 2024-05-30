@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 // glob import
 const fullImageBlobImport = Object.values(import.meta.glob("@assets/images/homepage/*.{png,jpg,jpeg,PNG,JPEG,webp,WEBP,svg}", { eager: true, query: '?url', import: 'default' }))
 const fullReds = fullImageBlobImport.filter((blob) => blob.includes("fullreds"))
-console.log(fullReds)
+// console.log(fullReds)
 const standingByScooter = fullImageBlobImport.filter((blob) => blob.includes("standing-by-scooter"))
 
 export default function Home() {

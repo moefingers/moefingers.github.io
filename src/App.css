@@ -58,7 +58,9 @@
 html * {
   z-index: 1;
   background: transparent;
+  overflow-anchor: none; /* fixes weird firefox scroll anchor not working https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-anchor/Guide_to_scroll_anchoring#what_if_i_need_to_disable_it*/
 }
+
 
 html, #root, body {
   position: absolute;
