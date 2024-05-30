@@ -63,3 +63,10 @@ div.home-page-container > div.scroll-element {
     mask-image:  radial-gradient(circle at var(--x) var(--y), black 0%, transparent 40%);
     /* opacity: 0; */
 }
+
+.image-container .note {
+    color: gray;
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+}

@@ -66,6 +66,7 @@ export default function Home() {
                 <div className='image-container' onMouseMove={handleMouseMoveImage} onTouchMove={handleMouseMoveImage}>
                     <img className='background' src={standingByScooter} alt="a blurred image of mohammad zuiter in a red blazer" />
                     <img className='foreground' src={standingByScooter} alt="an overlaying image of mohammad zuiter in a red blazer that is has visible portions on hover" />
+                    <div className='note'>scooter prior to <a href="https://www.instagram.com/p/C5M3I0rOErz/">light upgrades</a>, full post coming soon</div>
                 </div>
             </div>
         </div>
