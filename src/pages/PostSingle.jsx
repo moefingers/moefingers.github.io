@@ -22,8 +22,9 @@ export default function PostSingle() {
 
     const [post, setPost] = useState(null)
     const [reactPage, setReactPage ] = useState()
+    const [initialHash, setInitialHash] = useState(window.location.hash)
 
-    const initialHash = window.location.hash.toLowerCase()
+    
 
     useEffect(() => { //   #/Posts/infinity-response#another-situation
         console.log(initialHash)
@@ -32,7 +33,7 @@ export default function PostSingle() {
         for(const postFromJSON of posts){
             // const goodPath = window.location.hash.toLowerCase() == "#/posts/" + postFromJSON.path.toLowerCase()
             // console.log(goodPath)
-            const goodPath = initialHash.includes("#/posts/" + postFromJSON.path.toLowerCase())
+            const goodPath = initialHash.toLowerCase().includes("#/posts/" + postFromJSON.path.toLowerCase())
 
 
             if(goodPath){
@@ -93,7 +94,8 @@ export default function PostSingle() {
                     return element;
                 }
                 let currentKey = 0
-                setReactPage(createReactElement(postFromJSON.reactElementContent))
+                const returnedElement = createReactElement(postFromJSON.reactElementContent)
+                setReactPage(returnedElement)
 
                 break
             } else {
@@ -108,6 +110,7 @@ export default function PostSingle() {
         navigate(initialHash)
         console.log("useeffect reactpage ")
         console.log(initialHash)
+        window.location.hash = initialHash
     }, [reactPage])
     
     return post ? (
