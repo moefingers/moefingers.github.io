@@ -27,7 +27,7 @@ export default function PostSingle() {
     
 
     useEffect(() => { //   #/Posts/infinity-response#another-situation
-        console.log(initialHash)
+        // console.log(initialHash)
         
         // correct hash to #/posts/postname
         for(const postFromJSON of posts){
@@ -37,11 +37,11 @@ export default function PostSingle() {
 
 
             if(goodPath){
-                console.log("matched hash: " + "#/posts/" + postFromJSON.path.toLowerCase())
-                console.log("current hash: " + initialHash)
+                // console.log("matched hash: " + "#/posts/" + postFromJSON.path.toLowerCase())
+                // console.log("current hash: " + initialHash)
                 setPost(postFromJSON)
                 
-                function createReactElement(reactElementContent) {
+                function createReactElement(reactElementContent, topLevel=false) {
                     const { type, props, children } = reactElementContent;
                     currentKey++
                     props.key = `${postFromJSON.path}-${currentKey}`
@@ -90,28 +90,39 @@ export default function PostSingle() {
                     // element
                     currentKey++
                     props.key = `${postFromJSON.path}-${currentKey}`
+                    if(topLevel) {props.onLoad = ()=>{
+                        window.location.hash = initialHash
+                    } }
                     const element = createElement(type, props, [...elementChildren]);
                     return element;
                 }
+
+
                 let currentKey = 0
-                const returnedElement = createReactElement(postFromJSON.reactElementContent)
-                setReactPage(returnedElement)
+                // console.log(returnedElement)
+                
+                setReactPage(createReactElement(postFromJSON.reactElementContent, true))
 
                 break
             } else {
-                console.log("non-match hash: " + "#/posts/" + postFromJSON.path.toLowerCase())
+                // console.log("non-match hash: " + "#/posts/" + postFromJSON.path.toLowerCase())
             }
             
         }
         
+        
     }, [])
 
-    useEffect(() => {
-        navigate(initialHash)
-        console.log("useeffect reactpage ")
-        console.log(initialHash)
-        window.location.hash = initialHash
-    }, [reactPage])
+    // useEffect(() => {
+        
+    //     console.log("useeffect reactpage ")
+    //     console.log(initialHash)
+
+    //     setTimeout(() => {
+    //         window.location.hash = initialHash
+    //     }, 200);
+        
+    // }, [reactPage])
     
     return post ? (
         <div className="post-single-page-container">
