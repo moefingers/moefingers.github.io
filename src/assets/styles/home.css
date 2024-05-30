@@ -22,3 +22,33 @@ div.home-page-container {
 .home-page-container > div {
     margin: calc(30 * var(--general-size-factor-px)) 0 ;
 }
+
+.home-page-container > .image-container {
+    padding: 0;
+    position: relative;
+    max-width: 100%;
+    /* mask-image:  radial-gradient(ellipse 50% 60% at 40% 50%, rgba(0, 0, 0, .8) 50%, transparent 100%);  */
+
+}
+
+.home-page-container > .image-container > img {
+    margin: 0;
+    width: 100%;
+}
+
+
+.home-page-container > .image-container > img.background {
+    
+    filter: blur(calc(var(--general-size-factor-px) * 4)) brightness(40%);
+}
+
+.home-page-container > .image-container > img.foreground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    --x: 40%;
+    --y: 20%;
+    transition: 1s;
+    mask-image:  radial-gradient(circle at var(--x) var(--y), black 0%, transparent 40%);
+    /* opacity: 0; */
+}
