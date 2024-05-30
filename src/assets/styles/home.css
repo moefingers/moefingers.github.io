@@ -1,10 +1,20 @@
 div.home-page-container {
     
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: hidden;
+    
+    position: relative;
 }
 
-.home-page-container * {
+div.home-page-container > div.scroll-element {
+    
+    position: relative;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%
+}
+
+.home-page-container > div.scroll-element * {
     font-size: calc(15 * var(--enlargeable-font-size-factor-px));
     line-height: calc(20 * var(--enlargeable-font-size-factor-px));
 }
@@ -19,11 +29,11 @@ div.home-page-container {
     margin: calc(8 * var(--general-size-factor-px)) 0 ;
 }
 
-.home-page-container > div {
+.home-page-container > div.scroll-element > div {
     margin: calc(30 * var(--general-size-factor-px)) 0 ;
 }
 
-.home-page-container > .image-container {
+.home-page-container > div.scroll-element > .image-container {
     padding: 0;
     position: relative;
     max-width: 100%;
@@ -31,18 +41,19 @@ div.home-page-container {
 
 }
 
-.home-page-container > .image-container > img {
+.home-page-container > div.scroll-element > .image-container > img {
     margin: 0;
     width: 100%;
+    border-radius: calc(var(--general-size-factor-px) * 10);
 }
 
 
-.home-page-container > .image-container > img.background {
+.home-page-container > div.scroll-element > .image-container > img.background {
     
     filter: blur(calc(var(--general-size-factor-px) * 4)) brightness(40%);
 }
 
-.home-page-container > .image-container > img.foreground {
+.home-page-container > div.scroll-element > .image-container > img.foreground {
     position: absolute;
     top: 0;
     left: 0;
