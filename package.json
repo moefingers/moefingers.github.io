@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "license": "MIT",
-  "homepage": "https://moefingers.github.io//#/",
+  "homepage": "https://moefingers.github.io/#/",
   "repository": "https://github.com/moefingers/moefingers.github.io.git",
   "scripts": {
     "start": "npm run dev",
