@@ -1,6 +1,10 @@
 {
   "projects": [
     {
+      "api": "https://api.github.com/repos/MoeFingers/milestown2",
+      "showcase": false
+    },
+    {
       "api": "https://api.github.com/repos/MoeFingers/react-timer-stopwatch-v2",
       "showcase": false
     },
